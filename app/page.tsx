@@ -274,7 +274,7 @@ export default function Home() {
               </p>
               <div className="mt-8 rounded-2xl border border-border bg-surface p-6 shadow-[0_10px_24px_rgba(15,23,42,0.06)]">
                 <p className="text-sm font-semibold text-secondary">Direct contact</p>
-                <p className="mt-3 text-sm text-muted">Email: fatiwatschinger@gmail.com</p>
+                <p className="mt-3 text-sm text-muted">Email: hello@fwlabsllc.com</p>
                 <p className="mt-1 text-sm text-muted">Company: FW Labs</p>
               </div>
             </div>
@@ -287,7 +287,7 @@ export default function Home() {
       <footer className="border-t border-border bg-surface">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between lg:px-10">
           <p className="font-semibold text-secondary">FW Labs</p>
-          <p>fatiwatschinger@gmail.com</p>
+          <p>hello@fwlabsllc.com</p>
         </div>
       </footer>
     </div>
