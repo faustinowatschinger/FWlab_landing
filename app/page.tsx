@@ -27,57 +27,6 @@ const servicios = [
   },
 ];
 
-const proceso = [
-  {
-    step: "1",
-    title: "Diagnóstico Tecnológico",
-    intro: "Todo empieza con entender cómo funciona tu empresa.",
-    analisis: [
-      "procesos operativos",
-      "tareas manuales",
-      "herramientas utilizadas",
-      "flujos de trabajo",
-      "oportunidades de automatización",
-    ],
-    resultado: [
-      "mapa de procesos",
-      "oportunidades de automatización",
-      "posibles sistemas de IA",
-      "roadmap tecnológico",
-    ],
-    nota: "Este diagnóstico tiene un costo porque implica un análisis profundo del negocio.",
-  },
-  {
-    step: "2",
-    title: "Diseño de Sistemas",
-    intro:
-      "Una vez identificado el potencial de mejora, diseñamos la arquitectura del sistema.",
-    analisis: [
-      "qué procesos se automatizan",
-      "qué sistemas se integran",
-      "dónde se aplican agentes de IA",
-      "cómo se optimizan los flujos operativos",
-    ],
-    resultado: null,
-    resultadoTexto:
-      "El resultado es un plan claro de implementación tecnológica.",
-    nota: null,
-  },
-  {
-    step: "3",
-    title: "Implementación y Soporte",
-    intro: "Luego construimos los sistemas definidos.",
-    implementacion: [
-      "automatización de procesos",
-      "chatbots y agentes de IA",
-      "integración entre herramientas",
-      "sistemas internos de operación",
-      "flujos automáticos de información",
-    ],
-    cierre:
-      "Después de la implementación, seguimos acompañando con mantenimiento y mejoras continuas.",
-  },
-];
 
 export default function Home() {
   return (
@@ -267,78 +216,87 @@ export default function Home() {
               {/* Etapa 1 */}
               <article className="rounded-2xl border border-border bg-surface p-6 shadow-[0_8px_20px_rgba(15,23,42,0.04)]">
                 <p className="text-sm font-semibold text-primary">
-                  {proceso[0].step} — {proceso[0].title}
+                  1 — Diagnóstico Tecnológico
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted">
-                  {proceso[0].intro}
+                  Todo empieza con entender cómo funciona tu empresa.
                 </p>
 
                 <p className="mt-4 text-xs font-semibold text-secondary">
                   Analizamos:
                 </p>
                 <ul className="mt-2 space-y-1 text-xs text-muted">
-                  {proceso[0].analisis.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
+                  <li>• procesos operativos</li>
+                  <li>• tareas manuales</li>
+                  <li>• herramientas utilizadas</li>
+                  <li>• flujos de trabajo</li>
+                  <li>• oportunidades de automatización</li>
                 </ul>
 
                 <p className="mt-4 text-xs font-semibold text-secondary">
                   Entregamos:
                 </p>
                 <ul className="mt-2 space-y-1 text-xs text-muted">
-                  {proceso[0].resultado!.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
+                  <li>• mapa de procesos</li>
+                  <li>• oportunidades de automatización</li>
+                  <li>• posibles sistemas de IA</li>
+                  <li>• roadmap tecnológico</li>
                 </ul>
 
                 <p className="mt-4 text-xs italic text-muted">
-                  {proceso[0].nota}
+                  Este diagnóstico tiene un costo porque implica un análisis
+                  profundo del negocio.
                 </p>
               </article>
 
               {/* Etapa 2 */}
               <article className="rounded-2xl border border-border bg-surface p-6 shadow-[0_8px_20px_rgba(15,23,42,0.04)]">
                 <p className="text-sm font-semibold text-primary">
-                  {proceso[1].step} — {proceso[1].title}
+                  2 — Diseño de Sistemas
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted">
-                  {proceso[1].intro}
+                  Una vez identificado el potencial de mejora, diseñamos la
+                  arquitectura del sistema.
                 </p>
 
                 <p className="mt-4 text-xs font-semibold text-secondary">
                   Definimos:
                 </p>
                 <ul className="mt-2 space-y-1 text-xs text-muted">
-                  {proceso[1].analisis.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
+                  <li>• qué procesos se automatizan</li>
+                  <li>• qué sistemas se integran</li>
+                  <li>• dónde se aplican agentes de IA</li>
+                  <li>• cómo se optimizan los flujos operativos</li>
                 </ul>
 
                 <p className="mt-4 text-sm leading-relaxed text-muted">
-                  {proceso[1].resultadoTexto}
+                  El resultado es un plan claro de implementación tecnológica.
                 </p>
               </article>
 
               {/* Etapa 3 */}
               <article className="rounded-2xl border border-border bg-surface p-6 shadow-[0_8px_20px_rgba(15,23,42,0.04)]">
                 <p className="text-sm font-semibold text-primary">
-                  {proceso[2].step} — {proceso[2].title}
+                  3 — Implementación y Soporte
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted">
-                  {proceso[2].intro}
+                  Luego construimos los sistemas definidos.
                 </p>
 
                 <p className="mt-4 text-xs font-semibold text-secondary">
                   Esto puede incluir:
                 </p>
                 <ul className="mt-2 space-y-1 text-xs text-muted">
-                  {proceso[2].implementacion!.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
+                  <li>• automatización de procesos</li>
+                  <li>• chatbots y agentes de IA</li>
+                  <li>• integración entre herramientas</li>
+                  <li>• sistemas internos de operación</li>
+                  <li>• flujos automáticos de información</li>
                 </ul>
 
                 <p className="mt-4 text-sm leading-relaxed text-muted">
-                  {proceso[2].cierre}
+                  Después de la implementación, seguimos acompañando con
+                  mantenimiento y mejoras continuas.
                 </p>
               </article>
             </div>
