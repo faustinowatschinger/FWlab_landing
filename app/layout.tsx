@@ -8,9 +8,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "FW Labs | Building, launching, and scaling SaaS products",
+  title: "FW Labs | Sistemas inteligentes para empresas",
   description:
-    "From idea to revenue.",
+    "Ayudamos a empresas a operar mejor mediante inteligencia artificial y automatización.",
   icons: {
     icon: "/logo2.png",
     shortcut: "/logo2.png",

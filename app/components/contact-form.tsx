@@ -29,7 +29,7 @@ export default function ContactForm() {
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       setFeedback({
         type: "error",
-        text: "Please complete name, email, and message.",
+        text: "Por favor completá nombre, email y mensaje.",
       });
       return;
     }
@@ -44,13 +44,13 @@ export default function ContactForm() {
 
       const data = (await response.json()) as { message?: string };
       if (!response.ok) {
-        throw new Error(data.message ?? "Failed to send message.");
+        throw new Error(data.message ?? "No se pudo enviar el mensaje.");
       }
 
       setForm(INITIAL_STATE);
       setFeedback({
         type: "success",
-        text: data.message ?? "Message sent successfully.",
+        text: data.message ?? "Mensaje enviado correctamente.",
       });
     } catch (error) {
       setFeedback({
@@ -58,7 +58,7 @@ export default function ContactForm() {
         text:
           error instanceof Error
             ? error.message
-            : "Unexpected error. Please try again.",
+            : "Error inesperado. Intentá de nuevo.",
       });
     } finally {
       setIsSubmitting(false);
@@ -71,7 +71,7 @@ export default function ContactForm() {
       className="space-y-4 rounded-2xl border border-border bg-surface p-6 shadow-[0_10px_24px_rgba(15,23,42,0.06)]"
     >
       <label className="block text-sm font-medium text-secondary">
-        Name
+        Nombre
         <input
           type="text"
           name="name"
@@ -80,7 +80,7 @@ export default function ContactForm() {
             setForm((prev) => ({ ...prev, name: event.target.value }))
           }
           className="mt-2 w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-surface-dark outline-none transition focus:border-primary"
-          placeholder="Your name"
+          placeholder="Tu nombre"
           autoComplete="name"
         />
       </label>
@@ -95,13 +95,13 @@ export default function ContactForm() {
             setForm((prev) => ({ ...prev, email: event.target.value }))
           }
           className="mt-2 w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-surface-dark outline-none transition focus:border-primary"
-          placeholder="your@email.com"
+          placeholder="tu@email.com"
           autoComplete="email"
         />
       </label>
 
       <label className="block text-sm font-medium text-secondary">
-        Message
+        Mensaje
         <textarea
           name="message"
           rows={6}
@@ -110,7 +110,7 @@ export default function ContactForm() {
             setForm((prev) => ({ ...prev, message: event.target.value }))
           }
           className="mt-2 w-full resize-y rounded-xl border border-border bg-white px-4 py-3 text-sm text-surface-dark outline-none transition focus:border-primary"
-          placeholder="Tell us about your idea"
+          placeholder="Contanos sobre tu empresa y qué necesitás"
         />
       </label>
 
@@ -119,7 +119,7 @@ export default function ContactForm() {
         disabled={isSubmitting}
         className="w-full rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
       >
-        {isSubmitting ? "Sending..." : "Contact"}
+        {isSubmitting ? "Enviando..." : "Solicitar diagnóstico"}
       </button>
 
       <p
