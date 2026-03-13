@@ -119,7 +119,7 @@ export default function ContactForm() {
         disabled={isSubmitting}
         className="w-full rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
       >
-        {isSubmitting ? "Enviando..." : "Solicitar diagnóstico"}
+        {isSubmitting ? "Enviando..." : "Quiero ordenar mi WhatsApp"}
       </button>
 
       <p
