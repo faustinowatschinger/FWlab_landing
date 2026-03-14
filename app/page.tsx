@@ -1,29 +1,32 @@
 import Image from "next/image";
-import ContactForm from "./components/contact-form";
 
-const solucionItems = [
-  "organizacion de conversaciones",
-  "clasificacion automatica de clientes",
-  "respuestas rapidas para consultas frecuentes",
-  "etiquetas inteligentes",
-  "seguimiento de cotizaciones",
-  "registro de pendientes y deudas",
-  "resumenes claros por conversacion",
+const heroBullets = [
+  "Respuesta automatica en segundos",
+  "Leads organizados y clasificados",
+  "Seguimiento automatico a interesados",
+  "Mas ventas con los mismos anuncios",
 ];
 
-const resultados = [
-  {
-    title: "Menos caos",
-    description: "sabes que esta pasando con cada cliente",
-  },
-  {
-    title: "Menos estres",
-    description: "dejas de vivir revisando chats desordenados",
-  },
-  {
-    title: "Mas cierres",
-    description: "haces mejor seguimiento y no perdes oportunidades por desorden",
-  },
+const problemItems = [
+  "Los leads llegan y nadie responde rapido",
+  "Los vendedores responden horas despues",
+  "No hay seguimiento",
+  "Los chats se pierden entre conversaciones",
+];
+
+const solutionItems = [
+  "respuesta automatica inmediata",
+  "clasificacion de leads",
+  "guion de ventas por chat",
+  "seguimiento automatico",
+  "metricas de conversion",
+];
+
+const resultItems = [
+  "Mas leads atendidos",
+  "Mas conversaciones que avanzan",
+  "Mas seguimiento",
+  "Mas ventas desde los mismos anuncios",
 ];
 
 export default function Home() {
@@ -52,16 +55,13 @@ export default function Home() {
             <a href="#resultados" className="hover:text-secondary">
               Resultados
             </a>
-            <a href="#contacto" className="hover:text-secondary">
-              Contacto
-            </a>
           </nav>
 
           <a
-            href="#contacto"
+            href="/diagnostico"
             className="rounded-xl bg-primary px-4 py-2 text-sm font-semibold !text-white transition hover:bg-blue-700"
           >
-            Quiero ordenar mi WhatsApp
+            Solicitar diagnostico gratuito
           </a>
         </div>
       </header>
@@ -73,36 +73,44 @@ export default function Home() {
 
           <div className="mx-auto w-full max-w-6xl px-6 pb-18 pt-16 lg:px-10 lg:pt-24">
             <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-              Diagnostico de WhatsApp
+              WhatsApp Revenue Engine
             </span>
 
             <h1 className="mt-5 max-w-5xl text-4xl font-semibold leading-tight text-surface-dark md:text-5xl lg:text-6xl">
-              Ordenamos el WhatsApp de productores de seguros para que no
-              pierdan clientes, cotizaciones ni renovaciones
+              Convierte mas leads de WhatsApp en ventas sin aumentar tu
+              presupuesto en publicidad
             </h1>
 
-            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted">
-              Si tenes mensajes mezclados, consultas repetidas, seguimientos
-              colgados y chats que no paran de acumularse, te ayudamos a
-              convertir ese caos en un sistema claro de atencion y seguimiento.
-            </p>
+            <div className="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-muted">
+              <p>
+                Si inviertes en Meta Ads o Google Ads y los leads llegan por
+                WhatsApp, probablemente estes perdiendo ventas porque tu equipo
+                responde tarde o no hace seguimiento.
+              </p>
+              <p>
+                Implementamos un sistema que responde en segundos, organiza las
+                conversaciones y guia a los clientes hacia la compra.
+              </p>
+            </div>
 
             <div className="mt-8 space-y-1 text-lg font-medium text-secondary">
-              <p>conversaciones organizadas</p>
-              <p>clientes clasificados</p>
-              <p>prioridades claras</p>
-              <p>seguimiento de cotizaciones</p>
-              <p>menos caos, mas control</p>
+              {heroBullets.map((bullet) => (
+                <p key={bullet}>• {bullet}</p>
+              ))}
             </div>
 
             <div className="mt-8">
               <a
-                href="#contacto"
+                href="/diagnostico"
                 className="inline-flex rounded-xl bg-primary px-7 py-3 text-sm font-semibold !text-white transition hover:bg-blue-700"
               >
-                Quiero ordenar mi WhatsApp
+                Solicitar diagnostico gratuito
               </a>
             </div>
+
+            <p className="mt-6 text-sm font-medium text-muted">
+              Descubre donde estas perdiendo ventas en tu WhatsApp.
+            </p>
           </div>
         </section>
 
@@ -112,34 +120,28 @@ export default function Home() {
         >
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-              El problema
+              Problema
             </span>
             <h2 className="mt-3 max-w-4xl text-3xl font-semibold text-surface-dark">
-              El problema no es tener muchos mensajes. El problema es que todo
-              esta mezclado.
+              Estas pagando publicidad, pero muchas ventas se pierden despues
+              del clic
             </h2>
 
-            <div className="mt-6 max-w-3xl space-y-2 text-base leading-relaxed text-muted">
-              <p>Cotizaciones.</p>
-              <p>Pagos.</p>
-              <p>Renovaciones.</p>
-              <p>Consultas simples.</p>
-              <p>Reclamos.</p>
-              <p>Deudas.</p>
-              <p>Todo en el mismo WhatsApp.</p>
-            </div>
-
-            <p className="mt-8 max-w-3xl text-base leading-relaxed text-muted">
-              Y cuando todo se mezcla, empiezan los problemas:
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted">
+              El problema no siempre esta en los anuncios. Muchas veces esta en
+              lo que pasa cuando el lead llega por WhatsApp.
             </p>
 
-            <ul className="mt-5 max-w-2xl space-y-2 text-sm leading-relaxed text-muted">
-              <li>clientes sin responder</li>
-              <li>cotizaciones sin seguimiento</li>
-              <li>urgencias perdidas entre mensajes simples</li>
-              <li>estres constante</li>
-              <li>oportunidades que se enfrian</li>
+            <ul className="mt-6 max-w-2xl space-y-2 text-sm leading-relaxed text-muted">
+              {problemItems.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
             </ul>
+
+            <p className="mt-8 max-w-3xl text-base leading-relaxed text-muted">
+              Cuando eso pasa, el lead se enfria y termina comprando en otro
+              lado.
+            </p>
           </div>
         </section>
 
@@ -148,47 +150,32 @@ export default function Home() {
           className="mx-auto w-full max-w-6xl px-6 py-18 lg:px-10"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-            La solucion
+            Solucion
           </span>
           <h2 className="mt-3 max-w-4xl text-3xl font-semibold text-surface-dark">
-            Convertimos ese caos en un sistema ordenado
+            WhatsApp Revenue Engine
           </h2>
 
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted">
-            Te ayudamos a estructurar tu WhatsApp para que cada conversacion
-            tenga orden, prioridad y seguimiento.
-          </p>
+          <div className="mt-6 max-w-3xl space-y-3 text-base leading-relaxed text-muted">
+            <p>
+              No es solo automatizacion. Es un sistema completo para responder,
+              ordenar y convertir mas leads en ventas.
+            </p>
+            <p>
+              El objetivo es simple: que ningun lead se pierda.
+            </p>
+          </div>
 
-          <p className="mt-8 text-sm font-semibold text-secondary">Incluye</p>
-
-          <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {solucionItems.map((item, index) => (
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {solutionItems.map((item, index) => (
               <article
                 key={item}
-                className="group rounded-2xl border border-border bg-surface p-6 shadow-[0_8px_20px_rgba(15,23,42,0.04)] transition hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(15,23,42,0.10)]"
+                className="rounded-2xl border border-border bg-surface p-6 shadow-[0_8px_20px_rgba(15,23,42,0.04)]"
               >
-                <div className="mb-5 flex items-center justify-between">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-primary">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      className="h-5 w-5"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M4 19h16M7 14l3-3 3 2 4-5"
-                        stroke="currentColor"
-                        strokeWidth="1.9"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-xs font-semibold text-muted">
-                    0{index + 1}
-                  </span>
-                </div>
-                <p className="text-sm font-medium leading-relaxed text-secondary">
+                <span className="text-xs font-semibold text-muted">
+                  0{index + 1}
+                </span>
+                <p className="mt-3 text-sm font-medium leading-relaxed text-secondary">
                   {item}
                 </p>
               </article>
@@ -205,58 +192,35 @@ export default function Home() {
               Resultado
             </span>
             <h2 className="mt-3 max-w-4xl text-3xl font-semibold text-surface-dark">
-              Que cambia cuando el WhatsApp deja de ser un caos?
+              Que cambia cuando implementas el sistema
             </h2>
 
-            <div className="mt-8 grid gap-6 lg:grid-cols-3">
-              {resultados.map((resultado) => (
+            <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {resultItems.map((item) => (
                 <article
-                  key={resultado.title}
+                  key={item}
                   className="rounded-2xl border border-border bg-surface p-6 shadow-[0_8px_20px_rgba(15,23,42,0.04)]"
                 >
-                  <h3 className="text-lg font-semibold text-secondary">
-                    {resultado.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">
-                    {resultado.description}
-                  </p>
+                  <p className="text-base font-semibold text-secondary">{item}</p>
                 </article>
               ))}
             </div>
-          </div>
-        </section>
 
-        <section
-          id="contacto"
-          className="border-t border-border/80 bg-slate-50 py-18"
-        >
-          <div className="mx-auto grid w-full max-w-6xl gap-8 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-                Empieza aqui
-              </span>
-              <h2 className="mt-3 max-w-4xl text-3xl font-semibold text-surface-dark">
-                Si tu WhatsApp hoy esta explotado, no necesitas trabajar mas.
-                Necesitas orden.
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
-                Te mostramos como transformar tu atencion en un sistema mas
-                claro, prolijo y rentable.
+            <div className="mt-8 max-w-3xl space-y-3 text-base leading-relaxed text-muted">
+              <p>Sin tener que contratar mas vendedores.</p>
+              <p>
+                Y sin depender de que alguien este pegado al telefono todo el
+                dia.
               </p>
-
-              <div className="mt-8 rounded-2xl border border-border bg-surface p-6 shadow-[0_10px_24px_rgba(15,23,42,0.06)]">
-                <p className="text-sm font-semibold text-secondary">
-                  Contacto directo
-                </p>
-                <p className="mt-3 text-sm text-muted">
-                  Email: hello@fwlabsllc.com
-                </p>
-                <p className="mt-1 text-sm text-muted">Company: FW Labs</p>
-              </div>
             </div>
 
-            <div id="contacto-form">
-              <ContactForm />
+            <div className="mt-8">
+              <a
+                href="/diagnostico"
+                className="inline-flex rounded-xl bg-primary px-7 py-3 text-sm font-semibold !text-white transition hover:bg-blue-700"
+              >
+                Solicitar diagnostico gratuito
+              </a>
             </div>
           </div>
         </section>
