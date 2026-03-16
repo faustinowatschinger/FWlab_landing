@@ -1,33 +1,44 @@
 import Image from "next/image";
 
 const heroBullets = [
-  "Respuesta automatica en segundos",
-  "Leads organizados y clasificados",
-  "Seguimiento automatico a interesados",
-  "Mas ventas con los mismos anuncios",
+  "Respuesta inmediata a nuevos leads",
+  "Organización y clasificación de conversaciones",
+  "Seguimiento automático a interesados",
+  "Más ventas sin aumentar tu presupuesto en anuncios",
 ];
 
 const problemItems = [
-  "Los leads llegan y nadie responde rapido",
-  "Los vendedores responden horas despues",
-  "No hay seguimiento",
-  "Los chats se pierden entre conversaciones",
+  "respuesta lenta",
+  "chats desordenados",
+  "falta de seguimiento",
+  "oportunidades perdidas",
 ];
 
 const solutionItems = [
-  "respuesta automatica inmediata",
-  "clasificacion de leads",
-  "guion de ventas por chat",
-  "seguimiento automatico",
-  "metricas de conversion",
+  "automatización inicial",
+  "organización de leads",
+  "sistema comercial por WhatsApp",
+  "seguimiento automático",
+  "recuperación de interesados",
 ];
 
-const resultItems = [
-  "Mas leads atendidos",
-  "Mas conversaciones que avanzan",
-  "Mas seguimiento",
-  "Mas ventas desde los mismos anuncios",
+const benefitItems = [
+  "más leads atendidos a tiempo",
+  "más conversaciones que avanzan",
+  "más seguimiento",
+  "menos oportunidades perdidas",
+  "más ventas con la misma inversión publicitaria",
 ];
+
+const bonusItems = [
+  "guion de ventas por WhatsApp",
+  "manejo de objeciones",
+  "plantillas de audios de venta",
+  "recuperación de leads fríos",
+  "capacitación al equipo comercial",
+];
+
+
 
 export default function Home() {
   return (
@@ -77,19 +88,18 @@ export default function Home() {
             </span>
 
             <h1 className="mt-5 max-w-5xl text-4xl font-semibold leading-tight text-surface-dark md:text-5xl lg:text-6xl">
-              Convierte mas leads de WhatsApp en ventas sin aumentar tu
-              presupuesto en publicidad
+              Vende más por WhatsApp con los mismos leads que ya estás pagando
             </h1>
 
             <div className="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-muted">
               <p>
-                Si inviertes en Meta Ads o Google Ads y los leads llegan por
-                WhatsApp, probablemente estes perdiendo ventas porque tu equipo
-                responde tarde o no hace seguimiento.
+                Si tus anuncios generan consultas pero no se convierten en ventas, el problema no siempre está en la publicidad.
               </p>
               <p>
-                Implementamos un sistema que responde en segundos, organiza las
-                conversaciones y guia a los clientes hacia la compra.
+                Muchas veces está en la respuesta tardía, el desorden y la falta de seguimiento.
+              </p>
+              <p>
+                En FW Labs transformamos WhatsApp en un sistema de conversión.
               </p>
             </div>
 
@@ -123,13 +133,11 @@ export default function Home() {
               Problema
             </span>
             <h2 className="mt-3 max-w-4xl text-3xl font-semibold text-surface-dark">
-              Estas pagando publicidad, pero muchas ventas se pierden despues
-              del clic
+              Muchos leads se pierden después del clic
             </h2>
 
             <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted">
-              El problema no siempre esta en los anuncios. Muchas veces esta en
-              lo que pasa cuando el lead llega por WhatsApp.
+              Invertís en publicidad, entran mensajes por WhatsApp, pero muchas oportunidades se enfrían porque nadie responde a tiempo, no hay seguimiento y las conversaciones se mezclan.
             </p>
 
             <ul className="mt-6 max-w-2xl space-y-2 text-sm leading-relaxed text-muted">
@@ -138,10 +146,7 @@ export default function Home() {
               ))}
             </ul>
 
-            <p className="mt-8 max-w-3xl text-base leading-relaxed text-muted">
-              Cuando eso pasa, el lead se enfria y termina comprando en otro
-              lado.
-            </p>
+
           </div>
         </section>
 
@@ -153,16 +158,12 @@ export default function Home() {
             Solucion
           </span>
           <h2 className="mt-3 max-w-4xl text-3xl font-semibold text-surface-dark">
-            WhatsApp Revenue Engine
+            La solución: WhatsApp Revenue Engine
           </h2>
 
           <div className="mt-6 max-w-3xl space-y-3 text-base leading-relaxed text-muted">
             <p>
-              No es solo automatizacion. Es un sistema completo para responder,
-              ordenar y convertir mas leads en ventas.
-            </p>
-            <p>
-              El objetivo es simple: que ningun lead se pierda.
+              Implementamos un sistema para que tu negocio responda más rápido, organice mejor sus leads y haga seguimiento de forma consistente.
             </p>
           </div>
 
@@ -189,37 +190,63 @@ export default function Home() {
         >
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-              Resultado
-            </span>
-            <h2 className="mt-3 max-w-4xl text-3xl font-semibold text-surface-dark">
-              Que cambia cuando implementas el sistema
+            Beneficios
+          </span>
+          <h2 className="mt-3 max-w-4xl text-3xl font-semibold text-surface-dark">
+            Qué cambia cuando implementás el sistema
+          </h2>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {benefitItems.map((item) => (
+              <article
+                key={item}
+                className="rounded-2xl border border-border bg-surface p-6 shadow-[0_8px_20px_rgba(15,23,42,0.04)]"
+              >
+                <p className="text-base font-semibold text-secondary">{item}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+        </section>
+
+        <section className="mx-auto w-full max-w-6xl px-6 py-18 lg:px-10">
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+            Bonus Incluidos
+          </span>
+          <h2 className="mt-3 max-w-4xl text-3xl font-semibold text-surface-dark">
+            Bonus incluidos
+          </h2>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {bonusItems.map((item) => (
+              <article
+                key={item}
+                className="rounded-2xl border border-border bg-surface p-6 shadow-[0_8px_20px_rgba(15,23,42,0.04)]"
+              >
+                <p className="text-sm font-medium leading-relaxed text-secondary">
+                  {item}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-y border-border/80 bg-slate-50 py-18">
+          <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
+            <h2 className="max-w-4xl text-3xl font-semibold text-surface-dark">
+              No necesitás más leads. Necesitás convertir mejor los que ya te escriben.
             </h2>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {resultItems.map((item) => (
-                <article
-                  key={item}
-                  className="rounded-2xl border border-border bg-surface p-6 shadow-[0_8px_20px_rgba(15,23,42,0.04)]"
-                >
-                  <p className="text-base font-semibold text-secondary">{item}</p>
-                </article>
-              ))}
-            </div>
-
-            <div className="mt-8 max-w-3xl space-y-3 text-base leading-relaxed text-muted">
-              <p>Sin tener que contratar mas vendedores.</p>
-              <p>
-                Y sin depender de que alguien este pegado al telefono todo el
-                dia.
-              </p>
-            </div>
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted">
+              Solicitá un diagnóstico gratuito y descubrí dónde se están perdiendo ventas en tu WhatsApp.
+            </p>
 
             <div className="mt-8">
               <a
                 href="/diagnostico"
                 className="inline-flex rounded-xl bg-primary px-7 py-3 text-sm font-semibold !text-white transition hover:bg-blue-700"
               >
-                Solicitar diagnostico gratuito
+                Solicitar diagnóstico gratuito
               </a>
             </div>
           </div>
