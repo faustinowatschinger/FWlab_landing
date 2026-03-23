@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ContactForm from "../components/contact-form";
+import CalendlyEmbed from "../components/calendly-embed";
 
 export default function DiagnosticoPage() {
   return (
@@ -26,49 +26,26 @@ export default function DiagnosticoPage() {
         </div>
       </header>
 
-      <main className="mx-auto grid w-full max-w-6xl gap-8 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-10 lg:py-20">
-        <section>
+      <main className="mx-auto w-full max-w-4xl px-6 py-16 lg:px-10 lg:py-20">
+        <div className="text-center">
           <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
             Diagnostico gratuito
           </span>
 
-          <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight text-surface-dark md:text-5xl">
+          <h1 className="mt-5 text-4xl font-semibold leading-tight text-surface-dark md:text-5xl">
             Agenda una llamada y descubre donde estas perdiendo ventas en
             WhatsApp
           </h1>
 
-          <div className="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-muted">
-            <p>
-              Revisamos como llegan tus leads, como responde tu equipo y que
-              parte del proceso esta frenando conversiones.
-            </p>
-            <p>
-              Si vemos oportunidad, te mostramos como ordenar la atencion y
-              aumentar ventas desde los mismos anuncios.
-            </p>
-          </div>
-
-          <p className="mt-8 text-sm font-semibold text-secondary">
-            En este diagnostico vas a ver:
+          <p className="mt-6 text-base leading-relaxed text-muted">
+            Revisamos como llegan tus leads, como responde tu equipo y que
+            parte del proceso esta frenando conversiones.
           </p>
-          <ul className="mt-3 space-y-2 text-sm text-muted">
-            <li>• donde se estan perdiendo leads</li>
-            <li>• que parte del proceso falla</li>
-            <li>• como podrias convertir mas ventas</li>
-          </ul>
+        </div>
 
-          <div className="mt-8 rounded-2xl border border-border bg-white p-6 shadow-[0_10px_24px_rgba(15,23,42,0.06)]">
-            <p className="text-sm font-semibold text-secondary">
-              Contacto directo
-            </p>
-            <p className="mt-3 text-sm text-muted">Email: hello@fwlabsllc.com</p>
-            <p className="mt-1 text-sm text-muted">Company: FW Labs</p>
-          </div>
-        </section>
-
-        <section>
-          <ContactForm />
-        </section>
+        <div className="mt-12">
+          <CalendlyEmbed url="https://calendly.com/fwlabs/llamada-de-diagnostico-gratuita" />
+        </div>
       </main>
     </div>
   );
