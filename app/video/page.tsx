@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Script from "next/script";
 
 function ArrowIcon() {
   return (
@@ -35,15 +36,17 @@ export default function VideoPage() {
 
         {/* Video */}
         <div className="mt-8 mx-auto w-full max-w-lg overflow-hidden rounded-2xl border border-border shadow-[0_8px_32px_rgba(15,23,42,0.10)]">
-          <video
-            src="/video landing.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            controls
-            className="w-full"
-          />
+          <div style={{ padding: "177.78% 0 0 0", position: "relative" }}>
+            <iframe
+              src="https://player.vimeo.com/video/1178022248?badge=0&autopause=0&player_id=0&app_id=58479"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+              title="video landing"
+            />
+          </div>
+          <Script src="https://player.vimeo.com/api/player.js" strategy="afterInteractive" />
         </div>
 
         {/* CTA */}
