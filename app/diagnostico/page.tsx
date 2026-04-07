@@ -3,16 +3,16 @@ import CalendlyEmbed from "../components/calendly-embed";
 
 const callPoints = [
   {
-    label: "Revisamos cómo llegan tus leads",
-    desc: "Analizamos el flujo desde el anuncio hasta WhatsApp.",
+    label: "Analizamos tu PLC y tu instalación",
+    desc: "Marca, registros, objetivos y restricciones reales.",
   },
   {
-    label: "Evaluamos cómo responde tu equipo",
-    desc: "Tiempos de respuesta, seguimiento y conversación.",
+    label: "Detectamos dónde estás perdiendo plata",
+    desc: "Visitas evitables, fallas ciegas y oportunidades de postventa.",
   },
   {
-    label: "Identificamos qué está frenando conversiones",
-    desc: "Te mostramos exactamente dónde se pierde la venta.",
+    label: "Te damos un plan concreto",
+    desc: "Si encajamos, te decimos cómo sería tu piloto. Si no, te lo decimos.",
   },
 ];
 
@@ -43,15 +43,15 @@ export default function DiagnosticoPage() {
         <div className="max-w-2xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            Diagnostico gratuito
+            Llamada de diagnóstico · 20 min
           </span>
 
           <h1 className="mt-5 text-4xl font-semibold leading-tight text-surface-dark md:text-5xl">
-            Agenda una llamada y descubre donde estas perdiendo ventas en WhatsApp
+            Agendá una llamada y mirá cómo conectar tu PLC en semanas
           </h1>
 
           <p className="mt-5 text-base leading-relaxed text-muted">
-            Revisamos como llegan tus leads, como responde tu equipo y que parte del proceso esta frenando conversiones.
+            20 minutos. Sin venta dura. Analizamos tu caso, te damos un diagnóstico técnico y te decimos —sin vueltas— si podemos ayudarte o no. Si no es para vos, te lo decimos en el minuto 5.
           </p>
         </div>
 
