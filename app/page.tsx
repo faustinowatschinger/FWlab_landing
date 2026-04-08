@@ -185,7 +185,7 @@ function ArrowIcon() {
 }
 
 const CTA_HREF = "/diagnostico";
-const CTA_LABEL = "Agendar llamada de 20 min";
+const CTA_LABEL = "Agendar llamada de 40 minutos";
 
 export default function Home() {
   return (
@@ -254,7 +254,7 @@ export default function Home() {
                 {CTA_LABEL}
                 <ArrowIcon />
               </a>
-              <p className="text-sm text-muted">20 min · Sin venta dura · Salís con un diagnóstico de tu caso.</p>
+              <p className="text-sm text-muted">40 minutos · Sin venta dura · Salís con un diagnóstico de tu caso.</p>
             </div>
 
             <div className="mt-12 border-t border-border/60 pt-6">
@@ -540,7 +540,7 @@ export default function Home() {
               Siguiente paso
             </span>
             <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-snug text-white lg:text-4xl">
-              20 minutos pueden cambiar cómo opera tu planta los próximos 10 años.
+              40 minutos pueden cambiar cómo opera tu planta los próximos 10 años.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-400">
               Agendá una llamada. Te escuchamos, miramos tu caso y te decimos —sin vueltas— si podemos ayudarte o no. Si no es para vos, te lo decimos en el minuto 5.
@@ -562,7 +562,7 @@ export default function Home() {
       <footer className="border-t border-white/10 bg-surface-dark">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between lg:px-10">
           <p className="font-semibold text-white">FW Labs</p>
-          <p>hello@fwlabsllc.com</p>
+          <p>faustino@fwlabsllc.com</p>
         </div>
       </footer>
     </div>

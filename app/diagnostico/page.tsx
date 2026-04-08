@@ -43,7 +43,7 @@ export default function DiagnosticoPage() {
         <div className="max-w-2xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            Llamada de diagnóstico · 20 min
+            Llamada de diagnóstico · 40 minutos
           </span>
 
           <h1 className="mt-5 text-4xl font-semibold leading-tight text-surface-dark md:text-5xl">
@@ -51,7 +51,7 @@ export default function DiagnosticoPage() {
           </h1>
 
           <p className="mt-5 text-base leading-relaxed text-muted">
-            20 minutos. Sin venta dura. Analizamos tu caso, te damos un diagnóstico técnico y te decimos —sin vueltas— si podemos ayudarte o no. Si no es para vos, te lo decimos en el minuto 5.
+            40 minutos. Sin venta dura. Analizamos tu caso, te damos un diagnóstico técnico y te decimos —sin vueltas— si podemos ayudarte o no. Si no es para vos, te lo decimos en el minuto 5.
           </p>
         </div>
 

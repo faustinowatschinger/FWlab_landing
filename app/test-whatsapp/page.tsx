@@ -239,7 +239,7 @@ export default function TestWhatsAppPage() {
       <footer className="border-t border-border bg-white">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between lg:px-10">
           <p className="font-semibold text-secondary">FW Labs</p>
-          <p>hello@fwlabsllc.com</p>
+          <p>faustino@fwlabsllc.com</p>
         </div>
       </footer>
     </div>
