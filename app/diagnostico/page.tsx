@@ -3,16 +3,16 @@ import CalendlyEmbed from "../components/calendly-embed";
 
 const callPoints = [
   {
-    label: "Analizamos tu PLC y tu instalación",
-    desc: "Marca, registros, objetivos y restricciones reales.",
+    label: "Relevamos tu cartera de plantas",
+    desc: "Cuántas plantas, qué controladores (Danfoss, Full Gauge, Carel, Delta, otros) y cómo los monitoreás hoy.",
   },
   {
-    label: "Detectamos dónde estás perdiendo plata",
-    desc: "Visitas evitables, fallas ciegas y oportunidades de postventa.",
+    label: "Detectamos dónde se te va la plata",
+    desc: "Viajes técnicos evitables, fallas que llegan tarde y servicio recurrente que no estás facturando.",
   },
   {
     label: "Te damos un plan concreto",
-    desc: "Si encajamos, te decimos cómo sería tu piloto. Si no, te lo decimos.",
+    desc: "Si encajamos, cerramos fecha de planta piloto. Si no es para vos, te lo decimos en el minuto 10.",
   },
 ];
 
@@ -47,11 +47,11 @@ export default function DiagnosticoPage() {
           </span>
 
           <h1 className="mt-5 text-4xl font-semibold leading-tight text-surface-dark md:text-5xl">
-            Agendá una llamada y mirá cómo conectar tu PLC en semanas
+            Agendá una llamada y unificá la cartera de plantas que ya operás
           </h1>
 
           <p className="mt-5 text-base leading-relaxed text-muted">
-            40 minutos. Sin venta dura. Analizamos tu caso, te damos un diagnóstico técnico y te decimos —sin vueltas— si podemos ayudarte o no. Si no es para vos, te lo decimos en el minuto 5.
+            40 minutos. Sin venta dura. Miramos tu cartera, los controladores que manejás y te damos un diagnóstico técnico concreto. Si no encajamos, te lo decimos en el minuto 10.
           </p>
         </div>
 

@@ -2,47 +2,43 @@ import Image from "next/image";
 import ProjectShowcase from "./components/project-showcase";
 
 const heroBullets = [
-  "Gateway, nube, app móvil e IA en una sola pila",
-  "Sin hardware propietario ni licencias enterprise",
-  "Control bidireccional fino sobre el PLC real",
-  "Implementación en semanas, no en meses",
+  "Un dashboard para todas las plantas de tu cartera",
+  "Funciona con Danfoss, Full Gauge, Carel, Delta y más",
+  "Desplegamos en 2 semanas, sin reemplazar tu hardware",
+  "Soporte en español, directo con quien desarrolla",
 ];
 
 const problemItems = [
   {
-    title: "Estás a ciegas",
-    desc: "Te enterás de las fallas cuando llama el cliente. Mandás un técnico a 400 km a reiniciar algo que se arreglaba en 30 segundos desde el celular.",
+    title: "Tenés 4 dashboards para 5 plantas",
+    desc: "Una en Sitrad porque metiste Full Gauge. Otra en la nube de Danfoss. Otra en tERA de Carel. Cada mañana revisás cuatro sistemas y rezás que no falle el quinto.",
   },
   {
-    title: "Estás atado",
-    desc: "Pagaste un IXrouter, un Tosibox o un ecosistema cerrado. Cada cambio depende de un proveedor que cobra por tag, por usuario y por respirar.",
+    title: "Te enterás tarde y mandás gente de más",
+    desc: "La cámara se descongeló a las 3 AM, el cliente te llama a las 7, despachás un técnico 400 km a reiniciar algo que se arreglaba en 30 segundos desde el celular.",
   },
   {
-    title: "Dejás plata sobre la mesa",
-    desc: "Tus competidores ya venden servicio remoto premium como línea recurrente. Vos seguís facturando solo el fierro.",
+    title: "Facturás fierro, no servicio recurrente",
+    desc: "Tu competencia ya le vende al dueño de la planta 'monitoreo remoto premium' como línea mensual. Vos seguís cobrando la instalación y la visita.",
   },
   {
-    title: "Perdés conocimiento",
-    desc: "El know-how de tus mejores operarios se va con ellos cuando se jubilan. Nadie lo está capturando.",
+    title: "Cada planta nueva suma un dashboard más",
+    desc: "Cada vez que entrás a una planta nueva tu operación se complica en vez de escalar. Más usuarios, más contraseñas, más apps, más fricción.",
   },
 ];
 
 const pillars = [
   {
-    title: "Hardware abierto",
-    desc: "Gateway sobre Raspberry Pi con driver específico para tu marca de PLC. Lectura y escritura reales sobre el mapa de registros.",
+    title: "Visibilidad total",
+    desc: "Todas las plantas de tu cartera en un solo dashboard web + app. Temperaturas, presiones, consumos, estados de compresor. Histórico en la nube. Filtros por planta, por cliente, por equipo.",
   },
   {
-    title: "App propia, datos en vivo",
-    desc: "Dashboards configurables, histórico en la nube, alarmas con escalado, control de cambios por usuario y gestión de roles.",
+    title: "Control remoto",
+    desc: "Setpoints, arranques, defrost, bypass. Desde el celular, con control de cambios por usuario y rol. Auditoría completa de quién tocó qué y cuándo.",
   },
   {
-    title: "IA human-in-the-loop",
-    desc: "La IA propone, tu operario decide, el sistema aprende. Sin imposiciones, sin caja negra, con auditoría completa.",
-  },
-  {
-    title: "Sin lock-in",
-    desc: "Ni hardware propietario. Ni licencias por tag. Ni licencias enterprise. Implementación + mensual fijo, punto.",
+    title: "Prevención con alertas",
+    desc: "Umbrales configurables, escalado automático (email → SMS → llamada), contexto adjunto con las últimas 2 horas de datos. La falla se detecta antes de que te llame el cliente.",
   },
 ];
 
@@ -50,105 +46,123 @@ const phases = [
   {
     n: "01",
     title: "Análisis",
-    desc: "Mapeamos el PLC, registros y objetivos reales.",
-    out: "Diagnóstico técnico y plan",
+    desc: "Relevamos tu cartera: plantas, controladores, protocolos, dolores concretos.",
+    out: "Diagnóstico + plan de despliegue con orden",
   },
   {
     n: "02",
-    title: "Piloto",
-    desc: "Implementamos sobre un equipo o instalación real.",
-    out: "Prueba funcional en tu planta",
+    title: "Planta piloto",
+    desc: "Instalamos el gateway en una planta, integramos los controladores que ya tiene, configuramos dashboard y alertas.",
+    out: "Una planta viva en FW Control en 2 semanas",
   },
   {
     n: "03",
-    title: "Despliegue",
-    desc: "Estandarizamos, replicamos y formamos a tu equipo.",
-    out: "Plataforma viva + tu gente capacitada",
+    title: "Despliegue en cartera",
+    desc: "Replicamos sobre las demás plantas. Estandarizamos variables, nombres, alarmas. Capacitamos a tu equipo.",
+    out: "Cartera unificada y tu gente operando sola",
   },
   {
     n: "04",
     title: "Evolución",
-    desc: "Mantenimiento, mejoras trimestrales y entrenamiento continuo de la IA.",
-    out: "Una plataforma que crece, no que envejece",
+    desc: "Mantenimiento, nuevas plantas que sumes, mejoras de plataforma, reportes de compliance.",
+    out: "Una plataforma que crece con tu negocio",
   },
 ];
 
-const aiPhases = [
+const compatibilityGroups = [
   {
-    title: "Observación",
-    desc: "La IA detecta patrones y propone diagnósticos. El operario decide siempre.",
+    title: "Controladores de refrigeración",
+    items: ["Danfoss (AK-SC, AK-CC, EKC)", "Full Gauge (MT-512EL, TC-900E, VX-1225)", "Carel (pCO, pRack, µC2)", "Eliwell (IC, EWCM, ID Plus)", "Dixell (XR, XW, XC + XWEB EVO)", "Copeland CoreSense"],
   },
   {
-    title: "Aprendizaje",
-    desc: "La IA aprende de las aprobaciones y rechazos. Captura el conocimiento de tus mejores técnicos antes de que se jubilen.",
-  },
-  {
-    title: "Autonomía supervisada",
-    desc: "La IA toma decisiones rutinarias bajo umbrales que vos definís, con auditoría completa.",
+    title: "PLCs industriales",
+    items: ["Siemens S7-1200 / 1500", "Allen-Bradley CompactLogix / ControlLogix", "Delta (DVP, AS, AH series)", "Cualquier dispositivo con Modbus TCP o RTU"],
   },
 ];
 
-const audience = [
+const roadmapItems = [
   {
-    icon: "🏭",
-    title: "OEMs de maquinaria",
-    desc: "Querés ofrecer servicio remoto y postventa facturable. Querés diferenciarte de la competencia que vende solo el fierro.",
+    stage: "Hoy",
+    label: "Producto vivo",
+    desc: "Gateway multi-fabricante, dashboard web, app React Native, alertas por umbral y tendencia, control remoto con auditoría.",
   },
   {
-    icon: "⚙️",
-    title: "Operadores industriales",
-    desc: "Ya pagaste el costo de no tener visibilidad sobre instalaciones distribuidas. No querés volver a vivirlo.",
+    stage: "Próximos 6 meses",
+    label: "En desarrollo",
+    desc: "Reportes HACCP / SENASA exportables, módulo de consumo eléctrico agregado, nuevas marcas de controlador bajo demanda.",
   },
   {
-    icon: "🔧",
-    title: "Instaladores e integradores",
-    desc: "Querés sumar una plataforma white-label bajo tu propia marca, sin desarrollarla desde cero.",
+    stage: "Mediano plazo",
+    label: "Roadmap",
+    desc: "Detección asistida de leaks, mantenimiento predictivo por patrón de compresor, IA supervisada (human-in-the-loop) para recomendaciones operativas.",
   },
 ];
 
-const compareRows = [
-  ["Proveedores a coordinar", "3-4", "1"],
-  ["Hardware", "Propietario, lock-in", "Abierto, Raspberry Pi"],
-  ["Licencias", "Por tag, por usuario, enterprise", "Implementación + mensual fijo"],
-  ["Control bidireccional", "Limitado", "Fino, sobre el mapa real"],
-  ["IA", "Caja negra o inexistente", "Human-in-the-loop, auditable"],
-  ["Tiempo de implementación", "Meses", "Semanas"],
-  ["Trato", "Comercial → soporte → ¿?", "Directo con quien desarrolla"],
+const audienceYes = [
+  "Sos empresa integradora o frigorista industrial y mantenés refrigeración en plantas de terceros",
+  "Tenés entre 3 y 15 plantas bajo cartera, o vas hacia ahí",
+  "Trabajás con más de un fabricante de controlador y cada uno tiene su propia nube",
+  "Querés sumar una línea de servicio recurrente sobre la cartera que ya tenés",
+  "Estás en Argentina, Uruguay, Chile o Paraguay",
+];
+
+const audienceNo = [
+  "Sos el operador final de una sola planta buscando monitorear tu propia cámara",
+  "Sos cadena retail corporate con IT propio buscando plataforma enterprise",
+  "Buscás armar algo DIY con Node-RED y Grafana vos mismo",
+];
+
+const compareHeaders = ["Cloud de fabricante (Sitrad, Alsense, tERA)", "SCADA enterprise (Ignition, AVEVA)", "DIY (Node-RED + Grafana)", "FW Control"];
+
+const compareRows: Array<[string, string, string, string, string]> = [
+  ["Multi-fabricante real", "Atado a su marca", "Sí, pero requiere developer", "Si lo programás vos", "Listo de fábrica"],
+  ["Tiempo de despliegue", "Semanas", "Meses", "Meses + tu tiempo", "2 semanas por planta"],
+  ["App móvil moderna", "Mayormente legacy", "Módulo extra", "No incluida", "Nativa React"],
+  ["Soporte en español", "Vía distribuidor", "Partner certificado", "Foros", "Directo con quien desarrolla"],
+  ["Especialización refrigeración", "Solo su hardware", "Genérico, lo armás vos", "Genérico, lo armás vos", "Dominio resuelto"],
 ];
 
 const bonusItems = [
-  "Plantilla de protocolo interno de diagnóstico remoto",
-  "Guion técnico-comercial para vender el nuevo valor",
-  "Roadmap visible de drivers de PLC y fases de IA",
-  "Revisión trimestral de mejoras y entrenamiento de la IA",
-  "Documentación técnica completa",
-  "Formación de tu equipo",
+  "Protocolo de monitoreo remoto para ofrecerle el servicio a tus clientes finales",
+  "Guion comercial para venderle 'servicio premium' al dueño de planta",
+  "Roadmap visible de fabricantes y módulos que vienen",
+  "Revisión trimestral de plataforma y nuevas alertas",
+  "Capacitación completa de tu equipo operativo",
+  "Documentación técnica para tu equipo",
 ];
 
 const faqs = [
   {
-    q: "¿Y si mi PLC es de una marca rara?",
-    a: "Probablemente ya tengamos el driver. Si no, lo desarrollamos. Trabajamos con Siemens, CAREL, Schneider, Allen-Bradley, Mitsubishi, Omron y otros bajo demanda.",
+    q: "¿Tengo que cambiar los controladores que mis clientes ya tienen instalados?",
+    a: "No. Leemos lo que está. Instalamos un gateway en la planta que habla con los controladores existentes por Modbus TCP o RTU.",
   },
   {
-    q: "¿Qué pasa con mis datos?",
-    a: "Son tuyos. Hosting transparente, exportables cuando quieras, sin secuestro.",
+    q: "Mi cliente tiene Sitrad gratis con Full Gauge. ¿Por qué pagaría FW Control?",
+    a: "Sitrad solo funciona con hardware Full Gauge. Si todas sus plantas fueran Full Gauge, tal vez Sitrad le alcanza. El problema que resolvemos es cuando tiene plantas con Full Gauge, Danfoss y Carel mezclados. Sitrad no le unifica eso. Nosotros sí.",
   },
   {
-    q: "¿La IA va a tomar decisiones sin que yo lo sepa?",
-    a: "No. Empezás en modo observación. La IA propone, tu operario decide. Avanzás de fase solo si vos querés.",
+    q: "¿Qué pasa con mis datos y los de mi cliente?",
+    a: "Son del integrador y del cliente final. Hosting transparente, exportables cuando quieran, sin secuestro.",
   },
   {
-    q: "¿Cuánto tarda un piloto?",
-    a: "Semanas, no meses. Depende del PLC y del acceso a la instalación. Te damos fecha cerrada después de la llamada de análisis.",
+    q: "¿Puedo revenderlo bajo mi propia marca?",
+    a: "Hablamos en la llamada. Tenemos esquemas de partnership para integradores con cartera mediana o grande.",
+  },
+  {
+    q: "¿Cuánto tarda una planta?",
+    a: "2 semanas desde que tenemos acceso al controlador y a internet en la planta. Fecha cerrada después de la llamada de análisis.",
   },
   {
     q: "¿Y si dejo de pagar el mensual?",
-    a: "Te quedás con el hardware y con tus datos. No hay rehenes.",
+    a: "El gateway queda instalado y los datos históricos exportables. No hay rehenes.",
   },
   {
-    q: "¿Atienden fuera de mi país?",
-    a: "Sí. Trabajamos remoto y viajamos al sitio para el piloto si hace falta.",
+    q: "¿Atienden fuera de Argentina?",
+    a: "Sí. Hoy trabajamos en LATAM hispanohablante (AR, UY, CL, PY). Viajamos al sitio para el piloto si hace falta. Brasil, caso por caso.",
+  },
+  {
+    q: "¿Hacen mantenimiento predictivo con IA?",
+    a: "Hoy, no. Hacemos alertas por umbral y tendencia, que resuelve el 90% de los dolores reales. La capa de IA está en roadmap y la comunicamos con honestidad cuando esté lista.",
   },
 ];
 
@@ -160,9 +174,9 @@ function CheckIcon({ className = "h-4 w-4" }: { className?: string }) {
   );
 }
 
-function XIcon() {
+function XIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={className}>
       <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
     </svg>
   );
@@ -200,7 +214,7 @@ export default function Home() {
           <nav className="hidden items-center gap-6 text-sm font-medium text-muted md:flex">
             <a href="#problema" className="transition hover:text-secondary">Problema</a>
             <a href="#solucion" className="transition hover:text-secondary">Solución</a>
-            <a href="#proyectos" className="transition hover:text-secondary">Proyectos</a>
+            <a href="#proyectos" className="transition hover:text-secondary">Casos</a>
             <a href="#faq" className="transition hover:text-secondary">FAQ</a>
           </nav>
 
@@ -223,16 +237,16 @@ export default function Home() {
           <div className="relative mx-auto w-full max-w-6xl px-6 pb-20 pt-16 lg:px-10 lg:pt-28">
             <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              Plataforma industrial end-to-end · IA human-in-the-loop
+              Monitoreo remoto multi-planta · Refrigeración industrial
             </span>
 
             <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.1] tracking-tight text-surface-dark md:text-5xl lg:text-[3.5rem]">
-              Convertí tu maquinaria con PLC en una plataforma conectada, controlable y con IA — en semanas, no en meses.
+              Unificá todas las plantas frigoríficas de tu cartera en un solo dashboard.
             </h1>
 
             <div className="mt-6 max-w-2xl space-y-3 text-lg leading-relaxed text-muted">
-              <p>Gateway, nube, app móvil y capa de IA supervisada en una sola solución a medida.</p>
-              <p>Sin hardware propietario. Sin licencias enterprise. Sin atarte a nadie.</p>
+              <p>Funciona con Danfoss, Full Gauge, Carel, Eliwell, Dixell y cualquier PLC Modbus.</p>
+              <p>Desplegamos en 2 semanas, no en 3 meses. Sin reemplazar tu hardware. Sin atarte a ningún fabricante.</p>
             </div>
 
             <ul className="mt-8 grid max-w-2xl gap-x-8 gap-y-3 sm:grid-cols-2">
@@ -254,13 +268,13 @@ export default function Home() {
                 {CTA_LABEL}
                 <ArrowIcon />
               </a>
-              <p className="text-sm text-muted">40 minutos · Sin venta dura · Salís con un diagnóstico de tu caso.</p>
+              <p className="text-sm text-muted">40 minutos · Sin venta dura · Salís con un diagnóstico de tu cartera.</p>
             </div>
 
             <div className="mt-12 border-t border-border/60 pt-6">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">Compatible con</p>
               <p className="mt-3 text-sm font-medium text-secondary">
-                Siemens · CAREL · Schneider · Allen-Bradley · Mitsubishi · Omron · y otros bajo demanda
+                Danfoss · Full Gauge · Carel · Eliwell · Dixell · Siemens S7 · Allen-Bradley · Delta · cualquier PLC con Modbus TCP/RTU
               </p>
             </div>
           </div>
@@ -271,10 +285,10 @@ export default function Home() {
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">El problema</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              Cada hora que tu equipo está ciego frente a una instalación, perdés plata.
+              Si mantenés refrigeración en plantas de terceros, ya sabés cómo termina esto.
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
-              La mayoría de los OEMs y operadores industriales viven con los mismos cuatro dolores. Si reconocés alguno, no estás solo —y tiene solución.
+              Cuatro dolores que no se resuelven con otro controlador. Si reconocés alguno, no estás solo —y tiene solución.
             </p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -297,15 +311,15 @@ export default function Home() {
         {/* Solution */}
         <section id="solucion" className="py-20">
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">La solución</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">La solución — FW Control</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              Una sola pila. End-to-end. Tuya.
+              Una plataforma. Todas tus plantas. Todos los fabricantes.
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
-              Lo que normalmente comprás a 3 o 4 proveedores distintos —gateway industrial, plataforma IIoT, app móvil y analítica de IA— integrado en una solución a medida, desplegada en semanas.
+              FW Control unifica la refrigeración industrial que ya está instalada. Leemos los controladores que tu cliente ya tiene, los llevamos a un dashboard único, y te damos control remoto desde una app nativa. Vos seguís siendo el integrador. Nosotros somos tu stack.
             </p>
 
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
+            <div className="mt-10 grid gap-4 md:grid-cols-3">
               {pillars.map((p, i) => (
                 <article
                   key={p.title}
@@ -330,7 +344,7 @@ export default function Home() {
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Cómo lo hacemos</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              De PLC ciego a plataforma replicable, en 4 fases claras.
+              De cartera desordenada a plataforma replicable, en 4 fases.
             </h2>
 
             <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -349,28 +363,35 @@ export default function Home() {
           </div>
         </section>
 
-        {/* AI layer */}
+        {/* Compatibility */}
         <section className="py-20">
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Capa de IA</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Compatibilidad</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              IA que tus operarios aceptan, porque no los reemplaza: los amplifica.
+              Leemos lo que ya está instalado. No te hacemos cambiar nada.
             </h2>
-            <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
-              Tres fases progresivas. Avanzás cuando vos querés, nunca antes.
-            </p>
 
-            <div className="mt-10 grid gap-4 md:grid-cols-3">
-              {aiPhases.map((p, i) => (
-                <article key={p.title} className="rounded-2xl border border-border bg-white p-6">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-xs font-bold text-primary">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="mt-4 text-lg font-semibold text-surface-dark">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{p.desc}</p>
-                </article>
+            <div className="mt-10 grid gap-4 md:grid-cols-2">
+              {compatibilityGroups.map((g) => (
+                <div key={g.title} className="rounded-2xl border border-border bg-white p-6">
+                  <h3 className="text-lg font-semibold text-surface-dark">{g.title}</h3>
+                  <ul className="mt-4 space-y-2">
+                    {g.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2.5 text-sm text-secondary">
+                        <span className="mt-0.5 flex-shrink-0 text-primary">
+                          <CheckIcon />
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
             </div>
+
+            <p className="mt-6 max-w-2xl text-sm italic text-muted">
+              ¿Tu cliente tiene un controlador raro? Mostranos el mapa de registros. Si habla Modbus, lo leemos.
+            </p>
           </div>
         </section>
 
@@ -379,10 +400,10 @@ export default function Home() {
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Caso real</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              3W Control · Plataforma para frigoríficos industriales
+              3W Control · 5 plantas frigoríficas unificadas
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
-              Plataforma end-to-end de supervisión, control e IA para todas las plantas frigoríficas que opera 3W SRL.
+              Integrador frigorista con 5 plantas de clientes en Argentina. Mix multi-fabricante. FW Control centralizó visibilidad, control y alertas en una sola plataforma.
             </p>
 
             <ProjectShowcase />
@@ -392,7 +413,7 @@ export default function Home() {
                 href={CTA_HREF}
                 className="inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold !text-white shadow-sm transition hover:bg-blue-700"
               >
-                ¿Tu caso se parece? Hablemos
+                ¿Tu cartera se parece? Hablemos
                 <ArrowIcon />
               </a>
             </div>
@@ -407,19 +428,42 @@ export default function Home() {
               Esto es para vos si…
             </h2>
 
-            <div className="mt-10 grid gap-4 md:grid-cols-3">
-              {audience.map((a) => (
-                <article key={a.title} className="rounded-2xl border border-border bg-white p-6">
-                  <span className="text-3xl">{a.icon}</span>
-                  <h3 className="mt-3 text-lg font-semibold text-surface-dark">{a.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{a.desc}</p>
-                </article>
-              ))}
-            </div>
+            <div className="mt-10 grid gap-6 md:grid-cols-2">
+              <div className="rounded-2xl border border-blue-100 bg-blue-50/40 p-6">
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
+                  <CheckIcon className="h-3.5 w-3.5" />
+                  Es para vos
+                </div>
+                <ul className="space-y-3">
+                  {audienceYes.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-secondary">
+                      <span className="mt-0.5 flex-shrink-0 text-primary">
+                        <CheckIcon />
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            <p className="mt-6 text-sm italic text-muted">
-              Si no entrás en ninguno de estos tres, probablemente no seamos para vos. Y está bien.
-            </p>
+              <div className="rounded-2xl border border-red-100 bg-red-50/30 p-6">
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-red-500">
+                  <XIcon className="h-3.5 w-3.5" />
+                  No es para vos
+                </div>
+                <ul className="space-y-3">
+                  {audienceNo.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-secondary">
+                      <span className="mt-0.5 flex-shrink-0 text-red-500">
+                        <XIcon />
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-xs italic text-muted">Si caés acá, probablemente no seamos tu solución. Y está bien.</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -428,24 +472,31 @@ export default function Home() {
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Por qué nosotros</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              Lo que te ahorrás eligiéndonos.
+              Contra qué nos comparás realmente.
             </h2>
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
+              La pregunta real no es &quot;cuál es más barato&quot;. Es cuál te deja operar tu cartera sin pelearte con cuatro dashboards.
+            </p>
 
-            <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-white">
-              <table className="w-full text-left text-sm">
+            <div className="mt-10 overflow-x-auto rounded-2xl border border-border bg-white">
+              <table className="w-full min-w-[720px] text-left text-sm">
                 <thead className="bg-slate-100 text-xs font-semibold uppercase tracking-wide text-muted">
                   <tr>
                     <th className="px-5 py-4"></th>
-                    <th className="px-5 py-4">Stack tradicional</th>
-                    <th className="px-5 py-4 text-primary">FW Labs</th>
+                    {compareHeaders.slice(0, 3).map((h) => (
+                      <th key={h} className="px-5 py-4">{h}</th>
+                    ))}
+                    <th className="px-5 py-4 text-primary">{compareHeaders[3]}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {compareRows.map(([label, a, b], i) => (
-                    <tr key={label} className={i % 2 ? "bg-slate-50/50" : ""}>
-                      <td className="px-5 py-4 font-semibold text-surface-dark">{label}</td>
-                      <td className="px-5 py-4 text-muted">{a}</td>
-                      <td className="px-5 py-4 font-semibold text-secondary">{b}</td>
+                  {compareRows.map((row, i) => (
+                    <tr key={row[0]} className={i % 2 ? "bg-slate-50/50" : ""}>
+                      <td className="px-5 py-4 font-semibold text-surface-dark">{row[0]}</td>
+                      <td className="px-5 py-4 text-muted">{row[1]}</td>
+                      <td className="px-5 py-4 text-muted">{row[2]}</td>
+                      <td className="px-5 py-4 text-muted">{row[3]}</td>
+                      <td className="px-5 py-4 font-semibold text-secondary">{row[4]}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -491,26 +542,52 @@ export default function Home() {
                 <p className="text-xs font-semibold uppercase tracking-wide text-primary">01</p>
                 <h3 className="mt-2 text-lg font-semibold text-surface-dark">Implementación inicial</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
-                  Análisis del PLC, piloto funcional, despliegue y formación del equipo.
+                  Relevamiento, piloto, despliegue en cartera, integración con los controladores que ya tenés instalados, capacitación.
                 </p>
               </div>
               <div className="rounded-2xl border border-border bg-white p-6">
                 <p className="text-xs font-semibold uppercase tracking-wide text-primary">02</p>
-                <h3 className="mt-2 text-lg font-semibold text-surface-dark">Mensual recurrente</h3>
+                <h3 className="mt-2 text-lg font-semibold text-surface-dark">Mensual por planta</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
-                  Hosting, mantenimiento, mejoras, revisiones trimestrales y entrenamiento continuo de la IA.
+                  Hosting, mantenimiento, alertas, soporte, mejoras trimestrales.
                 </p>
               </div>
             </div>
 
             <p className="mt-6 max-w-2xl text-sm text-muted">
-              Sin licencias por tag. Sin licencias por usuario. Sin atadura de hardware. El número exacto depende de tu PLC, cantidad de instalaciones y fase de IA. Te lo decimos en la llamada, sin vueltas.
+              Sin licencias por tag. Sin licencias por usuario. Sin hardware propietario que te ate. El número exacto depende de tu cartera, cuántas plantas y qué controladores. Te lo cerramos en la llamada, sin vueltas.
             </p>
           </div>
         </section>
 
+        {/* Roadmap (honest, replaces AI pitch) */}
+        <section className="py-20">
+          <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Roadmap</span>
+            <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
+              Lo que hay hoy, lo que viene, y cuándo.
+            </h2>
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
+              No vendemos IA mágica que no existe. Te mostramos qué funciona hoy y qué estamos construyendo, con honestidad.
+            </p>
+
+            <div className="mt-10 grid gap-4 md:grid-cols-3">
+              {roadmapItems.map((r, i) => (
+                <article key={r.stage} className="rounded-2xl border border-border bg-white p-6">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-xs font-bold text-primary">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-primary">{r.stage}</p>
+                  <h3 className="mt-1 text-lg font-semibold text-surface-dark">{r.label}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{r.desc}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* FAQ */}
-        <section id="faq" className="py-20">
+        <section id="faq" className="border-y border-border/80 bg-slate-50 py-20">
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">FAQ</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
@@ -540,10 +617,10 @@ export default function Home() {
               Siguiente paso
             </span>
             <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-snug text-white lg:text-4xl">
-              40 minutos pueden cambiar cómo opera tu planta los próximos 10 años.
+              40 minutos para ver si FW Control le sirve a tu cartera.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-400">
-              Agendá una llamada. Te escuchamos, miramos tu caso y te decimos —sin vueltas— si podemos ayudarte o no. Si no es para vos, te lo decimos en el minuto 5.
+              Agendá una llamada. Miramos tu cartera de plantas, tus dolores reales, qué controladores manejás. Te decimos si FW Control te suma o no. Si no es para vos, te lo decimos en el minuto 10.
             </p>
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
               <a
