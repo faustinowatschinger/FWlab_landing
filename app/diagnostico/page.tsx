@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import CalendlyEmbed from "../components/calendly-embed";
+
+export const metadata: Metadata = {
+  title: "Agendá tu diagnóstico de 20 minutos",
+  description:
+    "20 minutos para ver cuántos leads estás dejando en la mesa. Miramos tu volumen real de consultas y cómo las atendés hoy, y te damos un número concreto. Sin venta dura.",
+  alternates: { canonical: "/diagnostico" },
+};
 
 const callPoints = [
   {

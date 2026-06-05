@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import ProjectShowcase from "./components/project-showcase";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const heroBullets = [
   "Responde en menos de 2 minutos, las 24 horas",
@@ -229,6 +234,51 @@ function DoubleCheckIcon({ className = "h-3.5 w-3.5" }: { className?: string }) 
 const CTA_HREF = "/diagnostico";
 const CTA_LABEL = "Agendar diagnóstico de 20 minutos";
 
+const SITE_URL = "https://fwlabsllc.com";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "FW Labs",
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo1.png`,
+      email: "faustino@fwlabsllc.com",
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "FW Assistant",
+      inLanguage: "es-AR",
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "Service",
+      "@id": `${SITE_URL}/#service`,
+      name: "FW Assistant — Agente de IA para inmobiliarias",
+      serviceType: "Agente de IA para atención y calificación de leads inmobiliarios",
+      provider: { "@id": `${SITE_URL}/#organization` },
+      areaServed: { "@type": "Country", name: "Argentina" },
+      audience: { "@type": "Audience", audienceType: "Inmobiliarias" },
+      description:
+        "Agente de IA que responde, califica y agenda los leads de WhatsApp de una inmobiliaria al instante, las 24 horas, conectado a su cartera real de propiedades.",
+      url: SITE_URL,
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE_URL}/#faq`,
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
+
 /* Mockup de conversación del hero — muestra el producto en acción */
 function ChatBubble({
   side,
@@ -264,6 +314,10 @@ function ChatBubble({
 export default function Home() {
   return (
     <div className="min-h-screen text-text">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Header */}
       <header className="sticky top-0 z-30 border-b border-border/90 bg-white/95 backdrop-blur-sm">
         <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-6 lg:px-10">
