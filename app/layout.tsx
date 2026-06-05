@@ -8,9 +8,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "FW Labs | Sistemas inteligentes para empresas",
+  title: "FW Assistant | Agente de IA para inmobiliarias",
   description:
-    "Ayudamos a empresas a operar mejor mediante inteligencia artificial y automatización.",
+    "La IA que responde, califica y agenda tus leads de WhatsApp al instante, 24/7. Conectada a tu cartera real. Vos cerrás. Por FW Labs.",
   icons: {
     icon: "/logo2.png",
     shortcut: "/logo2.png",
@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={`${inter.variable} antialiased`}>{children}</body>
     </html>
   );

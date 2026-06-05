@@ -2,167 +2,170 @@ import Image from "next/image";
 import ProjectShowcase from "./components/project-showcase";
 
 const heroBullets = [
-  "Un dashboard para todas las plantas de tu cartera",
-  "Funciona con Danfoss, Full Gauge, Carel, Delta y más",
-  "Desplegamos en 2 semanas, sin reemplazar tu hardware",
-  "Soporte en español, directo con quien desarrolla",
+  "Responde en menos de 2 minutos, las 24 horas",
+  "Entiende texto, audios y fotos de un aviso",
+  "Conectado a tu cartera real de propiedades",
+  "Agenda la visita en tu Google Calendar, solo",
+];
+
+const trustStats = [
+  { value: "176 hs", label: "ahorradas a un cliente en 3 meses con un sistema nuestro" },
+  { value: "5 plantas", label: "industriales corriendo sobre nuestra infra hoy" },
+  { value: "< 2 min", label: "de respuesta garantizada, las 24 horas" },
+  { value: "21 días", label: "de la firma al sistema en producción" },
 ];
 
 const problemItems = [
   {
-    title: "Tenés 4 dashboards para 5 plantas",
-    desc: "Una en Sitrad porque metiste Full Gauge. Otra en la nube de Danfoss. Otra en tERA de Carel. Cada mañana revisás cuatro sistemas y rezás que no falle el quinto.",
+    title: "Escriben a las 23:40 y nadie contesta",
+    desc: "Los leads entran de noche, el domingo, o mientras estás mostrando otra propiedad. Cuando respondés a la mañana, ya preguntaron en otras tres inmobiliarias. El primero que contesta se queda con el cliente.",
   },
   {
-    title: "Te enterás tarde y mandás gente de más",
-    desc: "La cámara se descongeló a las 3 AM, el cliente te llama a las 7, despachás un técnico 400 km a reiniciar algo que se arreglaba en 30 segundos desde el celular.",
+    title: "Tu mejor gente filtrando curiosos",
+    desc: "Responder lo mismo 50 veces, pedir zona y presupuesto, descartar a los que miran por mirar. Horas del equipo que no se cobran y que deberían ir a cerrar, no a tipear.",
   },
   {
-    title: "Facturás fierro, no servicio recurrente",
-    desc: "Tu competencia ya le vende al dueño de la planta 'monitoreo remoto premium' como línea mensual. Vos seguís cobrando la instalación y la visita.",
+    title: "El lead frío se enfría del todo",
+    desc: "La mitad no compra a 30 días, pero sí a 60 o 90. Si nadie lo sigue, ese lead se pierde sin que nadie lo note. Es plata que entró por la puerta y se fue por la ventana.",
   },
   {
-    title: "Cada planta nueva suma un dashboard más",
-    desc: "Cada vez que entrás a una planta nueva tu operación se complica en vez de escalar. Más usuarios, más contraseñas, más apps, más fricción.",
-  },
-];
-
-const pillars = [
-  {
-    title: "Visibilidad total",
-    desc: "Todas las plantas de tu cartera en un solo dashboard web + app. Temperaturas, presiones, consumos, estados de compresor. Histórico en la nube. Filtros por planta, por cliente, por equipo.",
-  },
-  {
-    title: "Control remoto",
-    desc: "Setpoints, arranques, defrost, bypass. Desde el celular, con control de cambios por usuario y rol. Auditoría completa de quién tocó qué y cuándo.",
-  },
-  {
-    title: "Prevención con alertas",
-    desc: "Umbrales configurables, escalado automático (email → SMS → llamada), contexto adjunto con las últimas 2 horas de datos. La falla se detecta antes de que te llame el cliente.",
+    title: "No sabés cuántos se te escapan",
+    desc: "Todo va por WhatsApp suelto y un Excel. No hay número, no hay pipeline, no hay forma de mejorar lo que no medís. Operás a ciegas sobre tu activo más caro: los contactos.",
   },
 ];
 
-const phases = [
+const steps = [
   {
-    n: "01",
-    title: "Análisis",
-    desc: "Relevamos tu cartera: plantas, controladores, protocolos, dolores concretos.",
-    out: "Diagnóstico + plan de despliegue con orden",
+    title: "Atiende",
+    desc: "Entra una consulta por WhatsApp —texto, un audio o la foto de un aviso— y responde al instante, como una persona. Agrupa los mensajes seguidos para no contestar atomizado.",
   },
   {
-    n: "02",
-    title: "Planta piloto",
-    desc: "Instalamos el gateway en una planta, integramos los controladores que ya tiene, configuramos dashboard y alertas.",
-    out: "Una planta viva en FW Control en 2 semanas",
+    title: "Califica",
+    desc: "Conduce la charla: operación, zona, presupuesto, dormitorios, urgencia. Saca los datos clave del interesado sin que tu equipo mueva un dedo.",
   },
   {
-    n: "03",
-    title: "Despliegue en cartera",
-    desc: "Replicamos sobre las demás plantas. Estandarizamos variables, nombres, alarmas. Capacitamos a tu equipo.",
-    out: "Cartera unificada y tu gente operando sola",
+    title: "Matchea",
+    desc: "Consulta tu cartera real y le muestra 2 o 3 propiedades que encajan de verdad con lo que busca. No responde genérico: responde con tu stock.",
   },
   {
-    n: "04",
-    title: "Evolución",
-    desc: "Mantenimiento, nuevas plantas que sumes, mejoras de plataforma, reportes de compliance.",
-    out: "Una plataforma que crece con tu negocio",
+    title: "Agenda",
+    desc: "Mira tu Google Calendar, le ofrece los horarios realmente libres y, cuando confirma, crea la visita con el cliente invitado. Cita cerrada, sin intervención humana.",
   },
 ];
 
-const compatibilityGroups = [
+const differentiators = [
   {
-    title: "Controladores de refrigeración",
-    items: ["Danfoss (AK-SC, AK-CC, EKC)", "Full Gauge (MT-512EL, TC-900E, VX-1225)", "Carel (pCO, pRack, µC2)", "Eliwell (IC, EWCM, ID Plus)", "Dixell (XR, XW, XC + XWEB EVO)", "Copeland CoreSense"],
+    title: "Conectado a tu cartera",
+    desc: "No es un bot que contesta cualquier cosa. Matchea con propiedades concretas de tu stock: precio, zona, dormitorios, tipo de operación.",
   },
   {
-    title: "PLCs industriales",
-    items: ["Siemens S7-1200 / 1500", "Allen-Bradley CompactLogix / ControlLogix", "Delta (DVP, AS, AH series)", "Cualquier dispositivo con Modbus TCP o RTU"],
+    title: "Entiende audios y fotos",
+    desc: "El interesado manda una nota de voz o la captura de un aviso y el agente la entiende y responde. Como lo haría tu mejor vendedor.",
+  },
+  {
+    title: "No suena a robot",
+    desc: "Responde como una persona escribiendo, con el tono de tu inmobiliaria. Nada de menús con números ni respuestas enlatadas que espantan al lead.",
+  },
+  {
+    title: "Se integra a lo que ya usás",
+    desc: "Tokko, Wasi, Kommo o WhatsApp suelto: lo conectamos a tu operación actual. Sin migrar nada, sin cambiar lo que tu equipo ya sabe usar.",
+  },
+  {
+    title: "Hecho a tu medida",
+    desc: "Discovery real de cómo trabaja tu inmobiliaria antes de configurar. No es un template que prende y reza: es tu sistema.",
+  },
+  {
+    title: "Crece con vos",
+    desc: "Arranca en WhatsApp y escala a Zonaprop, Instagram, seguimiento del lead frío y dashboard de pipeline cuando lo necesites.",
   },
 ];
 
-const roadmapItems = [
+const offerIncludes = [
+  "Agente que atiende, califica, matchea y agenda por WhatsApp",
+  "Calificación automática: operación, zona, presupuesto, financiación, urgencia",
+  "Match con propiedades de tu cartera real",
+  "Agenda de visitas en el Google Calendar del agente correcto",
+  "Integración a tu CRM o WhatsApp actual, sin migrar nada",
+  "Hosting e infraestructura sobre nuestros servidores",
+];
+
+const bonusItems = [
   {
-    stage: "Hoy",
-    label: "Producto vivo",
-    desc: "Gateway multi-fabricante, dashboard web, app React Native, alertas por umbral y tendencia, control remoto con auditoría.",
+    title: "Integración sin cambios",
+    desc: "Lo conectamos a tu CRM actual. Sin migrar nada, sin cambiar lo que tu equipo ya usa.",
   },
   {
-    stage: "Próximos 6 meses",
-    label: "En desarrollo",
-    desc: "Reportes HACCP / SENASA exportables, módulo de consumo eléctrico agregado, nuevas marcas de controlador bajo demanda.",
+    title: "Ajustes finos a los 30 días",
+    desc: "A los 30 días en producción, una ronda de ajustes sobre conversaciones reales. No sobre supuestos.",
   },
   {
-    stage: "Mediano plazo",
-    label: "Roadmap",
-    desc: "Detección asistida de leaks, mantenimiento predictivo por patrón de compresor, IA supervisada (human-in-the-loop) para recomendaciones operativas.",
+    title: "Documentación y video",
+    desc: "Video explicativo de todo el sistema interno más documentación detallada para tu equipo.",
+  },
+  {
+    title: "Mentoría al equipo",
+    desc: "Acompañamos a tu gente para que lo usen bien y confíen en él desde el primer día.",
   },
 ];
 
 const audienceYes = [
-  "Sos empresa integradora o frigorista industrial y mantenés refrigeración en plantas de terceros",
-  "Tenés entre 3 y 15 plantas bajo cartera, o vas hacia ahí",
-  "Trabajás con más de un fabricante de controlador y cada uno tiene su propia nube",
-  "Querés sumar una línea de servicio recurrente sobre la cartera que ya tenés",
-  "Estás en Argentina, Uruguay, Chile o Paraguay",
+  "Tenés entre 5 y 30 agentes",
+  "Entran 50 o más consultas por semana entre WhatsApp e Instagram",
+  "El dueño o socio gerente está metido en la operación día a día",
+  "Manejás una cartera de 20 o más propiedades activas",
+  "Estás cansado de perder los leads que escriben de noche y el fin de semana",
 ];
 
 const audienceNo = [
-  "Sos el operador final de una sola planta buscando monitorear tu propia cámara",
-  "Sos cadena retail corporate con IT propio buscando plataforma enterprise",
-  "Buscás armar algo DIY con Node-RED y Grafana vos mismo",
+  "Vendés una sola propiedad tuya y no manejás cartera de terceros",
+  "Querés algo 100% indistinguible de un humano (no existe, y vas a objetar cada conversación)",
+  "Buscás un chatbot enlatado de diez dólares que prenda y listo",
+  "Todo va al WhatsApp personal del dueño y no usás WhatsApp Business",
 ];
 
-const compareHeaders = ["Cloud de fabricante (Sitrad, Alsense, tERA)", "SCADA enterprise (Ignition, AVEVA)", "DIY (Node-RED + Grafana)", "FW Control"];
+const compareHeaders = ["Community manager", "Chatbot enlatado", "CRM (Tokko, Wasi)", "FW Assistant"];
 
 const compareRows: Array<[string, string, string, string, string]> = [
-  ["Multi-fabricante real", "Atado a su marca", "Sí, pero requiere developer", "Si lo programás vos", "Listo de fábrica"],
-  ["Tiempo de despliegue", "Semanas", "Meses", "Meses + tu tiempo", "2 semanas por planta"],
-  ["App móvil moderna", "Mayormente legacy", "Módulo extra", "No incluida", "Nativa React"],
-  ["Soporte en español", "Vía distribuidor", "Partner certificado", "Foros", "Directo con quien desarrolla"],
-  ["Especialización refrigeración", "Solo su hardware", "Genérico, lo armás vos", "Genérico, lo armás vos", "Dominio resuelto"],
-];
-
-const bonusItems = [
-  "Protocolo de monitoreo remoto para ofrecerle el servicio a tus clientes finales",
-  "Guion comercial para venderle 'servicio premium' al dueño de planta",
-  "Roadmap visible de fabricantes y módulos que vienen",
-  "Revisión trimestral de plataforma y nuevas alertas",
-  "Capacitación completa de tu equipo operativo",
-  "Documentación técnica para tu equipo",
+  ["Responde al instante, 24/7", "Solo en horario", "Sí, pero pobre", "No atiende", "Sí, en < 2 min"],
+  ["Entiende audios y fotos", "Sí", "No", "—", "Sí"],
+  ["Califica y matchea con tu cartera", "A mano", "Genérico", "No atiende", "Automático"],
+  ["Agenda la visita sola", "A mano", "No", "No", "Sí"],
+  ["Escala sin sumar gente", "No", "Sí", "Sí", "Sí"],
+  ["Costo mensual", "600–1.200 USD", "Bajo, pero no sirve", "Similar", "250–500 USD"],
 ];
 
 const faqs = [
   {
-    q: "¿Tengo que cambiar los controladores que mis clientes ya tienen instalados?",
-    a: "No. Leemos lo que está. Instalamos un gateway en la planta que habla con los controladores existentes por Modbus TCP o RTU.",
+    q: "¿Reemplaza a mi equipo de ventas?",
+    a: "No. Le saca de encima la parte repetitiva —responder lo mismo, filtrar curiosos, coordinar horarios— para que tu gente se dedique a lo único que cierra: la visita y la negociación. El agente atiende; vos cerrás.",
   },
   {
-    q: "Mi cliente tiene Sitrad gratis con Full Gauge. ¿Por qué pagaría FW Control?",
-    a: "Sitrad solo funciona con hardware Full Gauge. Si todas sus plantas fueran Full Gauge, tal vez Sitrad le alcanza. El problema que resolvemos es cuando tiene plantas con Full Gauge, Danfoss y Carel mezclados. Sitrad no le unifica eso. Nosotros sí.",
+    q: "¿No va a sonar a robot y espantar al lead?",
+    a: "Responde como una persona escribiendo, con el tono de tu inmobiliaria, y entiende audios y fotos. Nada de menús con números. Si un caso se pone complejo, te lo pasa a un humano. La idea no es engañar a nadie: es contestar rápido y bien.",
   },
   {
-    q: "¿Qué pasa con mis datos y los de mi cliente?",
-    a: "Son del integrador y del cliente final. Hosting transparente, exportables cuando quieran, sin secuestro.",
+    q: "¿Tengo que cambiar mi CRM?",
+    a: "No. Lo integramos a lo que ya usás —Tokko, Wasi, Kommo o WhatsApp suelto— sin migrar nada. Tu equipo sigue trabajando igual; el agente se suma adelante.",
   },
   {
-    q: "¿Puedo revenderlo bajo mi propia marca?",
-    a: "Hablamos en la llamada. Tenemos esquemas de partnership para integradores con cartera mediana o grande.",
+    q: "¿Qué pasa si no funciona?",
+    a: "El riesgo lo asumimos nosotros. Garantía: respuesta en menos de 2 minutos, las 24 horas. El mes que no se cumpla por causa nuestra, no lo pagás. Y sin contrato de permanencia: cancelás avisando con 30 días.",
   },
   {
-    q: "¿Cuánto tarda una planta?",
-    a: "2 semanas desde que tenemos acceso al controlador y a internet en la planta. Fecha cerrada después de la llamada de análisis.",
+    q: "¿Cuánto tarda en estar funcionando?",
+    a: "21 días corridos desde el cobro inicial. Una semana de discovery y carga de propiedades, una de configuración e integración, y unos días de testing con tu equipo antes del go-live.",
+  },
+  {
+    q: "¿De dónde saca las propiedades que muestra?",
+    a: "De tu cartera real. Conectamos tu base o CRM y el agente matchea con propiedades concretas —precio, zona, dormitorios— no con respuestas genéricas.",
+  },
+  {
+    q: "¿Hay costos extra además del mensual?",
+    a: "Sí, y los dejamos claros desde el primer presupuesto: el consumo de la API del modelo (unos 30 a 80 USD por mes según volumen) y las conversaciones de WhatsApp Business de Meta. Van a tu cuenta, sin marcado nuestro. El hosting y la infraestructura los ponemos nosotros.",
   },
   {
     q: "¿Y si dejo de pagar el mensual?",
-    a: "El gateway queda instalado y los datos históricos exportables. No hay rehenes.",
-  },
-  {
-    q: "¿Atienden fuera de Argentina?",
-    a: "Sí. Hoy trabajamos en LATAM hispanohablante (AR, UY, CL, PY). Viajamos al sitio para el piloto si hace falta. Brasil, caso por caso.",
-  },
-  {
-    q: "¿Hacen mantenimiento predictivo con IA?",
-    a: "Hoy, no. Hacemos alertas por umbral y tendencia, que resuelve el 90% de los dolores reales. La capa de IA está en roadmap y la comunicamos con honestidad cuando esté lista.",
+    a: "Sin permanencia: cancelás cuando quieras avisando con 30 días. El mantenimiento incluye el hosting en nuestra infra, los ajustes de prompt sobre conversaciones reales y el soporte. Si no seguís, el sistema deja de correr en nuestros servidores.",
   },
 ];
 
@@ -198,8 +201,65 @@ function ArrowIcon() {
   );
 }
 
+function ShieldIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={className}>
+      <path fillRule="evenodd" d="M9.661 2.237a.531.531 0 0 1 .678 0 11.947 11.947 0 0 0 7.078 2.749.5.5 0 0 1 .479.425c.069.52.104 1.05.104 1.59 0 5.162-3.26 9.563-7.834 11.256a.48.48 0 0 1-.332 0C5.26 16.564 2 12.163 2 7c0-.538.035-1.069.104-1.589a.5.5 0 0 1 .48-.425 11.947 11.947 0 0 0 7.077-2.749ZM14.03 8.28a.75.75 0 0 0-1.06-1.06l-3.22 3.22-1.22-1.22a.75.75 0 1 0-1.06 1.06l1.75 1.75a.75.75 0 0 0 1.06 0l3.75-3.75Z" clipRule="evenodd" />
+    </svg>
+  );
+}
+
+function ClockIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={className}>
+      <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.75-13a.75.75 0 0 0-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 0 0 0-1.5h-3.25V5Z" clipRule="evenodd" />
+    </svg>
+  );
+}
+
+function DoubleCheckIcon({ className = "h-3.5 w-3.5" }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="m1.5 12.5 4 4 7-9" />
+      <path d="m11 16.5 1.5 1.5 7-9" />
+    </svg>
+  );
+}
+
 const CTA_HREF = "/diagnostico";
-const CTA_LABEL = "Agendar llamada de 40 minutos";
+const CTA_LABEL = "Agendar diagnóstico de 20 minutos";
+
+/* Mockup de conversación del hero — muestra el producto en acción */
+function ChatBubble({
+  side,
+  time,
+  read,
+  children,
+  delay,
+}: {
+  side: "in" | "out";
+  time: string;
+  read?: boolean;
+  children: React.ReactNode;
+  delay: number;
+}) {
+  const out = side === "out";
+  return (
+    <div className={`fw-rise flex ${out ? "justify-end" : "justify-start"}`} style={{ animationDelay: `${delay}ms` }}>
+      <div
+        className={`max-w-[80%] rounded-2xl px-3.5 py-2 text-[13px] leading-snug shadow-sm ${
+          out ? "rounded-br-sm bg-primary text-white" : "rounded-bl-sm bg-white text-secondary"
+        }`}
+      >
+        <p>{children}</p>
+        <span className={`mt-1 flex items-center justify-end gap-1 text-[10px] ${out ? "text-blue-100" : "text-slate-400"}`}>
+          {time}
+          {out && <DoubleCheckIcon className={read ? "h-3.5 w-3.5 text-blue-200" : "h-3.5 w-3.5 text-blue-300/70"} />}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -213,8 +273,8 @@ export default function Home() {
 
           <nav className="hidden items-center gap-6 text-sm font-medium text-muted md:flex">
             <a href="#problema" className="transition hover:text-secondary">Problema</a>
-            <a href="#solucion" className="transition hover:text-secondary">Solución</a>
-            <a href="#proyectos" className="transition hover:text-secondary">Casos</a>
+            <a href="#como-funciona" className="transition hover:text-secondary">Cómo funciona</a>
+            <a href="#oferta" className="transition hover:text-secondary">Oferta</a>
             <a href="#faq" className="transition hover:text-secondary">FAQ</a>
           </nav>
 
@@ -222,7 +282,7 @@ export default function Home() {
             href={CTA_HREF}
             className="rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold !text-white transition hover:bg-blue-700"
           >
-            Agendar llamada
+            Agendar diagnóstico
           </a>
         </div>
       </header>
@@ -234,48 +294,119 @@ export default function Home() {
           <div className="pointer-events-none absolute -left-24 -top-10 h-72 w-72 rounded-full bg-blue-200/50 blur-3xl" />
           <div className="pointer-events-none absolute right-0 top-20 h-96 w-96 rounded-full bg-slate-200/40 blur-3xl" />
 
-          <div className="relative mx-auto w-full max-w-6xl px-6 pb-20 pt-16 lg:px-10 lg:pt-28">
-            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              Monitoreo remoto multi-planta · Refrigeración industrial
-            </span>
+          <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-20 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-10 lg:pt-24">
+            {/* Left: copy */}
+            <div>
+              <span className="fw-rise inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                Agente de IA para inmobiliarias
+              </span>
 
-            <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.1] tracking-tight text-surface-dark md:text-5xl lg:text-[3.5rem]">
-              Unificá todas las plantas frigoríficas de tu cartera en un solo dashboard.
-            </h1>
-
-            <div className="mt-6 max-w-2xl space-y-3 text-lg leading-relaxed text-muted">
-              <p>Funciona con Danfoss, Full Gauge, Carel, Eliwell, Dixell y cualquier PLC Modbus.</p>
-              <p>Desplegamos en 2 semanas, no en 3 meses. Sin reemplazar tu hardware. Sin atarte a ningún fabricante.</p>
-            </div>
-
-            <ul className="mt-8 grid max-w-2xl gap-x-8 gap-y-3 sm:grid-cols-2">
-              {heroBullets.map((bullet) => (
-                <li key={bullet} className="flex items-start gap-2.5 text-sm font-medium text-secondary">
-                  <span className="mt-0.5 flex-shrink-0 text-primary">
-                    <CheckIcon />
-                  </span>
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-              <a
-                href={CTA_HREF}
-                className="inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold !text-white shadow-sm transition hover:bg-blue-700"
+              <h1
+                className="fw-rise mt-6 max-w-2xl text-4xl font-semibold leading-[1.08] tracking-tight text-surface-dark md:text-5xl lg:text-[3.4rem]"
+                style={{ animationDelay: "80ms" }}
               >
-                {CTA_LABEL}
-                <ArrowIcon />
-              </a>
-              <p className="text-sm text-muted">40 minutos · Sin venta dura · Salís con un diagnóstico de tu cartera.</p>
+                La IA que responde, califica y agenda tus leads.{" "}
+                <span className="text-primary">Vos cerrás.</span>
+              </h1>
+
+              <p className="fw-rise mt-6 max-w-xl text-lg leading-relaxed text-muted" style={{ animationDelay: "160ms" }}>
+                FW Assistant contesta cada consulta de WhatsApp al instante, las 24 horas. Califica al interesado,
+                le muestra propiedades de tu cartera que encajan y agenda la visita solo. Tu equipo deja de filtrar
+                mensajes y se dedica a cerrar.
+              </p>
+
+              <ul className="fw-rise mt-8 grid max-w-xl gap-x-8 gap-y-3 sm:grid-cols-2" style={{ animationDelay: "240ms" }}>
+                {heroBullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-2.5 text-sm font-medium text-secondary">
+                    <span className="mt-0.5 flex-shrink-0 text-primary">
+                      <CheckIcon />
+                    </span>
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="fw-rise mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center" style={{ animationDelay: "320ms" }}>
+                <a
+                  href={CTA_HREF}
+                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold !text-white shadow-sm transition hover:bg-blue-700"
+                >
+                  {CTA_LABEL}
+                  <ArrowIcon />
+                </a>
+                <p className="text-sm text-muted">20 minutos · Miramos tu volumen real · Sin venta dura.</p>
+              </div>
             </div>
 
-            <div className="mt-12 border-t border-border/60 pt-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">Compatible con</p>
-              <p className="mt-3 text-sm font-medium text-secondary">
-                Danfoss · Full Gauge · Carel · Eliwell · Dixell · Siemens S7 · Allen-Bradley · Delta · cualquier PLC con Modbus TCP/RTU
-              </p>
+            {/* Right: WhatsApp mockup */}
+            <div className="fw-rise relative mx-auto w-full max-w-sm" style={{ animationDelay: "200ms" }}>
+              <div className="pointer-events-none absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-b from-blue-200/40 to-slate-200/30 blur-2xl" />
+              <div className="overflow-hidden rounded-[2rem] border border-border bg-white shadow-[0_20px_60px_rgba(15,23,42,0.18)]">
+                {/* Chat header */}
+                <div className="flex items-center gap-3 border-b border-border bg-surface-dark px-4 py-3.5">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">FW</div>
+                  <div className="leading-tight">
+                    <p className="text-sm font-semibold text-white">FW Assistant</p>
+                    <p className="flex items-center gap-1.5 text-[11px] text-slate-400">
+                      <span className="fw-pulse inline-block h-1.5 w-1.5 rounded-full bg-blue-400" />
+                      en línea
+                    </p>
+                  </div>
+                </div>
+
+                {/* Chat body */}
+                <div className="relative space-y-2.5 bg-[radial-gradient(#dbe4f0_1px,transparent_1px)] [background-size:22px_22px] bg-slate-50 px-4 py-5">
+                  <div className="fw-rise flex justify-center" style={{ animationDelay: "260ms" }}>
+                    <span className="rounded-full bg-white/80 px-3 py-1 text-[10px] font-medium uppercase tracking-wide text-slate-400 shadow-sm">
+                      Hoy · 23:41
+                    </span>
+                  </div>
+
+                  <ChatBubble side="in" time="23:41" delay={320}>
+                    Hola, vi el depto de 2 ambientes en Palermo. ¿Sigue disponible?
+                  </ChatBubble>
+                  <ChatBubble side="out" time="23:41" read delay={420}>
+                    Hola, sí, sigue disponible. ¿Lo buscás para vivir o como inversión?
+                  </ChatBubble>
+                  <ChatBubble side="in" time="23:42" delay={520}>
+                    Para vivir. Tengo hasta 140 mil.
+                  </ChatBubble>
+                  <ChatBubble side="out" time="23:42" read delay={620}>
+                    Bárbaro. Tengo 2 que encajan en Palermo con ese presupuesto. ¿Coordinamos una visita esta semana?
+                  </ChatBubble>
+                  <ChatBubble side="in" time="23:43" delay={720}>
+                    Dale, el jueves a la tarde puede ser.
+                  </ChatBubble>
+                  <ChatBubble side="out" time="23:43" read delay={820}>
+                    Listo. Te agendé la visita el jueves 18:30 y te llegó la invitación al mail.
+                  </ChatBubble>
+
+                  <div className="fw-rise flex justify-end" style={{ animationDelay: "920ms" }}>
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-semibold text-primary shadow-sm">
+                      <CheckIcon className="h-3.5 w-3.5" />
+                      Visita agendada
+                    </span>
+                  </div>
+                </div>
+
+                {/* Caption bar */}
+                <div className="border-t border-border bg-white px-4 py-3 text-center text-xs font-medium text-muted">
+                  El equipo dormía. FW Assistant cerró la visita.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Trust stats band */}
+          <div className="relative border-t border-border/60 bg-white/60">
+            <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-px overflow-hidden px-6 lg:grid-cols-4 lg:px-10">
+              {trustStats.map((s) => (
+                <div key={s.value} className="px-2 py-7 lg:px-6">
+                  <p className="text-3xl font-black tracking-tight text-surface-dark">{s.value}</p>
+                  <p className="mt-1.5 text-xs leading-relaxed text-muted">{s.label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -285,10 +416,11 @@ export default function Home() {
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">El problema</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              Si mantenés refrigeración en plantas de terceros, ya sabés cómo termina esto.
+              El lead que no contestás en 5 minutos lo cierra la inmobiliaria de al lado.
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
-              Cuatro dolores que no se resuelven con otro controlador. Si reconocés alguno, no estás solo —y tiene solución.
+              No es un problema de que falte gente. Es que la gente que tenés está apagando incendios en vez de cerrar.
+              Cuatro fugas que hoy te cuestan operaciones, todas las semanas.
             </p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -305,24 +437,42 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
+            {/* Quantified loss */}
+            <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-surface-dark">
+              <div className="grid gap-6 p-7 sm:grid-cols-[auto_1fr] sm:items-center sm:gap-10 lg:p-9">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-400">Lo que cuesta no automatizar</p>
+                  <p className="mt-2 text-5xl font-black tracking-tight text-white">~12.000 USD</p>
+                  <p className="text-sm font-medium text-slate-400">por mes, estimado</p>
+                </div>
+                <p className="text-sm leading-relaxed text-slate-300">
+                  Una inmobiliaria de unos 10 agentes recibe ~150 consultas por semana y pierde cerca del 35% por no
+                  contestar a tiempo y no seguir al lead frío. Son unas <strong className="text-white">4 operaciones por mes</strong> que
+                  se escapan. A una comisión promedio de 3.000 USD, es plata que hoy se evapora todas las semanas.
+                  Recuperar <strong className="text-white">una sola</strong> paga el sistema entero, dos veces.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Solution */}
-        <section id="solucion" className="py-20">
+        {/* How it works */}
+        <section id="como-funciona" className="py-20">
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">La solución — FW Control</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Cómo funciona</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              Una plataforma. Todas tus plantas. Todos los fabricantes.
+              Atiende, califica, matchea y agenda. Solo.
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
-              FW Control unifica la refrigeración industrial que ya está instalada. Leemos los controladores que tu cliente ya tiene, los llevamos a un dashboard único, y te damos control remoto desde una app nativa. Vos seguís siendo el integrador. Nosotros somos tu stack.
+              El interesado escribe y el agente se ocupa de todo el principio del embudo. Tu equipo entra recién cuando
+              hay una visita agendada y un interesado de verdad.
             </p>
 
-            <div className="mt-10 grid gap-4 md:grid-cols-3">
-              {pillars.map((p, i) => (
+            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {steps.map((s, i) => (
                 <article
-                  key={p.title}
+                  key={s.title}
                   className="group relative overflow-hidden rounded-2xl border border-border bg-white p-6 shadow-[0_2px_12px_rgba(15,23,42,0.05)] transition hover:shadow-[0_8px_24px_rgba(15,23,42,0.09)]"
                 >
                   <span className="pointer-events-none absolute -right-2 -top-5 select-none text-8xl font-black text-slate-100">
@@ -331,53 +481,112 @@ export default function Home() {
                   <span className="relative inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-xs font-bold text-primary">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="relative mt-4 text-lg font-semibold text-surface-dark">{p.title}</h3>
-                  <p className="relative mt-2 text-sm leading-relaxed text-muted">{p.desc}</p>
+                  <h3 className="relative mt-4 text-lg font-semibold text-surface-dark">{s.title}</h3>
+                  <p className="relative mt-2 text-sm leading-relaxed text-muted">{s.desc}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Process */}
+        {/* Differentiators */}
         <section className="border-y border-border/80 bg-slate-50 py-20">
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Cómo lo hacemos</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Por qué no es un chatbot más</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              De cartera desordenada a plataforma replicable, en 4 fases.
+              Cualquiera te vende un bot. Esto trabaja con tu cartera.
             </h2>
 
-            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {phases.map((ph) => (
-                <div key={ph.n} className="rounded-2xl border border-border bg-white p-6">
-                  <span className="text-xs font-bold tracking-widest text-primary">{ph.n}</span>
-                  <h3 className="mt-2 text-lg font-semibold text-surface-dark">{ph.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{ph.desc}</p>
-                  <div className="mt-4 border-t border-border/60 pt-3">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-muted">Te llevás</p>
-                    <p className="mt-1 text-sm font-medium text-secondary">{ph.out}</p>
+            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {differentiators.map((d) => (
+                <article key={d.title} className="rounded-2xl border border-border bg-white p-6">
+                  <div className="mb-4 inline-flex rounded-lg bg-blue-50 p-2 text-primary">
+                    <CheckIcon className="h-5 w-5" />
                   </div>
-                </div>
+                  <h3 className="text-base font-semibold text-surface-dark">{d.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{d.desc}</p>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Compatibility */}
-        <section className="py-20">
+        {/* Authority — FW Control */}
+        <section id="autoridad" className="py-20">
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Compatibilidad</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Quiénes lo construyen</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              Leemos lo que ya está instalado. No te hacemos cambiar nada.
+              No somos una agencia que descubrió la IA el mes pasado.
             </h2>
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
+              Antes de las inmobiliarias, FW Labs construyó <strong className="text-secondary">FW Control</strong>: un sistema
+              industrial que monitorea y controla 5 plantas frigoríficas en tiempo real, sobre más de 40 PLCs de distintos
+              fabricantes. Le ahorró a su operador <strong className="text-secondary">176 horas de viajes a planta en 3 meses</strong>.
+              Si confiamos un proceso crítico de producción a un sistema nuestro, podés confiarle la atención de tus leads.
+            </p>
 
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
-              {compatibilityGroups.map((g) => (
-                <div key={g.title} className="rounded-2xl border border-border bg-white p-6">
-                  <h3 className="text-lg font-semibold text-surface-dark">{g.title}</h3>
-                  <ul className="mt-4 space-y-2">
-                    {g.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2.5 text-sm text-secondary">
+            <ProjectShowcase />
+          </div>
+        </section>
+
+        {/* Comparison */}
+        <section className="border-y border-border/80 bg-slate-50 py-20">
+          <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Tus alternativas</span>
+            <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
+              Contra qué nos comparás realmente.
+            </h2>
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
+              La pregunta no es cuál es más barato. Es cuál te contesta el lead de las 23:40 antes de que lo haga otro.
+            </p>
+
+            <div className="mt-10 overflow-x-auto rounded-2xl border border-border bg-white">
+              <table className="w-full min-w-[720px] text-left text-sm">
+                <thead className="bg-slate-100 text-xs font-semibold uppercase tracking-wide text-muted">
+                  <tr>
+                    <th className="px-5 py-4"></th>
+                    {compareHeaders.slice(0, 3).map((h) => (
+                      <th key={h} className="px-5 py-4">{h}</th>
+                    ))}
+                    <th className="px-5 py-4 text-primary">{compareHeaders[3]}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {compareRows.map((row, i) => (
+                    <tr key={row[0]} className={i % 2 ? "bg-slate-50/50" : ""}>
+                      <td className="px-5 py-4 font-semibold text-surface-dark">{row[0]}</td>
+                      <td className="px-5 py-4 text-muted">{row[1]}</td>
+                      <td className="px-5 py-4 text-muted">{row[2]}</td>
+                      <td className="px-5 py-4 text-muted">{row[3]}</td>
+                      <td className="px-5 py-4 font-semibold text-secondary">{row[4]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* Offer */}
+        <section id="oferta" className="py-20">
+          <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">La oferta</span>
+            <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
+              Todo lo que entra en el sistema.
+            </h2>
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
+              Lo armamos a la medida de tu inmobiliaria, así que el precio depende del alcance: los rangos de abajo son una
+              estimación. Sin letra chica, y el riesgo lo asumimos nosotros: si el sistema no responde como prometemos, ese mes no se paga.
+            </p>
+
+            <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+              {/* Left: includes + bonus */}
+              <div className="space-y-6">
+                <div className="rounded-2xl border border-border bg-white p-7">
+                  <h3 className="text-lg font-semibold text-surface-dark">Qué incluye el sistema</h3>
+                  <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                    {offerIncludes.map((item) => (
+                      <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-secondary">
                         <span className="mt-0.5 flex-shrink-0 text-primary">
                           <CheckIcon />
                         </span>
@@ -386,42 +595,90 @@ export default function Home() {
                     ))}
                   </ul>
                 </div>
-              ))}
-            </div>
 
-            <p className="mt-6 max-w-2xl text-sm italic text-muted">
-              ¿Tu cliente tiene un controlador raro? Mostranos el mapa de registros. Si habla Modbus, lo leemos.
-            </p>
-          </div>
-        </section>
+                <div className="rounded-2xl border border-border bg-white p-7">
+                  <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                    <StarIcon />
+                    Bonus incluidos
+                  </div>
+                  <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                    {bonusItems.map((b) => (
+                      <div key={b.title} className="rounded-xl border border-blue-100/70 bg-blue-50/40 p-4">
+                        <h4 className="text-sm font-semibold text-secondary">{b.title}</h4>
+                        <p className="mt-1 text-xs leading-relaxed text-muted">{b.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
-        {/* Projects */}
-        <section id="proyectos" className="border-y border-border/80 bg-slate-50 py-20">
-          <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Caso real</span>
-            <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              3W Control · 5 plantas frigoríficas unificadas
-            </h2>
-            <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
-              Integrador frigorista con 5 plantas de clientes en Argentina. Mix multi-fabricante. FW Control centralizó visibilidad, control y alertas en una sola plataforma.
-            </p>
+              {/* Right: price card */}
+              <div className="flex flex-col gap-4">
+                <div className="overflow-hidden rounded-2xl border border-primary/30 bg-white shadow-[0_8px_28px_rgba(37,99,235,0.12)]">
+                  <div className="bg-surface-dark px-7 py-6">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-blue-300">
+                      Precio de lanzamiento · estimado
+                    </span>
+                    <p className="mt-4 text-xs font-medium uppercase tracking-wide text-slate-400">Setup inicial</p>
+                    <p className="mt-1 flex items-baseline gap-1.5">
+                      <span className="text-sm font-semibold text-slate-400">USD</span>
+                      <span className="text-4xl font-black tracking-tight text-white">1.500–3.000</span>
+                    </p>
+                    <p className="mt-1 text-xs text-slate-400">según canales e integraciones · 50% al firmar, 50% al go-live</p>
+                  </div>
+                  <div className="px-7 py-6">
+                    <p className="text-xs font-medium uppercase tracking-wide text-muted">Mantenimiento mensual</p>
+                    <p className="mt-1 flex items-baseline gap-1.5">
+                      <span className="text-sm font-semibold text-muted">USD</span>
+                      <span className="text-3xl font-black tracking-tight text-surface-dark">250–500</span>
+                      <span className="text-sm font-semibold text-muted">/ mes</span>
+                    </p>
+                    <p className="mt-1 text-xs text-muted">Hosting, mantenimiento, ajustes sobre conversaciones reales y soporte.</p>
 
-            <ProjectShowcase />
+                    <a
+                      href={CTA_HREF}
+                      className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold !text-white shadow-sm transition hover:bg-blue-700"
+                    >
+                      {CTA_LABEL}
+                      <ArrowIcon />
+                    </a>
 
-            <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-              <a
-                href={CTA_HREF}
-                className="inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold !text-white shadow-sm transition hover:bg-blue-700"
-              >
-                ¿Tu cartera se parece? Hablemos
-                <ArrowIcon />
-              </a>
+                    <div className="mt-6 space-y-3 border-t border-border pt-5">
+                      <div className="flex items-start gap-3">
+                        <span className="mt-0.5 flex-shrink-0 text-primary"><ShieldIcon /></span>
+                        <p className="text-xs leading-relaxed text-secondary">
+                          <strong className="text-surface-dark">Garantía:</strong> respuesta en menos de 2 minutos, 24 horas.
+                          El mes que no se cumpla por causa nuestra, no lo pagás.
+                        </p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="mt-0.5 flex-shrink-0 text-primary"><CheckIcon /></span>
+                        <p className="text-xs leading-relaxed text-secondary">
+                          <strong className="text-surface-dark">Sin permanencia:</strong> cancelás avisando con 30 días.
+                        </p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="mt-0.5 flex-shrink-0 text-primary"><ClockIcon /></span>
+                        <p className="text-xs leading-relaxed text-secondary">
+                          <strong className="text-surface-dark">En producción en 21 días</strong> desde el cobro inicial.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="px-1 text-xs leading-relaxed text-muted">
+                  El precio depende del proyecto: cuántos canales, qué integraciones y el volumen de tu inmobiliaria. Los
+                  rangos de arriba son orientativos; el número exacto lo cerramos con tus datos en el diagnóstico. Aparte y a
+                  tu cuenta van el consumo de la API del modelo y las conversaciones de WhatsApp Business de Meta, sin marcado nuestro.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Audience */}
-        <section className="py-20">
+        <section className="border-y border-border/80 bg-slate-50 py-20">
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Para quién es</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
@@ -461,135 +718,16 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-4 text-xs italic text-muted">Si caés acá, probablemente no seamos tu solución. Y está bien.</p>
+                <p className="mt-4 text-xs italic text-muted">Si caés acá, probablemente no seamos tu solución. Y está bien decírnoslo.</p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Comparison */}
-        <section className="border-y border-border/80 bg-slate-50 py-20">
-          <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Por qué nosotros</span>
-            <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              Contra qué nos comparás realmente.
-            </h2>
-            <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
-              La pregunta real no es &quot;cuál es más barato&quot;. Es cuál te deja operar tu cartera sin pelearte con cuatro dashboards.
-            </p>
-
-            <div className="mt-10 overflow-x-auto rounded-2xl border border-border bg-white">
-              <table className="w-full min-w-[720px] text-left text-sm">
-                <thead className="bg-slate-100 text-xs font-semibold uppercase tracking-wide text-muted">
-                  <tr>
-                    <th className="px-5 py-4"></th>
-                    {compareHeaders.slice(0, 3).map((h) => (
-                      <th key={h} className="px-5 py-4">{h}</th>
-                    ))}
-                    <th className="px-5 py-4 text-primary">{compareHeaders[3]}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {compareRows.map((row, i) => (
-                    <tr key={row[0]} className={i % 2 ? "bg-slate-50/50" : ""}>
-                      <td className="px-5 py-4 font-semibold text-surface-dark">{row[0]}</td>
-                      <td className="px-5 py-4 text-muted">{row[1]}</td>
-                      <td className="px-5 py-4 text-muted">{row[2]}</td>
-                      <td className="px-5 py-4 text-muted">{row[3]}</td>
-                      <td className="px-5 py-4 font-semibold text-secondary">{row[4]}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        {/* Bonus */}
-        <section className="py-20">
-          <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Bonus incluidos</span>
-            <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              Lo que te llevás además de la plataforma.
-            </h2>
-
-            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {bonusItems.map((item) => (
-                <article
-                  key={item}
-                  className="flex items-start gap-3 rounded-2xl border border-blue-100/60 bg-blue-50/40 p-5"
-                >
-                  <span className="mt-0.5 inline-flex flex-shrink-0 rounded-lg bg-blue-100 p-1.5 text-primary">
-                    <StarIcon />
-                  </span>
-                  <p className="text-sm font-semibold leading-relaxed text-secondary">{item}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Pricing model */}
-        <section className="border-y border-border/80 bg-slate-50 py-20">
-          <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Modelo comercial</span>
-            <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              Sin sorpresas. Sin letra chica.
-            </h2>
-
-            <div className="mt-10 grid gap-4 md:grid-cols-2">
-              <div className="rounded-2xl border border-border bg-white p-6">
-                <p className="text-xs font-semibold uppercase tracking-wide text-primary">01</p>
-                <h3 className="mt-2 text-lg font-semibold text-surface-dark">Implementación inicial</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  Relevamiento, piloto, despliegue en cartera, integración con los controladores que ya tenés instalados, capacitación.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-border bg-white p-6">
-                <p className="text-xs font-semibold uppercase tracking-wide text-primary">02</p>
-                <h3 className="mt-2 text-lg font-semibold text-surface-dark">Mensual por planta</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  Hosting, mantenimiento, alertas, soporte, mejoras trimestrales.
-                </p>
-              </div>
-            </div>
-
-            <p className="mt-6 max-w-2xl text-sm text-muted">
-              Sin licencias por tag. Sin licencias por usuario. Sin hardware propietario que te ate. El número exacto depende de tu cartera, cuántas plantas y qué controladores. Te lo cerramos en la llamada, sin vueltas.
-            </p>
-          </div>
-        </section>
-
-        {/* Roadmap (honest, replaces AI pitch) */}
-        <section className="py-20">
-          <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Roadmap</span>
-            <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              Lo que hay hoy, lo que viene, y cuándo.
-            </h2>
-            <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
-              No vendemos IA mágica que no existe. Te mostramos qué funciona hoy y qué estamos construyendo, con honestidad.
-            </p>
-
-            <div className="mt-10 grid gap-4 md:grid-cols-3">
-              {roadmapItems.map((r, i) => (
-                <article key={r.stage} className="rounded-2xl border border-border bg-white p-6">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-xs font-bold text-primary">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-primary">{r.stage}</p>
-                  <h3 className="mt-1 text-lg font-semibold text-surface-dark">{r.label}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{r.desc}</p>
-                </article>
-              ))}
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-        <section id="faq" className="border-y border-border/80 bg-slate-50 py-20">
+        <section id="faq" className="py-20">
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">FAQ</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Preguntas frecuentes</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
               Lo que nos preguntan siempre.
             </h2>
@@ -617,10 +755,12 @@ export default function Home() {
               Siguiente paso
             </span>
             <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-snug text-white lg:text-4xl">
-              40 minutos para ver si FW Control le sirve a tu cartera.
+              20 minutos para ver cuántos leads estás dejando en la mesa.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-400">
-              Agendá una llamada. Miramos tu cartera de plantas, tus dolores reales, qué controladores manejás. Te decimos si FW Control te suma o no. Si no es para vos, te lo decimos en el minuto 10.
+              Agendá una llamada. Miramos tu volumen real de consultas, cómo las atendés hoy y te decimos en números qué
+              estás perdiendo. Si el sistema no te conviene, te lo decimos en el minuto 10. En inmobiliaria el primero que
+              contesta se queda con el cliente: cada día sin esto es una comisión que se va a la competencia.
             </p>
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
               <a

@@ -3,16 +3,16 @@ import CalendlyEmbed from "../components/calendly-embed";
 
 const callPoints = [
   {
-    label: "Relevamos tu cartera de plantas",
-    desc: "Cuántas plantas, qué controladores (Danfoss, Full Gauge, Carel, Delta, otros) y cómo los monitoreás hoy.",
+    label: "Medimos tu volumen real de leads",
+    desc: "Cuántas consultas entran por semana entre WhatsApp e Instagram, y cómo las atiende tu equipo hoy.",
   },
   {
-    label: "Detectamos dónde se te va la plata",
-    desc: "Viajes técnicos evitables, fallas que llegan tarde y servicio recurrente que no estás facturando.",
+    label: "Calculamos cuántas operaciones se te escapan",
+    desc: "Qué porción de leads se enfría por no contestar a tiempo y cuánto representa en comisiones perdidas por mes.",
   },
   {
     label: "Te damos un plan concreto",
-    desc: "Si encajamos, cerramos fecha de planta piloto. Si no es para vos, te lo decimos en el minuto 10.",
+    desc: "Si encajás, armamos el alcance y el número para tu inmobiliaria. Si no es para vos, te lo decimos en el minuto 10.",
   },
 ];
 
@@ -43,15 +43,15 @@ export default function DiagnosticoPage() {
         <div className="max-w-2xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            Llamada de diagnóstico · 40 minutos
+            Llamada de diagnóstico · 20 minutos
           </span>
 
           <h1 className="mt-5 text-4xl font-semibold leading-tight text-surface-dark md:text-5xl">
-            Agendá una llamada y unificá la cartera de plantas que ya operás
+            Agendá una llamada y vé cuántos leads estás dejando en la mesa
           </h1>
 
           <p className="mt-5 text-base leading-relaxed text-muted">
-            40 minutos. Sin venta dura. Miramos tu cartera, los controladores que manejás y te damos un diagnóstico técnico concreto. Si no encajamos, te lo decimos en el minuto 10.
+            20 minutos. Sin venta dura. Miramos tu volumen real de consultas, cómo las atendés hoy y te damos un número concreto de lo que estás perdiendo. Si no encajamos, te lo decimos en el minuto 10.
           </p>
         </div>
 
