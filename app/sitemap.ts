@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://fwlabsllc.com";
-const LAST_MODIFIED = new Date("2026-06-05");
+const LAST_MODIFIED = new Date("2026-06-30");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

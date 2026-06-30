@@ -3,11 +3,36 @@ import Image from "next/image";
 import Link from "next/link";
 import CalendlyEmbed from "../components/calendly-embed";
 
+const SITE_URL = "https://fwlabsllc.com";
+
 export const metadata: Metadata = {
   title: "Agendá una llamada de 20 minutos",
   description:
     "20 minutos. Sin venta dura. Miramos cómo trabajás hoy, dónde dependés de estar encima y qué te está costando. Si no encajamos, te lo decimos en el minuto 10.",
   alternates: { canonical: "/diagnostico" },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/diagnostico#webpage`,
+      url: `${SITE_URL}/diagnostico`,
+      name: "Agendá una llamada de 20 minutos | FW Labs",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@id": `${SITE_URL}/#organization` },
+      inLanguage: "es-AR",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${SITE_URL}/diagnostico#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Agendar llamada" },
+      ],
+    },
+  ],
 };
 
 const callPoints = [
@@ -36,6 +61,10 @@ function CheckIcon() {
 export default function DiagnosticoPage() {
   return (
     <div className="min-h-screen bg-slate-50 text-text">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="border-b border-border/90 bg-white">
         <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-6 lg:px-10">
           <Link href="/" className="inline-flex items-center">

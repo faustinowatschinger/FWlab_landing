@@ -2,7 +2,13 @@
 
 import { useEffect } from "react";
 
-export default function CalendlyEmbed({ url }: { url: string }) {
+export default function CalendlyEmbed({
+  url,
+  className = "h-[700px]",
+}: {
+  url: string;
+  className?: string;
+}) {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
@@ -15,9 +21,9 @@ export default function CalendlyEmbed({ url }: { url: string }) {
 
   return (
     <div
-      className="calendly-inline-widget"
+      className={`calendly-inline-widget ${className}`}
       data-url={url}
-      style={{ minWidth: "320px", height: "700px" }}
+      style={{ minWidth: "320px" }}
     />
   );
 }

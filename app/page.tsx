@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import ProjectShowcase from "./components/project-showcase";
 import CalendlyEmbed from "./components/calendly-embed";
-import { PhoneFrame } from "./components/app-mockups";
+import HeroShowcase from "./components/hero-showcase";
+import MobileCta from "./components/mobile-cta";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -175,15 +176,6 @@ function XIcon({ className = "h-4 w-4" }: { className?: string }) {
   );
 }
 
-function Frost({ className = "h-4 w-4" }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <path d="M12 2v20M2 12h20M4.5 4.5l15 15M19.5 4.5l-15 15" />
-      <path d="M12 5l-2 2M12 5l2 2M12 19l-2-2M12 19l2-2M5 12l2-2M5 12l2 2M19 12l-2-2M19 12l-2 2" />
-    </svg>
-  );
-}
-
 function ArrowIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
@@ -220,12 +212,6 @@ const CTA_HREF = "#agendar";
 const CTA_LABEL = "Agendar llamada de 20 min";
 const CALENDLY_URL = "https://calendly.com/fwlabs/llamada-de-diagnostico-gratuita";
 
-const HERO_SHOTS = {
-  left: "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.34.42_resized.png",
-  center: "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.39.49_resized.png",
-  right: "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.41.01_resized.png",
-};
-
 const SITE_URL = "https://fwlabsllc.com";
 
 const jsonLd = {
@@ -235,9 +221,32 @@ const jsonLd = {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
       name: "FW Labs",
+      legalName: "FW Labs LLC",
       url: SITE_URL,
-      logo: `${SITE_URL}/logo1.png`,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo1.png` },
+      image: `${SITE_URL}/logo1.png`,
       email: "faustino@fwlabsllc.com",
+      description:
+        "Agencia de IA y automatización para operaciones industriales. Construimos sistemas que monitorean la operación 24/7, detectan lo que importa y avisan a tiempo.",
+      founder: { "@type": "Person", name: "Faustino Watschinger" },
+      knowsAbout: [
+        "Inteligencia artificial industrial",
+        "Automatización de procesos industriales",
+        "Monitoreo remoto de plantas",
+        "Monitoreo de operaciones en tiempo real",
+        "Mantenimiento predictivo",
+      ],
+      areaServed: [
+        { "@type": "Country", name: "Argentina" },
+        { "@type": "Country", name: "España" },
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: "faustino@fwlabsllc.com",
+        contactType: "sales",
+        availableLanguage: ["Spanish"],
+        areaServed: ["AR", "ES"],
+      },
     },
     {
       "@type": "WebSite",
@@ -248,12 +257,25 @@ const jsonLd = {
       publisher: { "@id": `${SITE_URL}/#organization` },
     },
     {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/#webpage`,
+      url: SITE_URL,
+      name: "FW Labs | IA y automatización para operaciones industriales",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@id": `${SITE_URL}/#organization` },
+      inLanguage: "es-AR",
+      primaryImageOfPage: `${SITE_URL}/opengraph-image`,
+    },
+    {
       "@type": "Service",
       "@id": `${SITE_URL}/#service`,
       name: "FW Labs — IA y automatización para operaciones industriales",
       serviceType: "Automatización de procesos industriales y monitoreo con IA",
       provider: { "@id": `${SITE_URL}/#organization` },
-      areaServed: { "@type": "Country", name: "Argentina" },
+      areaServed: [
+        { "@type": "Country", name: "Argentina" },
+        { "@type": "Country", name: "España" },
+      ],
       audience: { "@type": "Audience", audienceType: "Empresas industriales medianas" },
       description:
         "Sistemas de IA y automatización que monitorean operaciones industriales 24/7, detectan lo que importa y avisan a tiempo, para que el negocio no dependa de la presencia física del dueño.",
@@ -354,44 +376,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: producto real (app de FW Control) — capturas en frames premium + ambiente frigorífico */}
-            <div className="fw-rise relative mx-auto flex w-full items-center justify-center" style={{ animationDelay: "200ms" }}>
-              {/* Ambiente frío: niebla de cámara frigorífica */}
-              <div className="pointer-events-none absolute -inset-10 -z-10 rounded-[3rem] bg-[radial-gradient(circle_at_50%_40%,rgba(125,211,252,0.55),rgba(186,230,253,0.25)_45%,transparent_72%)] blur-2xl" />
-              <Frost className="pointer-events-none absolute -left-2 -top-2 h-10 w-10 text-cyan-300/70" />
-              <Frost className="pointer-events-none absolute right-2 top-10 h-6 w-6 text-sky-300/60" />
-              <Frost className="pointer-events-none absolute -bottom-1 left-10 h-7 w-7 text-cyan-200/70" />
-
-              {/* Left phone (back) */}
-              <PhoneFrame className="z-0 -mr-10 hidden w-[130px] flex-shrink-0 translate-y-8 -rotate-[10deg] sm:block lg:w-[140px]">
-                <Image src={HERO_SHOTS.left} alt="App de FW Control: panel de la operación" fill sizes="140px" className="object-cover" />
-              </PhoneFrame>
-
-              {/* Center phone (front) */}
-              <PhoneFrame className="z-10 w-[210px] flex-shrink-0 lg:w-[225px]">
-                <Image src={HERO_SHOTS.center} alt="App de FW Control: monitoreo de una planta frigorífica en tiempo real" fill sizes="225px" className="object-cover" priority />
-              </PhoneFrame>
-
-              {/* Right phone (back) */}
-              <PhoneFrame className="z-0 -ml-10 hidden w-[130px] flex-shrink-0 translate-y-8 rotate-[10deg] sm:block lg:w-[140px]">
-                <Image src={HERO_SHOTS.right} alt="App de FW Control: alertas y registro de cambios" fill sizes="140px" className="object-cover" />
-              </PhoneFrame>
-
-              {/* Chip de temperatura — refuerza el contexto frigorífico */}
-              <div className="absolute -left-2 top-6 z-20 hidden items-center gap-2 rounded-xl border border-cyan-100 bg-white/95 px-3 py-2 shadow-[0_8px_24px_rgba(15,23,42,0.12)] backdrop-blur-sm lg:flex">
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-cyan-50 text-cyan-600"><Frost className="h-4 w-4" /></span>
-                <div>
-                  <p className="text-sm font-black leading-none tracking-tight text-surface-dark">-22 °C</p>
-                  <p className="mt-0.5 text-[10px] font-medium text-emerald-600">Cámara estable</p>
-                </div>
-              </div>
-
-              {/* Floating proof card */}
-              <div className="absolute -bottom-4 -right-2 z-20 hidden rounded-xl border border-border bg-white/95 px-3.5 py-2.5 shadow-[0_8px_24px_rgba(15,23,42,0.12)] backdrop-blur-sm sm:block">
-                <p className="text-2xl font-black leading-none tracking-tight text-surface-dark">327 hs</p>
-                <p className="mt-1 text-[11px] text-muted">ahorradas en 3 meses</p>
-              </div>
-            </div>
+            {/* Right: producto real (app de FW Control) — rota en móvil, abanico en desktop */}
+            <HeroShowcase />
           </div>
 
           {/* Trust stats band */}
@@ -712,7 +698,7 @@ export default function Home() {
             </p>
 
             <div className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-white shadow-[0_8px_40px_rgba(0,0,0,0.35)]">
-              <CalendlyEmbed url={CALENDLY_URL} />
+              <CalendlyEmbed url={CALENDLY_URL} className="h-[860px] sm:h-[640px] lg:h-[600px]" />
             </div>
           </div>
         </section>
@@ -724,6 +710,8 @@ export default function Home() {
           <p>faustino@fwlabsllc.com</p>
         </div>
       </footer>
+
+      <MobileCta />
     </div>
   );
 }

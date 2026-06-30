@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    // Sirve las capturas en formatos modernos (mejor LCP / peso).
+    formats: ["image/avif", "image/webp"],
+  },
 };
 
 export default nextConfig;
