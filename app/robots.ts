@@ -8,8 +8,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // Páginas internas / demo que no deben indexarse
-        disallow: ["/test-whatsapp", "/api/"],
+        // Rutas internas que no deben indexarse
+        disallow: ["/api/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

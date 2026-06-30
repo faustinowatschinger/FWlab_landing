@@ -2,18 +2,15 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { PhoneFrame, FrostIcon } from "./app-mockups";
 
+// Curado: solo las pantallas que demuestran valor real (vivo, alertas, histórico, panorama).
 const screenshots = [
-  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.26.29_resized.png",
-  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.26.33_resized.png",
-  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.26.37_resized.png",
-  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.26.40_resized.png",
-  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.26.44_resized.png",
-  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.34.42_resized.png",
-  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.34.54_resized.png",
-  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.39.36_resized.png",
-  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.39.49_resized.png",
-  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.41.01_resized.png",
+  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.34.42_resized.png", // Datos en vivo — cámara (estrella)
+  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.39.49_resized.png", // Alertas por severidad
+  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.39.36_resized.png", // Sala de máquinas en vivo
+  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.41.01_resized.png", // Gráfica histórica
+  "/Simulator Screenshot - iPhone 17 Pro - 2026-04-01 at 08.26.29_resized.png", // Home / monitoreo industrial
 ];
 
 export default function ProjectShowcase() {
@@ -36,31 +33,40 @@ export default function ProjectShowcase() {
       {/* Text */}
       <article className="lg:col-span-3 flex flex-col rounded-2xl border border-border bg-white p-8 shadow-[0_2px_12px_rgba(15,23,42,0.05)]">
         <div className="flex flex-wrap gap-2">
-          <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-primary">Raspberry Pi Gateway</span>
-          <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-primary">App móvil + escritorio</span>
-          <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-primary">IA en entrenamiento</span>
+          <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-primary">Control remoto en tiempo real</span>
+          <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-primary">Desde el celular o la compu</span>
+          <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-primary">IA con humano en el medio</span>
         </div>
 
-        <div className="mt-6 space-y-4 text-sm leading-relaxed text-secondary">
+        <div className="mt-6 space-y-5 text-sm leading-relaxed text-secondary">
           <div className="rounded-xl border-l-4 border-red-300 bg-red-50/60 p-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-red-600">El problema</p>
             <p className="mt-2">
-              3W SRL llegó con un problema concreto: cualquier ajuste mínimo en una planta frigorífica —incluso apretar un botón— obligaba a un técnico a viajar físicamente hasta el lugar. No había forma de intervenir a distancia, y eso convertía tareas de dos minutos en jornadas enteras de desplazamiento.
-            </p>
-            <p className="mt-2">
-              A eso se sumaba un problema de trazabilidad: como no quedaba registro de quién había tocado qué ni de cómo había quedado la instalación, cada incidente terminaba en discusiones internas y con clientes sobre quién se había equivocado. La falta de histórico y de auditoría generaba desconfianza dentro del equipo y fricciones recurrentes con los propios clientes.
+              Cualquier ajuste en una planta —hasta apretar un botón— obligaba a un técnico a viajar. Tareas de dos minutos se volvían jornadas enteras. Y sin registro de quién tocaba qué, cada incidente terminaba en discusiones con el cliente.
             </p>
           </div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-primary">La solución</p>
-          <p>
-            Un gateway sobre Raspberry Pi conectado directamente al PLC de cada planta captura los datos en tiempo real y los envía a la nube, donde una app móvil y de escritorio permite visualizarlos en gráficas y tablas, consultar el histórico completo y modificar configuraciones y estados del frigorífico desde cualquier parte del mundo.
-          </p>
-          <p>
-            El sistema incluye <strong className="text-surface-dark">alertas en vivo y predictivas</strong> para anticipar problemas antes de que ocurran, con niveles de severidad y notificación automática por mail a los responsables cuando son críticas. Cada cambio de configuración queda registrado con autor y momento, eliminando dudas sobre el origen de cualquier incidencia.
-          </p>
-          <p>
-            Además, la plataforma está integrando una <strong className="text-surface-dark">capa de IA en entrenamiento continuo</strong>, pensada para que en el futuro pueda operar de forma autónoma sin necesidad de aprobación humana en cada decisión.
-          </p>
+
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-primary">La solución</p>
+            <ul className="mt-3 space-y-2.5">
+              <li className="flex items-start gap-2.5">
+                <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                <span>Conectamos tus equipos de planta y ves todo en tiempo real: controlás y reconfigurás <strong className="text-surface-dark">desde cualquier lado</strong>.</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                <span><strong className="text-surface-dark">Alertas en vivo y predictivas</strong> con severidad y aviso automático por mail en las críticas.</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                <span>Cada cambio queda registrado con autor y momento: <strong className="text-surface-dark">se acabó la discusión</strong> de quién se equivocó.</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                <span>Capa de <strong className="text-surface-dark">IA con humano en el medio</strong>: propone la acción, el operador decide. Nada se ejecuta solo.</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <a
@@ -73,45 +79,50 @@ export default function ProjectShowcase() {
         </a>
       </article>
 
-      {/* Carousel */}
+      {/* Carousel — capturas reales en frame premium + ambiente frigorífico */}
       <div
         className="lg:col-span-2 relative flex items-center justify-center"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
+        {/* Ambiente frío */}
+        <div className="pointer-events-none absolute inset-0 -z-10 rounded-[3rem] bg-[radial-gradient(circle_at_50%_45%,rgba(125,211,252,0.5),rgba(186,230,253,0.2)_48%,transparent_72%)] blur-2xl" />
+        <FrostIcon className="pointer-events-none absolute left-1 top-2 h-8 w-8 text-cyan-300/70" />
+        <FrostIcon className="pointer-events-none absolute bottom-4 right-2 h-6 w-6 text-sky-300/60" />
+
         <button
           type="button"
           onClick={prev}
           aria-label="Anterior"
-          className="absolute left-0 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-surface-dark shadow-md transition hover:bg-slate-50"
+          className="absolute left-0 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-surface-dark shadow-md transition hover:bg-slate-50"
         >
           ←
         </button>
 
-        <div className="relative mx-12 aspect-[9/19] w-full max-w-[260px] overflow-hidden rounded-3xl border border-border bg-white shadow-[0_8px_32px_rgba(15,23,42,0.12)]">
+        <PhoneFrame className="mx-12 w-full max-w-[230px]">
           {screenshots.map((src, i) => (
             <Image
               key={src}
               src={src}
-              alt={`3W Control screenshot ${i + 1}`}
+              alt={`Pantalla de FW Control ${i + 1}`}
               fill
-              sizes="260px"
+              sizes="230px"
               className={`object-cover transition-opacity duration-700 ${i === index ? "opacity-100" : "opacity-0"}`}
               priority={i === 0}
             />
           ))}
-        </div>
+        </PhoneFrame>
 
         <button
           type="button"
           onClick={next}
           aria-label="Siguiente"
-          className="absolute right-0 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-surface-dark shadow-md transition hover:bg-slate-50"
+          className="absolute right-0 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-surface-dark shadow-md transition hover:bg-slate-50"
         >
           →
         </button>
 
-        <div className="absolute -bottom-6 left-1/2 flex -translate-x-1/2 gap-1.5">
+        <div className="absolute -bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-1.5">
           {screenshots.map((_, i) => (
             <button
               key={i}

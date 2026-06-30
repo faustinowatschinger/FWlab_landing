@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "FW Assistant — Agente de IA para inmobiliarias que responde y agenda tus leads";
+export const alt = "FW Labs — IA y automatización para operaciones industriales";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -54,7 +54,7 @@ export default function OpengraphImage() {
               marginBottom: "26px",
             }}
           >
-            AGENTE DE IA PARA INMOBILIARIAS
+            IA Y AUTOMATIZACIÓN PARA OPERACIONES INDUSTRIALES
           </div>
           <div
             style={{
@@ -66,7 +66,7 @@ export default function OpengraphImage() {
               maxWidth: "1010px",
             }}
           >
-            Responde, califica y agenda tus leads. Vos cerrás.
+            Tu operación no debería frenarse cuando vos no estás.
           </div>
         </div>
 
@@ -76,7 +76,7 @@ export default function OpengraphImage() {
             fwlabsllc.com
           </div>
           <div style={{ display: "flex", color: "#cbd5e1", fontSize: "24px" }}>
-            {"Responde en < 2 min · las 24 horas"}
+            {"327 hs ahorradas a 3W en 3 meses"}
           </div>
         </div>
       </div>
