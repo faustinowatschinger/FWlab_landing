@@ -131,24 +131,36 @@ const futureOutcomes = [
 
 const faqs = [
   {
-    q: "¿La IA me va a reemplazar a mí o a mi gente?",
-    a: "No. Le saca a tu equipo el trabajo de estar vigilando y apagando incendios, para que se dediquen a lo que solo un humano hace: decidir. El sistema mira y avisa; vos y tu gente deciden. El criterio sigue siendo humano.",
-  },
-  {
     q: "Ya probé con tecnología una vez y fue plata tirada.",
     a: "Lo entendemos, y por eso no te pedimos que nos creas. Lo que te proponemos lo tenemos corriendo en una operación industrial crítica hace casi un año, con resultados medidos. Demostramos, no prometemos. Y arrancamos por un solo proceso, no por reformar todo.",
+  },
+  {
+    q: "No tengo tiempo para meterme en esto ahora.",
+    a: "Es justo al revés: esto existe para devolverte tiempo, no para sacártelo. El trabajo pesado del arranque lo hacemos nosotros; de tu lado son un par de charlas para entender cómo operás. Y empezamos por un solo proceso —el que más te libera—, no reformando todo de golpe.",
+  },
+  {
+    q: "¿Y si mi gente no lo termina usando?",
+    a: "Es el miedo más común, y por eso el sistema corre solo y avisa cuando hace falta, no es otra pantalla más para que alguien vigile. En 3W lo usan 5 operarios todos los días desde el celular, hace casi un año. Va con capacitación y soporte para que tu equipo confíe en él.",
+  },
+  {
+    q: "Son ustedes chicos, ¿y si me dejan tirado?",
+    a: "Entendible. Dos cosas: lo que te proponemos ya lleva casi un año funcionando sin parar en una operación crítica, no es un experimento con tu plata. Y toda la cadena —de la máquina en planta al aviso en tu celular— la llevamos nosotros: una sola puerta a la que tocar, con soporte, no alguien que te arma algo y desaparece.",
+  },
+  {
+    q: "¿La IA me va a reemplazar a mí o a mi gente?",
+    a: "No. Le saca a tu equipo el trabajo de estar vigilando y apagando incendios, para que se dediquen a lo que solo un humano hace: decidir. El sistema mira y avisa; vos y tu gente deciden. El criterio sigue siendo humano.",
   },
   {
     q: "Para lo mío / mi rubro la IA no sirve.",
     a: "Lo que automatizamos no es un rubro, es un patrón: una operación física, distribuida, que hoy depende de que alguien esté presente para que no se caiga. Si tu negocio funciona así, casi siempre hay algo para sacarte de encima. En la llamada lo vemos en concreto.",
   },
   {
-    q: "¿Esto es para empresas más grandes que la mía?",
-    a: "No. Trabajamos con empresas medianas con operación intensiva. Arrancamos por el proceso que más te libera —no por una plataforma gigante— así que la inversión entra por donde tiene retorno.",
-  },
-  {
     q: "¿Me va a frenar la operación meterme en esto?",
     a: "No. Construimos sobre lo que ya tenés y sin parar lo que funciona. En muchos casos leemos los equipos que ya están instalados (por ejemplo, hablamos directo con PLCs industriales que ya están en planta) sin cambiar tu hardware.",
+  },
+  {
+    q: "¿Esto es para empresas más grandes que la mía?",
+    a: "No. Trabajamos con empresas medianas con operación intensiva. Arrancamos por el proceso que más te libera —no por una plataforma gigante— así que la inversión entra por donde tiene retorno.",
   },
   {
     q: "¿Qué pasa en la llamada de 20 minutos?",
@@ -156,7 +168,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto cuesta?",
-    a: "Depende del alcance del sistema y de tu operación, y lo cerramos después de entender cómo trabajás. El primer paso es la reunión, y es gratis: ahí vemos si te podemos ayudar y cómo sería implementar el sistema en tu operación.",
+    a: "El primer paso es la reunión, y es gratis: ahí entendemos cómo trabajás y vemos si hay un caso real. Si lo hay, el paso siguiente es un diagnóstico que te deja un plan concreto —qué automatizar, en qué orden y cuánto te libera cada cosa—, y te lo quedás uses o no el sistema. Lo que sale el sistema depende del alcance y lo cerramos con ese plan sobre la mesa, no antes.",
   },
 ];
 
