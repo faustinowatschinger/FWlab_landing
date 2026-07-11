@@ -46,22 +46,22 @@ const methodSteps = [
   {
     title: "Reunión inicial",
     tag: "Gratis · sin compromiso",
-    desc: "Nos contás cómo operás y vemos si te podemos ayudar. Si hay un caso para implementar el sistema, te mostramos cómo sería. Si no, te lo decimos de una.",
+    desc: "Nos contás cómo operás, dónde te duele y a dónde querés llevar el negocio. Vemos si hay un caso real para automatizar. Si no lo hay, te lo decimos de una.",
   },
   {
-    title: "Implementamos el sistema",
-    tag: "Tu base de control",
-    desc: "Montamos sobre tu operación el sistema que te da visibilidad y control a distancia: ves lo que pasa, te avisa cuando algo se sale de rango y actuás sin estar ahí. La misma base que corre para 3W.",
+    title: "Diagnóstico de tu operación",
+    tag: "El plan, paso a paso",
+    desc: "Mapeamos tu operación a fondo y te entregamos un plan concreto: qué conviene automatizar, en qué orden y cuánto te libera cada cosa, priorizado por retorno. El plan te lo quedás, sigas o no con nosotros.",
   },
   {
-    title: "Diagnosticamos los procesos",
-    tag: "Con datos reales",
-    desc: "Con el sistema andando y datos sobre la mesa, mapeamos qué procesos conviene automatizar y en qué orden, por lo que más te libera en horas y en plata.",
+    title: "Construimos el sistema",
+    tag: "A tu medida, sobre el plan",
+    desc: "Arrancamos por el proceso que más te libera y construimos el sistema a tu medida —la misma base que corre para 3W—: visibilidad, control a distancia y aviso cuando algo se sale de rango.",
   },
   {
-    title: "Automatizamos",
-    tag: "Donde más te libera",
-    desc: "Recién acá se automatiza de verdad, por donde da más retorno. El sistema crece con tu operación: sumás procesos cuando los necesitás.",
+    title: "Escala con tu operación",
+    tag: "Sumás cuando lo necesitás",
+    desc: "Con el primer proceso andando y dando retorno, sumamos los siguientes. El sistema crece con vos, por donde más te conviene.",
   },
 ];
 
