@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | FW Labs",
   },
   description:
-    "Construimos sistemas de IA que vigilan tu operación 24/7, detectan lo que importa y te avisan a tiempo. Para que tu negocio no dependa de que estés ahí. Agendá una llamada de 20 minutos.",
+    "Diagnosticamos qué te está comiendo horas y plata en tu operación industrial y construimos la automatización a medida que lo resuelve. IA real en producción. Agendá una llamada de 20 minutos.",
   applicationName: "FW Labs",
   authors: [{ name: "FW Labs", url: SITE_URL }],
   creator: "FW Labs",
@@ -40,13 +40,13 @@ export const metadata: Metadata = {
     siteName: "FW Labs",
     title: "IA y automatización para operaciones industriales",
     description:
-      "Sistemas de IA que vigilan tu operación 24/7, detectan lo que importa y te avisan a tiempo. Para que tu negocio no dependa de que estés ahí.",
+      "Encontramos qué te está comiendo horas y plata en tu operación industrial y construimos la automatización a medida que lo resuelve. Empezando por un diagnóstico, no un sistema enlatado.",
   },
   twitter: {
     card: "summary_large_image",
     title: "FW Labs | IA y automatización para operaciones industriales",
     description:
-      "Sistemas de IA que vigilan tu operación 24/7 y te avisan antes de que el problema cueste plata. Para que no dependa de que estés ahí.",
+      "Diagnosticamos tu operación y automatizamos a medida lo que más te libera. IA real en producción, no promesas.",
   },
   robots: {
     index: true,

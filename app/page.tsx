@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 };
 
 const heroBullets = [
-  "Control de tu operación a distancia, las 24 horas",
-  "Te enterás antes de que el problema cueste plata",
-  "Cada evento queda registrado y auditable",
-  "Tu mejor gente decide, en vez de vigilar",
+  "Arrancamos por un diagnóstico, no por venderte un sistema",
+  "Automatizamos el proceso que más te ata, no un paquete igual para todos",
+  "Dejás de depender de estar vos arriba de todo",
+  "IA real en producción hace casi un año, no una promesa",
 ];
 
 const trustStats = [
@@ -56,7 +56,7 @@ const methodSteps = [
   {
     title: "Construimos el sistema",
     tag: "A tu medida, sobre el plan",
-    desc: "Arrancamos por el proceso que más te libera y construimos el sistema a tu medida —la misma base que corre para 3W—: visibilidad, control a distancia y aviso cuando algo se sale de rango.",
+    desc: "Construimos a medida la solución del primer paso del plan —el proceso de mayor retorno—. Puede ser monitoreo, alertas, integrar datos dispersos o automatizar una tarea manual: lo define tu operación, no un molde.",
   },
   {
     title: "Escala con tu operación",
@@ -107,25 +107,25 @@ const audienceNo = [
   "Querés resultados sin participar del relevamiento de tu propia operación",
 ];
 
-// "Futuro" — qué consigue la operación con el sistema (antes → después).
+// "Futuro" — qué consigue el negocio con lo que se automatiza (antes → después).
 const futureOutcomes = [
   {
-    tag: "Visibilidad",
-    title: "Ves todo, desde donde estés",
-    before: "Hoy: para saber qué pasa tenés que ir, llamar o esperar el reporte.",
-    after: "Con el sistema: abrís el celular y ves tu operación entera en tiempo real, estés donde estés.",
+    tag: "Tiempo",
+    title: "Recuperás las horas que hoy se van en control manual",
+    before: "Hoy: gente calificada recorriendo, revisando y cargando planillas a mano.",
+    after: "Después: esas horas vuelven a tu equipo para lo que de verdad mueve el negocio.",
   },
   {
-    tag: "Anticipación",
-    title: "Te enterás antes de que cueste plata",
-    before: "Hoy: reaccionás cuando el daño ya está hecho y muchas veces sin registro.",
-    after: "Con el sistema: te avisa apenas algo se sale de rango, priorizado por severidad y con todo registrado.",
+    tag: "Tranquilidad",
+    title: "Dejás de enterarte tarde de lo que cuesta plata",
+    before: "Hoy: te enterás del problema cuando el daño ya está hecho, y muchas veces sin registro.",
+    after: "Después: el proceso crítico queda cubierto y con trazabilidad, sin depender de que alguien esté mirando.",
   },
   {
     tag: "Libertad",
-    title: "Dejás de vigilar y empezás a decidir",
-    before: "Hoy: la operación depende de que vos y tu gente estén encima.",
-    after: "Con el sistema: el sistema mira, tu gente resuelve, y vos te ocupás de hacer crecer el negocio.",
+    title: "La operación deja de depender de que estés vos",
+    before: "Hoy: si no estás vos o tu gente clave encima, algo se cae.",
+    after: "Después: el sistema sostiene lo repetitivo y vos te ocupás de hacer crecer el negocio.",
   },
 ];
 
@@ -239,7 +239,7 @@ const jsonLd = {
       image: `${SITE_URL}/logo1.png`,
       email: "faustino@fwlabsllc.com",
       description:
-        "Agencia de IA y automatización para operaciones industriales. Construimos sistemas que monitorean la operación 24/7, detectan lo que importa y avisan a tiempo.",
+        "Agencia de IA y automatización para operaciones industriales. Diagnosticamos qué te está comiendo horas y plata y construimos la automatización a medida que lo resuelve.",
       founder: { "@type": "Person", name: "Faustino Watschinger" },
       knowsAbout: [
         "Inteligencia artificial industrial",
@@ -360,9 +360,9 @@ export default function Home() {
               </h1>
 
               <p className="fw-rise mt-6 max-w-xl text-lg leading-relaxed text-muted" style={{ animationDelay: "160ms" }}>
-                Construimos sistemas de IA y automatización que vigilan tu operación las 24 horas, detectan lo que importa
-                y te avisan a tiempo. Para que dejes de apagar incendios y de tener que estar físicamente arriba de todo
-                para que las cosas no se caigan.
+                Encontramos qué te está comiendo horas y plata en tu operación y construimos la automatización a medida
+                que lo resuelve. Empezando por un diagnóstico de cómo trabajás, no por un sistema enlatado — para que
+                dejes de apagar incendios y de tener que estar arriba de todo para que nada se caiga.
               </p>
 
               <ul className="fw-rise mt-8 grid max-w-xl gap-x-8 gap-y-3 sm:grid-cols-2" style={{ animationDelay: "240ms" }}>
@@ -457,13 +457,13 @@ export default function Home() {
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Qué conseguís</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              No te reemplazamos a vos ni a tu gente. Te sacamos de tener que vigilar.
+              No te reemplazamos a vos ni a tu gente. Te sacamos de encima lo que te tiene atado.
             </h2>
             <div className="mt-6 grid max-w-4xl gap-5 text-base leading-relaxed text-muted">
               <p>
-                Construimos un sistema que mira tu operación las 24 horas, entiende cuándo algo importa y cuándo es ruido,
-                y actúa o te avisa en el momento justo. El humano sigue decidiendo: el sistema le saca de encima el
-                trabajo de estar mirando. Tu criterio no se reemplaza — se libera para lo único que solo vos podés hacer.
+                Miramos tu operación, encontramos qué te está comiendo tiempo y plata, y construimos la automatización que
+                lo saca de tu espalda. Lo que se construye depende de lo que el diagnóstico encuentre — no es un paquete
+                igual para todos. El humano sigue decidiendo: le sacamos el trabajo repetitivo, no el criterio.
               </p>
               <p>
                 No es un dashboard más ni un bot que contesta cualquier cosa. Es IA real, corriendo en producción hace
@@ -505,12 +505,12 @@ export default function Home() {
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Cómo trabajamos</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              Primero te damos control. Después automatizamos sobre eso.
+              Primero entendemos tu operación. Después construimos sobre eso.
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
-              No te llegamos con una solución enlatada. Primero implementamos el sistema que te da el control de tu
-              operación; después, con datos reales sobre la mesa, diagnosticamos y automatizamos los procesos que más te
-              liberan. El primer paso es la reunión, y es gratis.
+              No te llegamos con una solución enlatada. Primero entendemos cómo trabajás y diagnosticamos qué conviene
+              automatizar y en qué orden; después construimos a medida el sistema que resuelve lo que el plan encontró. El
+              primer paso es la reunión, y es gratis.
             </p>
 
             <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -593,7 +593,8 @@ export default function Home() {
               <strong className="text-secondary">FW Control</strong> para <strong className="text-secondary">3W</strong>:
               monitorea 5 plantas frigoríficas en tiempo real y les ahorró{" "}
               <strong className="text-secondary">327 horas de viajes a planta en 3 meses</strong>. Todo de punta a punta:
-              de la máquina en planta a la notificación en tu celular.
+              de la máquina en planta a la notificación en tu celular. Es un ejemplo de lo que somos capaces de construir
+              — lo que armemos para vos depende de lo que salga de tu diagnóstico, no de este molde.
             </p>
 
             <ProjectShowcase />
