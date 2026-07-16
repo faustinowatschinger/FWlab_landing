@@ -222,7 +222,9 @@ function ChatIcon({ className = "h-4 w-4" }: { className?: string }) {
 
 const CTA_HREF = "#agendar";
 const CTA_LABEL = "Agendar llamada de 20 min";
-const CALENDLY_URL = "https://calendly.com/fwlabs/llamada-de-diagnostico-gratuita";
+// El slug dice "llamada", no "diagnóstico": la llamada es gratis, el diagnóstico
+// es el producto pago que se vende en esa reunión. No prometer lo contrario en el link.
+const CALENDLY_URL = "https://calendly.com/fwlabs/llamada-gratuita";
 
 const SITE_URL = "https://fwlabsllc.com";
 

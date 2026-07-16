@@ -112,20 +112,24 @@ No es un dashboard más ni un bot que contesta cualquier cosa. Es IA real, corri
 
 **Eyebrow:** `Cómo trabajamos`
 
-**H2:** Primero te damos control. Después automatizamos sobre eso.
+**H2:** Primero entendemos tu operación. Después construimos sobre eso.
 
-**Intro:** No te llegamos con una solución enlatada. Primero implementamos el sistema que te da el control de tu operación; después, con datos reales sobre la mesa, diagnosticamos y automatizamos los procesos que más te liberan. El primer paso es la reunión, y es gratis.
+**Intro:** No te llegamos con una solución enlatada. Primero entendemos cómo trabajás y diagnosticamos qué conviene automatizar y en qué orden; después construimos a medida el sistema que resuelve lo que el plan encontró. El primer paso es la reunión, y es gratis.
 
-| Paso | Qué pasa |
-|---|---|
-| **1. Reunión inicial (gratis)** | Nos contás cómo operás y vemos si te podemos ayudar. Si hay un caso para implementar el sistema, te mostramos cómo sería. Si no, te lo decimos de una. |
-| **2. Implementamos el sistema** | Montamos sobre tu operación el sistema que te da visibilidad y control a distancia: ves lo que pasa, te avisa cuando algo se sale de rango y actuás sin estar ahí. La misma base que corre para 3W. |
-| **3. Diagnosticamos los procesos** | Con el sistema andando y datos sobre la mesa, mapeamos qué procesos conviene automatizar y en qué orden, por lo que más te libera en horas y en plata. |
-| **4. Automatizamos** | Recién acá se automatiza de verdad, por donde da más retorno. El sistema crece con tu operación. |
+| Paso | Tag | Qué pasa |
+|---|---|---|
+| **1. Reunión inicial** | Gratis · sin compromiso | Nos contás cómo operás, dónde te duele y a dónde querés llevar el negocio. Vemos si hay un caso real para automatizar. Si no lo hay, te lo decimos de una. |
+| **2. Diagnóstico de tu operación** | El plan, paso a paso | Mapeamos tu operación a fondo y te entregamos un plan concreto: qué conviene automatizar, en qué orden y cuánto te libera cada cosa, priorizado por retorno. El plan te lo quedás, sigas o no con nosotros. |
+| **3. Construimos el sistema** | A tu medida, sobre el plan | Construimos a medida la solución del primer paso del plan —el proceso de mayor retorno—. Puede ser monitoreo, alertas, integrar datos dispersos o automatizar una tarea manual: lo define tu operación, no un molde. |
+| **4. Escala con tu operación** | Sumás cuando lo necesitás | Con el primer proceso andando y dando retorno, sumamos los siguientes. El sistema crece con vos, por donde más te conviene. |
 
 **Microcopy:** El primer paso es la reunión, y es gratis. Lo único que te pedimos es 20 minutos.
 
-> **Embudo real (corrección de Fati 2026-06-29):** el orden es reunión → vender e implementar el sistema (base de monitoreo/control) → con el sistema andando, diagnosticar procesos → automatizar. El diagnóstico de procesos NO es un producto pago previo a la construcción (eso era el modelo "FW Operativa" documentado en `business/memory/oferta-fw-operativa.md`, que quedó desalineado con cómo Fati vende hoy). La web vende solo la reunión; en la reunión Fati vende implementar el sistema.
+> **Sincronizado con el código 2026-07-15.** Esta tabla refleja `methodSteps` en `app/page.tsx`. Si cambia uno, cambiar el otro.
+>
+> **Nota obsoleta (2026-06-29), anulada por Faustino el 2026-07-15:** decía que el orden era reunión → implementar el sistema → recién ahí diagnosticar procesos, y que "el diagnóstico NO es un producto pago previo a la construcción". **Eso ya no rige.** El embudo vigente vende el diagnóstico primero (pago, USD 300, acreditable al build) y construye después, sobre el plan. Fuente única: [`business/memory/client-workflow.md`](../../business/memory/client-workflow.md). El código de la landing ya venía alineado con el modelo vigente desde el 2026-07-10; el desalineado era este documento.
+>
+> **Lo que sí sigue vigente de esa nota:** la web vende **solo la reunión**. No anuncia el precio del diagnóstico — eso se vende en la reunión de encaje. Por eso los pasos 2-4 describen el método sin mencionar los USD 300.
 
 ---
 
