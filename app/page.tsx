@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import ProjectShowcase from "./components/project-showcase";
 import CalendlyEmbed from "./components/calendly-embed";
-import HeroShowcase from "./components/hero-showcase";
 import MobileCta from "./components/mobile-cta";
 
 export const metadata: Metadata = {
@@ -11,34 +10,34 @@ export const metadata: Metadata = {
 
 const heroBullets = [
   "Arrancamos por un diagnóstico, no por venderte un sistema",
-  "Automatizamos el proceso que más te ata, no un paquete igual para todos",
-  "Dejás de depender de estar vos arriba de todo",
+  "Automatizamos el proceso que más tiempo te come, no un paquete igual para todos",
+  "Ordenamos tu información para que dejes de operar a ciegas",
   "IA real en producción hace casi un año, no una promesa",
 ];
 
 const trustStats = [
-  { value: "327 hs", label: "ahorradas a 3W en 3 meses con FW Control" },
-  { value: "5 plantas", label: "frigoríficas reales monitoreadas en tiempo real, hoy" },
-  { value: "7,6M", label: "de lecturas procesadas, ~1 año en producción sin parar" },
-  { value: "96,6%", label: "de las alertas, resueltas" },
+  { value: "327 hs", label: "ahorradas a un cliente en solo 3 meses" },
+  { value: "Casi 1 año", label: "de IA real en producción, sin una caída" },
+  { value: "2 rubros", label: "distintos, resueltos con sistemas a medida" },
+  { value: "0 enlatados", label: "cada sistema sale de un diagnóstico, no de un molde" },
 ];
 
 const problemItems = [
   {
-    title: "La empresa depende de vos",
-    desc: "Si no estás, no funciona. No te podés ir de vacaciones, ni enfermarte, ni desconectar un fin de semana sin que algo se caiga o sin estar mirando el teléfono. El negocio no crece más allá de lo que controlás a mano.",
+    title: "El trabajo manual te come las horas",
+    desc: "Tareas repetitivas —cargar datos, controlar, copiar de una planilla a otra— se llevan el día de gente que deberías tener resolviendo lo que mueve el negocio. Y lo que se hace a mano, tarde o temprano, se hace mal.",
   },
   {
-    title: "Sin estar ahí, perdés el control",
-    desc: "Lo que pasa cuando no mirás, no lo ves. Cada vez que algo sale mal, alguien tiene que ir a resolverlo en persona. Una cámara que se descongela, una máquina que se para, un camión que se desvía: te enterás cuando ya es tarde.",
+    title: "Tu información vive desparramada",
+    desc: "Datos en planillas, papeles y en la cabeza de dos o tres personas. No los podés usar para decidir, y si esa persona falta, el conocimiento se va con ella. Operás a ciegas sobre tu propia operación.",
   },
   {
     title: "Te enterás tarde, y tarde cuesta plata",
-    desc: "Reaccionás cuando el daño ya está hecho. Un parámetro crítico —temperatura, tiempo, presión, stock— se va de rango y para cuando te llega el aviso ya hay merma, parada o reclamo. Y muchas veces es tu palabra contra la del cliente: no quedó registro.",
+    desc: "Reaccionás cuando el daño ya está hecho. Un proceso clave se sale de la línea y, para cuando te enterás, ya hay plata perdida, un cliente molesto o trabajo que hay que rehacer.",
   },
   {
-    title: "Tu información vive dispersa",
-    desc: "Datos en planillas, en papeles y en la cabeza de dos o tres personas clave. No los podés usar para decidir, y si esa persona falta, el conocimiento se va con ella. Operás a ciegas sobre lo que más te cuesta cuando falla.",
+    title: "No escalás sin sumar caos",
+    desc: "El negocio no crece más allá de lo que podés controlar a mano. Sumar volumen significa sumar gente, planillas y horas —no eficiencia—, y todo termina dependiendo de que alguien esté encima.",
   },
 ];
 
@@ -72,7 +71,7 @@ const differentiators = [
   },
   {
     title: "Lo resolvemos de punta a punta",
-    desc: "De la máquina en planta a la notificación en tu celular, toda la cadena bajo un mismo techo. Si algo se rompe, hay una sola puerta a la que tocar.",
+    desc: "Del dato en crudo a la acción en tu celular, toda la cadena bajo un mismo techo. Si algo se rompe, hay una sola puerta a la que tocar.",
   },
   {
     title: "A tu medida, no un template",
@@ -93,17 +92,17 @@ const differentiators = [
 ];
 
 const audienceYes = [
-  "Tu negocio pasa por algo físico —producto, planta, activos, vehículos—, no es 100% oficina",
-  "Tenés operación en varios lugares, o cosas que se mueven y hay que controlar",
-  "Hoy todo depende de que alguien esté, vaya, recorra o mire",
-  "Hay un parámetro crítico que, si se va de rango, cuesta plata: temperatura, tiempo, presión, stock, estado de máquina",
-  "Sos el dueño o el responsable, y estás preso de tener que estar encima",
+  "Sos el dueño o el responsable y estás preso de estar encima: si no estás vos, algo se cae",
+  "Tu equipo pierde horas en tareas manuales y repetitivas —cargar datos, revisar, pasar de una planilla a otra",
+  "Tu información vive en planillas y en la cabeza de dos o tres personas, no en un sistema que puedas usar",
+  "Te enterás tarde de los problemas: para cuando reaccionás, el daño ya está hecho",
+  "Querés que el negocio crezca, pero no escala más allá de lo que podés controlar vos a mano",
 ];
 
 const audienceNo = [
   "Buscás un chatbot enlatado de diez dólares que prenda y listo",
   "Querés «IA mágica» que reemplace el criterio humano por completo (no existe, y te lo vamos a decir)",
-  "Tu operación es 100% digital, sin nada físico ni distribuido que monitorear",
+  "Ya tenés todo ordenado y medido, y no sentís que se te escape nada",
   "Querés resultados sin participar del relevamiento de tu propia operación",
 ];
 
@@ -111,28 +110,28 @@ const audienceNo = [
 const futureOutcomes = [
   {
     tag: "Tiempo",
-    title: "Recuperás las horas que hoy se van en control manual",
-    before: "Hoy: gente calificada recorriendo, revisando y cargando planillas a mano.",
+    title: "Recuperás las horas que hoy se van en trabajo manual",
+    before: "Hoy: gente calificada revisando, controlando y cargando planillas a mano.",
     after: "Después: esas horas vuelven a tu equipo para lo que de verdad mueve el negocio.",
   },
   {
-    tag: "Tranquilidad",
-    title: "Dejás de enterarte tarde de lo que cuesta plata",
-    before: "Hoy: te enterás del problema cuando el daño ya está hecho, y muchas veces sin registro.",
-    after: "Después: el proceso crítico queda cubierto y con trazabilidad, sin depender de que alguien esté mirando.",
+    tag: "Claridad",
+    title: "Dejás de operar a ciegas sobre tu información",
+    before: "Hoy: los datos están desparramados y decidís por intuición o a destiempo.",
+    after: "Después: tu información ordenada en un solo lugar, lista para decidir con números.",
   },
   {
-    tag: "Libertad",
-    title: "La operación deja de depender de que estés vos",
-    before: "Hoy: si no estás vos o tu gente clave encima, algo se cae.",
-    after: "Después: el sistema sostiene lo repetitivo y vos te ocupás de hacer crecer el negocio.",
+    tag: "Escala",
+    title: "Crecés sin que todo dependa de que estés encima",
+    before: "Hoy: sumar volumen es sumar planillas, gente y horas de control.",
+    after: "Después: el sistema sostiene lo repetitivo y la operación escala sin sumar caos.",
   },
 ];
 
 const faqs = [
   {
     q: "Ya probé con tecnología una vez y fue plata tirada.",
-    a: "Lo entendemos, y por eso no te pedimos que nos creas. Lo que te proponemos lo tenemos corriendo en una operación industrial crítica hace casi un año, con resultados medidos. Demostramos, no prometemos. Y arrancamos por un solo proceso, no por reformar todo.",
+    a: "Lo entendemos, y por eso no te pedimos que nos creas. Lo que te proponemos lo tenemos corriendo en una operación real y exigente hace casi un año, con resultados medidos. Demostramos, no prometemos. Y arrancamos por un solo proceso, no por reformar todo.",
   },
   {
     q: "No tengo tiempo para meterme en esto ahora.",
@@ -140,11 +139,11 @@ const faqs = [
   },
   {
     q: "¿Y si mi gente no lo termina usando?",
-    a: "Es el miedo más común, y por eso el sistema corre solo y avisa cuando hace falta, no es otra pantalla más para que alguien vigile. En 3W lo usan 5 operarios todos los días desde el celular, hace casi un año. Va con capacitación y soporte para que tu equipo confíe en él.",
+    a: "Es el miedo más común, y por eso el sistema corre solo y avisa cuando hace falta, no es otra pantalla más para que alguien vigile. En 3W lo usan 5 personas del equipo todos los días desde el celular, hace casi un año. Va con capacitación y soporte para que tu equipo confíe en él.",
   },
   {
     q: "Son ustedes chicos, ¿y si me dejan tirado?",
-    a: "Entendible. Dos cosas: lo que te proponemos ya lleva casi un año funcionando sin parar en una operación crítica, no es un experimento con tu plata. Y toda la cadena —de la máquina en planta al aviso en tu celular— la llevamos nosotros: una sola puerta a la que tocar, con soporte, no alguien que te arma algo y desaparece.",
+    a: "Entendible. Dos cosas: lo que te proponemos ya lleva casi un año funcionando sin parar en una operación crítica, no es un experimento con tu plata. Y toda la cadena —del dato al aviso en tu celular— la llevamos nosotros: una sola puerta a la que tocar, con soporte, no alguien que te arma algo y desaparece.",
   },
   {
     q: "¿La IA me va a reemplazar a mí o a mi gente?",
@@ -152,15 +151,15 @@ const faqs = [
   },
   {
     q: "Para lo mío / mi rubro la IA no sirve.",
-    a: "Lo que automatizamos no es un rubro, es un patrón: una operación física, distribuida, que hoy depende de que alguien esté presente para que no se caiga. Si tu negocio funciona así, casi siempre hay algo para sacarte de encima. En la llamada lo vemos en concreto.",
+    a: "Lo que automatizamos no es un rubro, es un patrón: una operación que depende de que alguien esté encima, con trabajo manual que come tiempo y procesos que no terminan de escalar. Ya lo resolvimos en refrigeración industrial y en administración de propiedades —dos mundos que no se parecen en nada—. Si tu negocio funciona así, casi siempre hay algo para sacarte de encima. En la llamada lo vemos en concreto.",
   },
   {
     q: "¿Me va a frenar la operación meterme en esto?",
-    a: "No. Construimos sobre lo que ya tenés y sin parar lo que funciona. En muchos casos leemos los equipos que ya están instalados (por ejemplo, hablamos directo con PLCs industriales que ya están en planta) sin cambiar tu hardware.",
+    a: "No. Construimos sobre lo que ya tenés y sin parar lo que funciona. Nos conectamos con los sistemas y equipos que ya usás —desde una planilla o tu software de gestión hasta máquinas industriales— sin obligarte a cambiar todo.",
   },
   {
     q: "¿Esto es para empresas más grandes que la mía?",
-    a: "No. Trabajamos con empresas medianas con operación intensiva. Arrancamos por el proceso que más te libera —no por una plataforma gigante— así que la inversión entra por donde tiene retorno.",
+    a: "No. Trabajamos con empresas y equipos chicos y medianos. Arrancamos por el proceso que más te libera —no por una plataforma gigante—, así que la inversión entra por donde tiene retorno.",
   },
   {
     q: "¿Qué pasa en la llamada de 20 minutos?",
@@ -241,14 +240,14 @@ const jsonLd = {
       image: `${SITE_URL}/logo1.png`,
       email: "faustino@fwlabsllc.com",
       description:
-        "Agencia de IA y automatización para operaciones industriales. Diagnosticamos qué te está comiendo horas y plata y construimos la automatización a medida que lo resuelve.",
+        "Agencia de IA y automatización a medida. Diagnosticamos tu operación, encontramos qué te está costando tiempo y plata y construimos el sistema a medida que lo resuelve.",
       founder: { "@type": "Person", name: "Faustino Watschinger" },
       knowsAbout: [
-        "Inteligencia artificial industrial",
-        "Automatización de procesos industriales",
-        "Monitoreo remoto de plantas",
-        "Monitoreo de operaciones en tiempo real",
-        "Mantenimiento predictivo",
+        "Automatización de procesos con IA",
+        "Diagnóstico de procesos",
+        "Automatización a medida",
+        "Integración de sistemas",
+        "IA en producción",
       ],
       areaServed: [
         { "@type": "Country", name: "Argentina" },
@@ -274,7 +273,7 @@ const jsonLd = {
       "@type": "WebPage",
       "@id": `${SITE_URL}/#webpage`,
       url: SITE_URL,
-      name: "FW Labs | IA y automatización para operaciones industriales",
+      name: "FW Labs | IA y automatización a medida para tu operación",
       isPartOf: { "@id": `${SITE_URL}/#website` },
       about: { "@id": `${SITE_URL}/#organization` },
       inLanguage: "es-AR",
@@ -283,16 +282,16 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": `${SITE_URL}/#service`,
-      name: "FW Labs — IA y automatización para operaciones industriales",
-      serviceType: "Automatización de procesos industriales y monitoreo con IA",
+      name: "FW Labs — IA y automatización a medida para tu operación",
+      serviceType: "Diagnóstico y automatización de procesos a medida con IA",
       provider: { "@id": `${SITE_URL}/#organization` },
       areaServed: [
         { "@type": "Country", name: "Argentina" },
         { "@type": "Country", name: "España" },
       ],
-      audience: { "@type": "Audience", audienceType: "Empresas industriales medianas" },
+      audience: { "@type": "Audience", audienceType: "Empresas y equipos chicos y medianos" },
       description:
-        "Sistemas de IA y automatización que monitorean operaciones industriales 24/7, detectan lo que importa y avisan a tiempo, para que el negocio no dependa de la presencia física del dueño.",
+        "Automatizamos con IA el trabajo manual que consume horas y ordenamos la información de tu operación en sistemas a medida, para recuperar tiempo, plata y control. Empezando por un diagnóstico, no por un producto enlatado.",
       url: SITE_URL,
     },
     {
@@ -345,53 +344,47 @@ export default function Home() {
           <div className="pointer-events-none absolute -left-24 -top-10 h-72 w-72 rounded-full bg-blue-200/50 blur-3xl" />
           <div className="pointer-events-none absolute right-0 top-20 h-96 w-96 rounded-full bg-slate-200/40 blur-3xl" />
 
-          <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-6 pb-20 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-10 lg:pt-24">
-            {/* Left: copy */}
-            <div>
-              <span className="fw-rise inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                IA y automatización para operaciones industriales
-              </span>
+          <div className="relative mx-auto flex w-full max-w-3xl flex-col items-start px-6 pb-20 pt-16 lg:px-10 lg:pt-24">
+            <span className="fw-rise inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              IA y automatización a medida para tu operación
+            </span>
 
-              <h1
-                className="fw-rise mt-6 max-w-2xl text-4xl font-semibold leading-[1.08] tracking-tight text-surface-dark md:text-5xl lg:text-[3.4rem]"
-                style={{ animationDelay: "80ms" }}
+            <h1
+              className="fw-rise mt-6 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight text-surface-dark md:text-5xl lg:text-[3.4rem]"
+              style={{ animationDelay: "80ms" }}
+            >
+              Automatizamos con IA el trabajo que te come horas{" "}
+              <span className="text-primary">y ordenamos tu información.</span>
+            </h1>
+
+            <p className="fw-rise mt-6 max-w-2xl text-lg leading-relaxed text-muted" style={{ animationDelay: "160ms" }}>
+              Detectamos qué procesos te frenan y construimos el sistema a medida que los resuelve —con IA cuando suma,
+              siempre con tu criterio en el centro—. Empezás por un diagnóstico de cómo trabajás, no por un producto
+              enlatado. Recuperás tiempo, plata y control sobre tu operación.
+            </p>
+
+            <ul className="fw-rise mt-8 grid max-w-xl gap-x-8 gap-y-3 sm:grid-cols-2" style={{ animationDelay: "240ms" }}>
+              {heroBullets.map((bullet) => (
+                <li key={bullet} className="flex items-start gap-2.5 text-sm font-medium text-secondary">
+                  <span className="mt-0.5 flex-shrink-0 text-primary">
+                    <CheckIcon />
+                  </span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+
+            <div className="fw-rise mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center" style={{ animationDelay: "320ms" }}>
+              <a
+                href={CTA_HREF}
+                className="inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold !text-white shadow-sm transition hover:bg-blue-700"
               >
-                Tu operación no debería frenarse{" "}
-                <span className="text-primary">cuando vos no estás.</span>
-              </h1>
-
-              <p className="fw-rise mt-6 max-w-xl text-lg leading-relaxed text-muted" style={{ animationDelay: "160ms" }}>
-                Encontramos qué te está comiendo horas y plata en tu operación y construimos la automatización a medida
-                que lo resuelve. Empezando por un diagnóstico de cómo trabajás, no por un sistema enlatado — para que
-                dejes de apagar incendios y de tener que estar arriba de todo para que nada se caiga.
-              </p>
-
-              <ul className="fw-rise mt-8 grid max-w-xl gap-x-8 gap-y-3 sm:grid-cols-2" style={{ animationDelay: "240ms" }}>
-                {heroBullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-2.5 text-sm font-medium text-secondary">
-                    <span className="mt-0.5 flex-shrink-0 text-primary">
-                      <CheckIcon />
-                    </span>
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="fw-rise mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center" style={{ animationDelay: "320ms" }}>
-                <a
-                  href={CTA_HREF}
-                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-sm font-semibold !text-white shadow-sm transition hover:bg-blue-700"
-                >
-                  {CTA_LABEL}
-                  <ArrowIcon />
-                </a>
-                <p className="text-sm text-muted">20 minutos · Sin venta dura · Salís con claridad aunque no trabajemos juntos.</p>
-              </div>
+                {CTA_LABEL}
+                <ArrowIcon />
+              </a>
+              <p className="text-sm text-muted">20 minutos · Sin venta dura · Salís con claridad aunque no trabajemos juntos.</p>
             </div>
-
-            {/* Right: producto real (app de FW Control) — rota en móvil, abanico en desktop */}
-            <HeroShowcase />
           </div>
 
           {/* Trust stats band */}
@@ -412,12 +405,12 @@ export default function Home() {
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">El problema</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              Si vos no estás, algo se cae.
+              Todo lo que hacés a mano te cuesta tiempo y plata.
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
-              No es que te falte gente. Es que la gente que tenés está apagando incendios en lugar de hacer crecer el
-              negocio — y vos sos el único sistema de control que tiene la operación. Cuatro fugas que pagás todos los
-              meses sin verlas.
+              No es que tu equipo trabaje poco. Es que gasta el día en tareas repetitivas y en ordenar información
+              desparramada, en vez de en lo que hace crecer el negocio. Cuatro fugas que pagás todos los meses sin
+              verlas.
             </p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -459,7 +452,7 @@ export default function Home() {
           <div className="mx-auto w-full max-w-6xl px-6 lg:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Qué conseguís</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-snug text-surface-dark lg:text-4xl">
-              No te reemplazamos a vos ni a tu gente. Te sacamos de encima lo que te tiene atado.
+              No te reemplazamos a vos ni a tu gente. Automatizamos lo repetitivo para que se dediquen a lo que importa.
             </h2>
             <div className="mt-6 grid max-w-4xl gap-5 text-base leading-relaxed text-muted">
               <p>
@@ -469,7 +462,7 @@ export default function Home() {
               </p>
               <p>
                 No es un dashboard más ni un bot que contesta cualquier cosa. Es IA real, corriendo en producción hace
-                casi un año en una operación industrial crítica. Esto es lo que cambia en tu día a día:
+                casi un año en una operación real y exigente. Esto es lo que cambia en tu día a día:
               </p>
             </div>
 
@@ -600,6 +593,41 @@ export default function Home() {
             </p>
 
             <ProjectShowcase />
+
+            {/* Prueba de rango — caso 2 (barrio privado): distinto rubro, mismo método. Sin métricas, sin IA. */}
+            <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-slate-50">
+              <div className="grid items-center gap-2 lg:grid-cols-2 lg:gap-8">
+                <div className="p-6 lg:py-9 lg:pl-9">
+                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-primary">
+                    Otro rubro · el mismo método
+                  </span>
+                  <h3 className="mt-4 text-lg font-semibold text-surface-dark">No es solo industria.</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    La administración de un barrio privado estaba ahogada: millones de pesos en deuda de propietarios y
+                    nada con qué demostrar cuánto le debían para poder reclamarlo, Excels por todos lados y el día entero
+                    contestando mensajes sin control de nada. Le construimos un sistema propio que centralizó toda la
+                    caja en un solo lugar —cobros a propietarios, pagos a proveedores, el cálculo automático de cada
+                    impuesto (IIBB, IVA, débito y crédito) contra su plan de cuentas, y el padrón— en una app que abren
+                    con doble clic.{" "}
+                    <strong className="text-secondary">Otro rubro, el mismo método:</strong> miramos cómo trabajaban,
+                    encontramos el desorden que les comía el día y les construimos el sistema que lo ordena.
+                  </p>
+                </div>
+                <div className="p-6 lg:py-9 lg:pr-9">
+                  <Image
+                    src="/barrio-cobros.png"
+                    alt="Sistema de cobros y pagos a medida que FW Labs construyó para la administración de un barrio privado, con cálculo de impuestos en vivo"
+                    width={1800}
+                    height={1016}
+                    className="w-full rounded-xl border border-border shadow-[0_10px_30px_rgba(15,23,42,0.12)]"
+                    sizes="(min-width: 1024px) 540px, 100vw"
+                  />
+                  <p className="mt-3 text-xs text-muted">
+                    El sistema de caja que le construimos: carga de cobros con cálculo de impuestos en vivo.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -635,9 +663,9 @@ export default function Home() {
               La llamada es gratis. Sin venta dura, sin compromiso.
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-blue-50/90">
-              No te pedimos que nos creas. Te pedimos 20 minutos. Miramos tu operación real, te decimos dónde estás
-              dependiendo de estar encima y si te podemos ayudar. No te demostramos nada antes de entender cómo
-              trabajás — y si no es para vos, te lo decimos en el minuto 10.
+              No te pedimos que nos creas. Te pedimos 20 minutos. Miramos tu operación real, te decimos dónde se te va el
+              tiempo y la plata y si te podemos ayudar. No te demostramos nada antes de entender cómo trabajás — y si no
+              es para vos, te lo decimos en el minuto 10.
             </p>
 
             <div className="mt-10 grid gap-4 md:grid-cols-3">
@@ -708,8 +736,9 @@ export default function Home() {
               Agendá tu llamada de 20 minutos.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-400">
-              Elegí un horario abajo. Miramos tu operación real, dónde dependés de estar encima y si te podemos ayudar. Te
-              vas con claridad, trabajemos juntos o no. Sin formularios eternos · Hablás directo con quien construye.
+              Elegí un horario abajo. Miramos tu operación real, qué se puede automatizar y ordenar y si te podemos
+              ayudar. Te vas con claridad, trabajemos juntos o no. Sin formularios eternos · Hablás directo con quien
+              construye.
             </p>
 
             <div className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-white shadow-[0_8px_40px_rgba(0,0,0,0.35)]">

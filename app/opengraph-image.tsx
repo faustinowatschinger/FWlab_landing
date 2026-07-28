@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "FW Labs — IA y automatización para operaciones industriales";
+export const alt = "FW Labs — IA y automatización a medida para tu operación";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -54,7 +54,7 @@ export default function OpengraphImage() {
               marginBottom: "26px",
             }}
           >
-            IA Y AUTOMATIZACIÓN PARA OPERACIONES INDUSTRIALES
+            IA Y AUTOMATIZACIÓN A MEDIDA PARA TU OPERACIÓN
           </div>
           <div
             style={{
@@ -66,7 +66,7 @@ export default function OpengraphImage() {
               maxWidth: "1010px",
             }}
           >
-            Tu operación no debería frenarse cuando vos no estás.
+            Automatizamos con IA el trabajo que te come horas.
           </div>
         </div>
 
