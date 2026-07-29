@@ -11,5 +11,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
+    {
+      url: `${SITE_URL}/mapa-operativo`,
+      lastModified: new Date("2026-07-29"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
   ];
 }
