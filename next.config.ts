@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Conserva los enlaces de revisión previos al nombre confirmado del cliente.
+        source: "/clientes/proyecto-inmobiliario",
+        destination: "/clientes/altaterra",
+        permanent: false,
+      },
+      {
         // La página /diagnostico se eliminó (el agendado vive en la home, #agendar).
         // Redirect permanente para no dejar en 404 links viejos ya publicados.
         source: "/diagnostico",

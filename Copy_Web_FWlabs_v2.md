@@ -127,7 +127,7 @@ No es un dashboard más ni un bot que contesta cualquier cosa. Es IA real, corri
 
 > **Sincronizado con el código 2026-07-15.** Esta tabla refleja `methodSteps` en `app/page.tsx`. Si cambia uno, cambiar el otro.
 >
-> **Nota obsoleta (2026-06-29), anulada por Faustino el 2026-07-15:** decía que el orden era reunión → implementar el sistema → recién ahí diagnosticar procesos, y que "el diagnóstico NO es un producto pago previo a la construcción". **Eso ya no rige.** El embudo vigente vende el diagnóstico primero (pago, USD 300, acreditable al build) y construye después, sobre el plan. Fuente única: [`business/memory/client-workflow.md`](../../business/memory/client-workflow.md). El código de la landing ya venía alineado con el modelo vigente desde el 2026-07-10; el desalineado era este documento.
+> **Nota obsoleta (2026-06-29), anulada por Faustino el 2026-07-15:** decía que el orden era reunión → implementar el sistema → recién ahí diagnosticar procesos, y que "el diagnóstico NO es un producto pago previo a la construcción". **Eso ya no rige.** El embudo vigente vende el diagnóstico primero (pago, USD 300, acreditable al build) y construye después, sobre el plan. Fuente única: [`ventas/memory/client-workflow.md`](../../ventas/memory/client-workflow.md). El código de la landing ya venía alineado con el modelo vigente desde el 2026-07-10; el desalineado era este documento.
 >
 > **Lo que sí sigue vigente de esa nota:** la web vende **solo la reunión**. No anuncia el precio del diagnóstico — eso se vende en la reunión de encaje. Por eso los pasos 2-4 describen el método sin mencionar los USD 300.
 

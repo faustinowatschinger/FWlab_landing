@@ -84,8 +84,8 @@ export default function HeroShowcase() {
 
       {/* Floating proof card (≥ sm) */}
       <div className="absolute -bottom-4 -right-2 z-20 hidden rounded-xl border border-border bg-white/95 px-3.5 py-2.5 shadow-[0_8px_24px_rgba(15,23,42,0.12)] backdrop-blur-sm sm:block">
-        <p className="text-2xl font-black leading-none tracking-tight text-surface-dark">327 hs</p>
-        <p className="mt-1 text-[11px] text-muted">ahorradas en 3 meses</p>
+        <p className="text-2xl font-black leading-none tracking-tight text-surface-dark">Software</p>
+        <p className="mt-1 text-[11px] text-muted">para operaciones reales</p>
       </div>
     </div>
   );

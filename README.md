@@ -1,3 +1,9 @@
+## Propuesta corporativa — revisión local
+
+La propuesta local incorpora los textos escritos por Faustino el 2026-10-06 en el inicio y los casos de 3W y Altaterra. Los clientes entran primero por el trabajo concreto, con accesos internos; su historia queda después. Las capturas de Stock y Altaterra se amplían en una vista local y enlazan al archivo completo. El contacto del inicio usa un formulario propio que envía sólo al mail configurado mediante `SMTP_*` y `CONTACT_*`; no integra CRM, tracking ni Calendly. Ver [REDESIGN_REVIEW.md](REDESIGN_REVIEW.md) para fuentes, pendientes actuales y pruebas. No publicar sin aprobación explícita.
+
+Para revisar: `npm run dev -- --port 3100`. Para probar el build: `npm run build` y `npm run start -- --port 3101`.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

@@ -1,10 +1,14 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 
-export const alt = "FW Labs — IA y automatización a medida para tu operación";
+export const alt = "FW Labs — Soluciones tecnológicas";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpengraphImage() {
+export default async function OpengraphImage() {
+  const logo = await readFile(path.join(process.cwd(), "public/logo-fw-white.png"));
+  const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
   return new ImageResponse(
     (
       <div
@@ -19,28 +23,8 @@ export default function OpengraphImage() {
           fontFamily: "sans-serif",
         }}
       >
-        {/* Brand */}
-        <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "68px",
-              height: "68px",
-              borderRadius: "18px",
-              background: "#2563eb",
-              color: "#ffffff",
-              fontSize: "30px",
-              fontWeight: 800,
-            }}
-          >
-            FW
-          </div>
-          <div style={{ display: "flex", color: "#ffffff", fontSize: "32px", fontWeight: 700 }}>
-            FW Labs
-          </div>
-        </div>
+        {/* Original brand asset, preserved without recreating the mark. */}
+        <img src={logoSrc} alt="FW Labs" width={224} height={80} />
 
         {/* Headline */}
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -48,13 +32,13 @@ export default function OpengraphImage() {
             style={{
               display: "flex",
               color: "#60a5fa",
-              fontSize: "26px",
+              fontSize: "21px",
               fontWeight: 600,
-              letterSpacing: "4px",
+              letterSpacing: "2px",
               marginBottom: "26px",
             }}
           >
-            IA Y AUTOMATIZACIÓN A MEDIDA PARA TU OPERACIÓN
+            SOFTWARE / INTEGRACIONES / AUTOMATIZACIÓN / IA
           </div>
           <div
             style={{
@@ -66,7 +50,7 @@ export default function OpengraphImage() {
               maxWidth: "1010px",
             }}
           >
-            Automatizamos con IA el trabajo que te come horas.
+            Tecnología que resuelve problemas reales
           </div>
         </div>
 
@@ -76,7 +60,7 @@ export default function OpengraphImage() {
             fwlabsllc.com
           </div>
           <div style={{ display: "flex", color: "#cbd5e1", fontSize: "24px" }}>
-            {"327 hs ahorradas a 3W en 3 meses"}
+            {"Soluciones tecnológicas para empresas"}
           </div>
         </div>
       </div>
