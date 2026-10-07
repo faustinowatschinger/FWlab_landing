@@ -2,6 +2,7 @@
 
 import { FormEvent, useRef, useState } from "react";
 import styles from "../corporate.module.css";
+import { ArrowIcon } from "./icons";
 
 type Status = { kind: "idle" | "success" | "error"; message: string };
 
@@ -56,7 +57,7 @@ export function ContactForm() {
         <label className={styles.contactFormMessage}>¿Qué te gustaría resolver?<textarea name="message" required minLength={10} maxLength={3000} rows={5} /></label>
         <label className={styles.contactFormHoneypot} aria-hidden="true">No completar<input name="website" tabIndex={-1} autoComplete="off" /></label>
       </div>
-      <button className={styles.contactFormSubmit} type="submit" disabled={sending}>{sending ? "Enviando…" : "Enviar mensaje"}<span aria-hidden="true">↗</span></button>
+      <button className={styles.contactFormSubmit} type="submit" disabled={sending}>{sending ? "Enviando…" : "Enviar mensaje"}<ArrowIcon className={styles.arrowIcon} /></button>
       <p id="contact-form-note" className={styles.contactFormNote}>El mensaje llega directamente a Faustino.</p>
       <p className={`${styles.contactFormStatus} ${status.kind === "success" ? styles.contactFormSuccess : styles.contactFormError}`} role="status" aria-live="polite">{status.message}</p>
     </form>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 import type { StoryImage } from "../clientes/clients";
 import styles from "../corporate.module.css";
+import { ArrowIcon } from "./icons";
 
 export function MediaViewer({ media }: { media: StoryImage }) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -38,13 +39,13 @@ export function MediaViewer({ media }: { media: StoryImage }) {
   return <>
     <button type="button" className={styles.mediaViewerTrigger} onClick={show} aria-haspopup="dialog" aria-label={`Ampliar captura: ${media.alt}`}>
       <Image src={media.src} alt={media.alt} width={media.width} height={media.height} sizes="(max-width: 740px) 100vw, 580px" />
-      <span className={styles.mediaViewerPrompt} aria-hidden="true">Ampliar ↗</span>
+      <span className={styles.mediaViewerPrompt} aria-hidden="true">Ampliar <ArrowIcon className={styles.inlineArrowIcon} /></span>
     </button>
     <dialog ref={dialog} className={styles.mediaDialog} aria-labelledby={titleId} onClose={() => setOpen(false)} onCancel={(event) => { event.preventDefault(); close(); }} onKeyDown={trapFocus} onClick={(event) => { if (event.target === event.currentTarget) close(); }}>
       <div className={styles.mediaDialogInner}>
         <div className={styles.mediaDialogTop}><p id={titleId}>Captura ampliada</p><button type="button" onClick={close} autoFocus={open}>Cerrar <span aria-hidden="true">×</span></button></div>
         <div className={styles.mediaDialogCanvas} tabIndex={0} aria-label="Captura ampliada. En móvil, deslizá horizontalmente para recorrerla."><Image src={media.src} alt={media.alt} width={media.width} height={media.height} sizes="(max-width: 740px) 1100px, 1200px" /></div>
-        <a href={media.src} target="_blank" rel="noopener noreferrer">Abrir archivo completo <span aria-hidden="true">↗</span><span className={styles.srOnly}> (otra pestaña)</span></a>
+        <a href={media.src} target="_blank" rel="noopener noreferrer">Abrir archivo completo <ArrowIcon className={styles.inlineArrowIcon} /><span className={styles.srOnly}> (otra pestaña)</span></a>
       </div>
     </dialog>
   </>;

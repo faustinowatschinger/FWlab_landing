@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Arrow, ImagePending, SiteFooter, SiteHeader } from "../../components/corporate-chrome";
+import { Arrow, BackArrow, ImagePending, SiteFooter, SiteHeader } from "../../components/corporate-chrome";
 import { MediaViewer } from "../../components/media-viewer";
 import { PhotoCarousel } from "../../components/photo-carousel";
 import styles from "../../corporate.module.css";
@@ -10,7 +10,7 @@ import { clients, clientPath, type StoryImage } from "../clients";
 function StoryGallery({ images }: { images: StoryImage[] }) {
   return <div className={`${styles.storyGallery} ${images.length > 1 ? styles.galleryMany : ""}`} style={images.length > 1 ? { gridTemplateColumns: `repeat(${images.length}, minmax(0, 1fr))` } : undefined}>{images.map((media) => <figure key={media.src}>
     <MediaViewer media={media} />
-    <figcaption>{media.caption}<a href={media.src} target="_blank" rel="noopener noreferrer">Abrir archivo completo <span aria-hidden="true">↗</span><span className={styles.srOnly}> (otra pestaña)</span></a></figcaption>
+    <figcaption>{media.caption}<a href={media.src} target="_blank" rel="noopener noreferrer">Abrir archivo completo <Arrow /><span className={styles.srOnly}> (otra pestaña)</span></a></figcaption>
   </figure>)}</div>;
 }
 
@@ -43,7 +43,7 @@ export default async function ClientPage({ params }: Props) {
       <SiteHeader />
       <main id="contenido">
         <section className={`${styles.container} ${styles.clientIntro}`} aria-labelledby="client-title">
-          <Link href="/#proyectos" className={styles.backLink}>← Volver a las empresas</Link>
+          <Link href="/#proyectos" className={styles.backLink}><BackArrow />Volver a las empresas</Link>
           <p className={styles.eyebrow}>{client.name} / {client.sector}</p>
           <h1 id="client-title">{client.headline.split("\n").map((line, i) => <span key={line}>{i > 0 ? <br /> : null}{line}</span>)}</h1>
           <p className={styles.clientLead}>{client.context}</p>

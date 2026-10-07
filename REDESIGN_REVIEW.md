@@ -302,3 +302,13 @@ Pedido y OK explícitos de Faustino. El formulario de contacto ahora usa un pane
 Verificación T-397: build de 12 páginas, TypeScript, ESLint dirigido y `git diff --check` con exit 0. UI, foco, teléfono, errores de servidor, reset de éxito y ausencia de overflow comprobados en 1440/390/320 px; Axe: cero infracciones. El endpoint rechaza teléfono ausente, corto, sin dígitos, demasiado largo o que no sea texto; honeypot sigue sin SMTP. Correo de loopback confirma la línea de teléfono. Revisión independiente: `T-397-verificacion-formulario-telefono.md`, APROBADO. Sin publicación ni correo externo en esta iteración.
 
 Chequeo global obligatorio: exit 1 por las mismas 20 fallas ajenas anteriores. No se tocaron tareas, harness ni sesión ajenos. Log: `/tmp/fw-t397-workspace-verify.log`.
+
+## Seguimiento: íconos SVG y Control legible en iPhone — 2026-10-07
+
+Pedido y OK explícitos de Faustino. Las flechas de los enlaces, CTAs, formulario, galerías y controles del carrusel corporativo dejan de ser caracteres de texto y ahora son SVG con el mismo trazo en todas las plataformas, incluido iPhone. Los textos accesibles no cambian. No se modificaron las rutas ajenas de guía, caso o mapa operativo.
+
+El carrusel de 3W Control conserva las capturas completas, controles, teclado y desplazamiento nativo. Sólo en móvil su ancho se ajustó a 250 px para que una captura vertical entre mejor en pantalla; las fotos del carrusel de trabajo con 3W no cambian. Verificación propia: build de 12 páginas, TypeScript, ESLint dirigido y `git diff --check` con exit 0; controles y SVG comprobados en 1440/430/390/320 px, sin overflow. Navegación general: 12 pruebas responsive; Axe: 13 corridas sin infracciones. Visual móvil: `/tmp/fw-t398-preview/control-movil-ajustado-390.png`. Sin publicar.
+
+Revisión independiente: `T-398-verificacion-iconos-control-movil.md`, APROBADO. Confirma SVG visibles y sin flechas de texto, Control a 250×543 px en 390, controles/límites/teclado y cero overflow o errores JavaScript. Sin publicación.
+
+Chequeo global obligatorio: exit 1 por 21 fallas de estado y harness de otros proyectos; no menciona esta web ni T-398. No se tocaron esas tareas, harness ni sesión ajena. Log: `/tmp/fw-t398-workspace-verify.log`.

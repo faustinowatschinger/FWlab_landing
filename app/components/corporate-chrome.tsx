@@ -1,9 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../corporate.module.css";
+import { ArrowIcon } from "./icons";
 
 export function Arrow() {
-  return <span aria-hidden="true">↗</span>;
+  return <ArrowIcon className={styles.arrowIcon} />;
+}
+
+export function BackArrow() {
+  return <ArrowIcon direction="left" className={styles.arrowIcon} />;
 }
 
 function BrandLogo({ priority = false }: { priority?: boolean }) {
