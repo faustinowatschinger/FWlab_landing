@@ -37,10 +37,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
 
 export function SiteFooter({ home = false }: { home?: boolean }) {
   return (
-    <>
-      <footer className={styles.footer}><div className={styles.container}><Link href={home ? "#inicio" : "/"} aria-label="FW Labs — volver al inicio"><BrandLogo /></Link><p>Software, criterio y personas.</p><span>FW Labs LLC · {new Date().getFullYear()}</span></div></footer>
-      <div className={styles.reviewNote}>Propuesta de revisión · Pendiente de tu revisión y aprobación antes de publicar.</div>
-    </>
+    <footer className={styles.footer}><div className={styles.container}><Link href={home ? "#inicio" : "/"} aria-label="FW Labs — volver al inicio"><BrandLogo /></Link><p>Software, criterio y personas.</p><span>FW Labs LLC · {new Date().getFullYear()}</span></div></footer>
   );
 }
 
