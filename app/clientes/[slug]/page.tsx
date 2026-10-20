@@ -69,7 +69,7 @@ export default async function ClientPage({ params }: Props) {
               <div className={styles.workVisual}>{work.images ? work.carousel ? <PhotoCarousel images={work.images} label={`Capturas de ${work.title}`} title={`${work.title}, en pantalla.`} itemLabel="Captura" /> : <StoryGallery images={work.images} /> : <ImagePending title={work.imageTitle} detail={work.imageDetail} />}{work.imagePending ? <p className={styles.editorialPending}>{work.imagePending}</p> : null}</div>
             </article>
           ))}
-          {client.note ? <p className={styles.clientNote}>{client.note}</p> : null}
+          {client.note ? <p className={styles.clientNote}>{client.note}{client.noteLink ? <> <a className={styles.clientNoteLink} href={client.noteLink.href} target="_blank" rel="noopener">{client.noteLink.label}<Arrow /></a></> : null}</p> : null}
         </section>
 
         <section className={`${styles.container} ${styles.clientHistory}`} aria-labelledby={`relationship-${client.slug}`}>

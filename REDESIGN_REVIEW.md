@@ -1,12 +1,12 @@
 # Propuesta corporativa FW Labs — revisión local
 
-Actualización: 2026-10-06. Textos escritos por Faustino e integrados con autorización explícita. **No publicada.**
+Actualización: 2026-10-20 (sección Productos con Fawel). Textos escritos por Faustino e integrados con autorización explícita. **No publicada.**
 
 Estado actual: las ocho partes están incorporadas en inicio y páginas de clientes. Las secciones de seguimiento fechadas más abajo conservan la historia de las iteraciones y sus pendientes anteriores; el estado actual y el último seguimiento los reemplazan.
 
 ## Alcance
 
-Home de cinco bloques: presentación, empresas con las que trabajamos, método, founder y contacto. Cada cliente tiene una página estática propia con contexto y trabajos. Inter, fondo claro cálido, azul #20409a y logo original de FW Labs. La copia transparente `public/logo-fw-original.png` es idéntica al archivo de marca; el encuadre CSS sólo retira el espacio vacío de su lienzo cuadrado. La tarjeta social usa el archivo original blanco ya existente. CSS encapsulado en `app/corporate.module.css`; las rutas anteriores conservan su diseño. Home renderizada en servidor, salvo el formulario de contacto cliente pequeño; sin librerías nuevas, embeds ni seguimiento.
+Home de seis bloques: presentación, empresas con las que trabajamos, productos propios, método, founder y contacto. Cada cliente tiene una página estática propia con contexto y trabajos. Inter, fondo claro cálido, azul #20409a y logo original de FW Labs. La copia transparente `public/logo-fw-original.png` es idéntica al archivo de marca; el encuadre CSS sólo retira el espacio vacío de su lienzo cuadrado. La tarjeta social usa el archivo original blanco ya existente. CSS encapsulado en `app/corporate.module.css`; las rutas anteriores conservan su diseño. Home renderizada en servidor, salvo el formulario de contacto cliente pequeño; sin librerías nuevas, embeds ni seguimiento.
 
 Contacto: mail directo y formulario propio hacia el destinatario configurado por `CONTACT_TO_EMAIL`, con respuesta al mail del visitante mediante `Reply-To`. Pide nombre, mail, teléfono y mensaje, dejando empresa como opcional. Calendly ya no aparece en el contacto de inicio. El endpoint valida datos, incluye honeypot y un límite básico en memoria; no usa CRM, tracking ni proveedores de formularios. Se conserva `/#agendar`, usado por otras rutas. La entrega SMTP se verificó contra un receptor local aislado, sin correo externo de prueba.
 
@@ -18,7 +18,7 @@ Metadata, JSON-LD y tarjetas sociales actualizados al posicionamiento corporativ
 - 3W: `../../memory/decisiones.md` §13 registra permiso público para el caso con nombre, capturas y demostraciones. §1 retira la métrica de bandera. El pedido actual confirma sistemas de gestión y operación implementados; se omiten cantidad de plantas, continuidad, ahorros y resultados cuantificados.
 - Imágenes: Faustino entregó fotos propias y capturas de ambos clientes, autorizó incorporarlas a la propuesta local y después pidió expresamente verlas completas, sin censura. Todas están incorporadas; no se modificaron originales. No autoriza publicar la propuesta.
 - Altaterra: nombre/logo autorizados por pedido explícito; agente en prueba en un solo loteo y ampliación pendiente. El relato actual de Faustino confirma que la relación empezó con una llamada en frío y después una reunión presencial; reemplaza el resumen anterior centrado en la demostración. Sin métricas ni agenda automática.
-- PLC/HMI: `../plc-agentico/CLAUDE.md` registra desarrollo offline, sin aprobación de planta; `../plc-producto/CLAUDE.md` y el pedido actual mantienen el gate de prueba aislada. Aparece sólo como desarrollo, sin enlace o página de producto y sin oferta de contratación.
+- PLC/HMI (Fawel): desde el 2026-10-20, por pedido explícito de Faustino, aparece con nombre en la sección Productos, con su logo y enlaces a `https://fawel.ai` (sitio y lista de espera). Reemplaza el gate anterior de "sin enlace hasta la primera prueba aislada exitosa", que la bitácora de fawel.ai todavía no registra (29-09 y 14-10 parciales, 17-10 falló). Se muestra sólo como **En desarrollo, sin fecha ni precio**, sin oferta de contratación, sin página propia y sin métricas: el estado y la bitácora viven en fawel.ai, no se copian acá.
 - Founder y relación3W: relato directo de Faustino del2026-10-06. Tiene18años, comenzó programación a los14, aprendió de familia/pueblo;3Wempresa familiar, primeraweb, propuestaControl a su padre y cerca de un año de desarrollo. No se inventan lugar, nombres de familiares, resultados ni tamaño de equipo.
 
 ## Pendientes actuales
@@ -82,7 +82,7 @@ Pedido de Faustino: organizar por relación con cliente; tarjetas cortas en inic
 - `/clientes/3w`: contexto de empresa y relación, trabajos Control/Stock/web institucional, necesidad/solución/imagen/estado por trabajo. Control y Stock con la precisión de estados ya verificada; web institucional respaldada en `../3W/Proyectos/3W-Landing/README.md`, `CLAUDE.md` y `../3W/ECOSISTEMA-3W.md` §3 (sólo funciones, sin cifras).
 - `/clientes/proyecto-inmobiliario`: caso breve con contexto, origen en demostración y trabajo agente/panel. Origen respaldado en `../../memory/decisiones.md` §35. Nombre real permanece anónimo en copy, URL y metadata salvo confirmación pública expresa; se pidió ese dato por consulta asíncrona.
 - **Origen de 3W pendiente:** no se encontró una narración verificable del primer encargo ni de su orden. Se muestra una nota de revisión solicitando esos datos; el texto sólo describe cómo la relación abarca distintos sistemas, sin inventar fechas ni una secuencia.
-- **Productos reservado:** no se crea sección, enlace o página de producto ahora. El generador PLC/HMI no aparece como oferta ni como trabajo implementado. Su futura página sigue pendiente de la primera prueba aislada exitosa.
+- **Productos reservado** *(histórico: reemplazado el 2026-10-20, ver "Seguimiento: Fawel en Productos")*: no se crea sección, enlace o página de producto ahora. El generador PLC/HMI no aparece como oferta ni como trabajo implementado. Su futura página sigue pendiente de la primera prueba aislada exitosa.
 - Componentes compartidos server-side para header/footer, logo y placeholders. Navegación conserva `#proyectos`, `#caso` y `#agendar`, y permite volver desde cada cliente al inicio y contacto. Páginas y metadata se generan estáticamente; slugs inexistentes deben dar 404. Sitemap incluye ambos casos (anónimo con slug neutro) y conserva las rutas previas, con su pendiente de publicación ya indicado.
 
 Verificación del seguimiento empresas primero:
@@ -312,3 +312,16 @@ El carrusel de 3W Control conserva las capturas completas, controles, teclado y 
 Revisión independiente: `T-398-verificacion-iconos-control-movil.md`, APROBADO. Confirma SVG visibles y sin flechas de texto, Control a 250×543 px en 390, controles/límites/teclado y cero overflow o errores JavaScript. Sin publicación.
 
 Chequeo global obligatorio: exit 1 por 21 fallas de estado y harness de otros proyectos; no menciona esta web ni T-398. No se tocaron esas tareas, harness ni sesión ajena. Log: `/tmp/fw-t398-workspace-verify.log`.
+
+## Seguimiento: Fawel en Productos — 2026-10-20
+
+Pedido y OK explícitos de Faustino: cargar Fawel (`https://fawel.ai`) como proyecto a partir de su propia página. Fawel es producto de FW Labs, no cliente, así que entra en una sección nueva **02 / Productos** entre Empresas y Cómo trabajamos; las secciones siguientes pasan a 03-05 y el menú suma "Productos" (`/#productos`, también desde las páginas de cliente).
+
+- Datos en `app/productos/products.ts` (mismo patrón que `app/clientes/clients.ts`; la carpeta no tiene `page.tsx`, así que no crea ruta y `/productos` sigue en 404). Una fila por producto: logo a la izquierda, texto a la derecha; en móvil, apilado.
+- Texto tomado sólo de lo que afirma fawel.ai: genera programas de PLC y HMI desde los datos de la planta, el integrador revisa, prueba offline y firma, arranca con Delta (WPLSoft y DIAScreen), en desarrollo, sin fecha ni precio. No se copian métricas (84 casos) ni la bitácora: cambian cada semana y la fuente es fawel.ai.
+- Enlaces externos en pestaña nueva con `rel="noopener"` (sin `noreferrer`, para que fawel.ai vea de dónde llega la visita): "Conocé Fawel" y "Sumate a la lista de espera" (`/#lista`).
+- Logo: `public/productos/fawel-logo.png`, bajado de fawel.ai sin editar (1802×469, SHA-256 `17443458fa8dec09aaa8630c3e82f04d121c1240b8a5da763d3406919df948ab`).
+- Nota del caso 3W: ahora nombra a Fawel y enlaza a fawel.ai (`noteLink` opcional en `ClientStory`). Sigue diciendo que no está disponible para contratar.
+- Menú: con cuatro ítems no entraba en una línea por debajo de 375 px (se partían "Cómo trabajamos" y "Quién está detrás"). Debajo de 375 px pasa a 10 px y sin cortes de línea; desde 375 px no cambia.
+
+Verificación propia, sin verificador independiente (el agente `verificador` no estaba cargado en esta sesión): `npx tsc --noEmit`, ESLint de los cinco archivos TS/TSX tocados, `git diff --check` y `npm run build` (12 páginas) con exit 0. Playwright contra el build en `localhost:3101`: 1440/768/390/320 px sin overflow horizontal ni errores JS, logo cargado, menú en una línea de 320 a 390 px, "Productos" desde `/clientes/3w` llega a `/#productos` con la sección a 105 px del borde (debajo del header), nota 3W con enlace correcto, `/productos` 404. Sin commit, push ni deploy.

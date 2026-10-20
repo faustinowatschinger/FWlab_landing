@@ -62,3 +62,10 @@
 /* Control is a tall mobile capture: keep more of it visible on an iPhone. */
 .captureCarousel{margin-inline:auto}
 @media(max-width:740px){.workVisual .captureCarousel{width:250px;max-width:100%}.captureCarousel .carouselHeading{gap:9px}.captureCarousel .carouselControls button{width:38px;height:38px}.captureCarousel .carouselControls{gap:6px}.captureCarousel .carouselCounter{min-width:58px}.captureCarousel .carouselSlide figcaption{font-size:10px}}
+
+/* Own products: one row per product, logo stage beside its copy; the product site is the source of truth. */
+.productsSection{padding-top:30px;padding-bottom:80px}.productCard{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch}.productCard .clientLogoStage{height:auto;min-height:265px}.productCard .clientLogo{max-width:260px}.productCard .clientCardCopy{padding-top:0}.productTopline{display:flex;align-items:baseline;justify-content:space-between;gap:20px}.productCard h3{font-size:30px}.productLinks{margin-top:auto}.productLinks .clientCardLink+.clientCardLink{border-top:0}.clientNoteLink{display:inline-flex;align-items:center;gap:6px;font-weight:500;color:var(--ink);border-bottom:1px solid var(--line)}.clientNoteLink .arrowIcon{width:16px;height:16px}
+@media(max-width:1000px){.productCard{gap:25px}}
+@media(max-width:740px){.productsSection{padding-top:10px;padding-bottom:50px}.productCard{grid-template-columns:1fr;gap:0}.productCard .clientLogoStage{min-height:200px}.productCard .clientLogo{height:110px;max-width:220px}.productCard .clientCardCopy{padding-top:20px}.productCard h3{font-size:28px}}
+/* Four nav items only fit on one line below 375px with a smaller type size. */
+@media(max-width:374px){.nav{font-size:10px;gap:2px}.nav a{white-space:nowrap}}

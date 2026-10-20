@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Arrow, SiteHeader, SiteFooter } from "./components/corporate-chrome";
 import { ContactForm } from "./components/contact-form";
 import { clients, clientPath } from "./clientes/clients";
+import { products } from "./productos/products";
 import styles from "./corporate.module.css";
 
 export const metadata: Metadata = {
@@ -80,10 +81,28 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="productos" className={`${styles.container} ${styles.productsSection}`} aria-labelledby="products-title">
+          <div className={styles.sectionHeading}>
+            <div><p className={styles.eyebrow}>02 / Productos</p><h2 id="products-title">Productos propios.</h2></div>
+            <p>Nacen del trabajo con empresas, cuando una solución puede servirle a más de una.</p>
+          </div>
+          {products.map((product) => <article className={styles.productCard} key={product.slug}>
+            <a className={styles.clientLogoStage} href={product.url} target="_blank" rel="noopener" tabIndex={-1} aria-hidden="true"><Image className={styles.clientLogo} src={product.logo.src} alt="" width={product.logo.width} height={product.logo.height} sizes="(max-width: 740px) 75vw, 340px" /></a>
+            <div className={styles.clientCardCopy}>
+              <div className={styles.productTopline}><h3>{product.name}</h3><span className={styles.status}>{product.status}</span></div>
+              <p className={styles.clientSector}>{product.category}</p>
+              <p className={styles.clientSummary}>{product.summary}</p>
+              <div className={styles.productLinks}>
+                {product.links.map((link) => <a className={styles.clientCardLink} href={link.href} target="_blank" rel="noopener" key={link.href}>{link.label} <Arrow /></a>)}
+              </div>
+            </div>
+          </article>)}
+        </section>
+
         <section id="forma-de-trabajar" className={styles.method} aria-labelledby="method-title">
           <div className={styles.container}>
             <div className={styles.sectionHeading}>
-              <div><p className={styles.eyebrow}>02 / Cómo trabajamos</p><h2 id="method-title">Primero, entender.<br />Después, construir.</h2></div>
+              <div><p className={styles.eyebrow}>03 / Cómo trabajamos</p><h2 id="method-title">Primero, entender.<br />Después, construir.</h2></div>
               <p>Empezamos por entender la operación. Después, cada mejora se trabaja en conjunto hasta que sirve en el día a día.</p>
             </div>
             <ol className={styles.steps}>{steps.map(([title, text], index) => <li key={title}><span className={styles.stepNumber}>0{index + 1}</span><h3>{title}</h3><p>{text}</p></li>)}</ol>
@@ -94,7 +113,7 @@ export default function Home() {
         <section id="faustino" className={`${styles.container} ${styles.founder}`} aria-labelledby="founder-title">
           <figure className={styles.founderPhoto}><Image src="/media/faustino-completa.webp" alt="Faustino en su escritorio, con el mate y las pantallas de trabajo detrás." width={1200} height={1600} sizes="(max-width: 740px) 100vw, 480px" /><figcaption>Faustino / detrás de FW Labs</figcaption></figure>
           <div className={styles.founderCopy}>
-            <p className={styles.eyebrow}>03 / Quién está detrás</p>
+            <p className={styles.eyebrow}>04 / Quién está detrás</p>
             <h2 id="founder-title">Soy Faustino.<br />Fundador de FW Labs.</h2>
             <p>Desarrollo software y automatizaciones para empresas. Primero entiendo cómo trabajan, elegimos qué conviene resolver y sigo cerca después de implementar.</p>
             <p>Tengo 18 años y empecé a aprender programación a los 14, con la idea de algún día dedicarme a desarrollar software. Después de cuatro años de probar y aprender, hoy estoy trabajando en eso que quería.</p>
@@ -107,7 +126,7 @@ export default function Home() {
         <section id="contacto" className={styles.contact} aria-labelledby="contact-title">
           <span id="agendar" className={styles.legacyAnchor} aria-hidden="true" />
           <div className={`${styles.container} ${styles.contactInner}`}>
-            <div><p className={styles.eyebrow}>04 / Contacto</p><h2 id="contact-title">Contame qué te<br />gustaría resolver.</h2><p>Si hay un proceso que te complica el trabajo o un problema que querés resolver con tecnología, podemos conversar. Contame qué pasa y cómo lo están resolviendo hoy.</p><p>La idea es trabajar juntos: entender la operación, elegir qué conviene mejorar y acompañar después de implementar.</p></div>
+            <div><p className={styles.eyebrow}>05 / Contacto</p><h2 id="contact-title">Contame qué te<br />gustaría resolver.</h2><p>Si hay un proceso que te complica el trabajo o un problema que querés resolver con tecnología, podemos conversar. Contame qué pasa y cómo lo están resolviendo hoy.</p><p>La idea es trabajar juntos: entender la operación, elegir qué conviene mejorar y acompañar después de implementar.</p></div>
             <div className={styles.contactOptions}>
               <a className={styles.emailLink} href={`mailto:${EMAIL}`}>{EMAIL}<Arrow /></a>
               <p>O dejame tus datos y te respondo directamente.</p>

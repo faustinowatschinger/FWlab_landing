@@ -25,6 +25,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
           <Link href={home ? "#inicio" : "/"} aria-label="FW Labs — inicio"><BrandLogo priority /></Link>
           <nav aria-label="Navegación principal" className={styles.nav}>
             <Link href={`${prefix}#proyectos`}>Empresas</Link>
+            <Link href={`${prefix}#productos`}>Productos</Link>
             <Link href={`${prefix}#forma-de-trabajar`}>Cómo trabajamos</Link>
             <Link href={`${prefix}#faustino`}>Quién está detrás</Link>
           </nav>

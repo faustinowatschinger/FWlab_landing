@@ -1,4 +1,6 @@
-export type StoryImage = { src: string; width: number; height: number; alt: string; caption: string };
+import { FAWEL_URL } from "../productos/products";
+
+export type StoryImage ={ src: string; width: number; height: number; alt: string; caption: string };
 
 export type ClientWork = {
   title: string;
@@ -27,6 +29,7 @@ export type ClientStory = {
   photos?: StoryImage[];
   works: ClientWork[];
   note?: string;
+  noteLink?: { href: string; label: string };
 };
 
 // Names and supplied logos explicitly requested by Faustino for this review.
@@ -95,7 +98,8 @@ export const clients: ClientStory[] = [
         images: [{ src: "/media/3w-web-completa.webp", width: 2000, height: 1028, alt: "Web institucional de 3W: navegación, presentación y accesos de contacto.", caption: "Captura completa de la web institucional." }],
       },
     ],
-    note: "Estos trabajos son independientes del proyecto de generación de programas PLC y pantallas HMI con IA, que sigue en desarrollo y todavía no está disponible para contratar.",
+    note: "Estos trabajos son independientes de Fawel, el producto de FW Labs que genera programas de PLC y pantallas HMI con IA. Sigue en desarrollo y todavía no está disponible para contratar.",
+    noteLink: { href: FAWEL_URL, label: "Conocé Fawel" },
   },
   {
     slug: "altaterra",
