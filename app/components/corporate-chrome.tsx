@@ -23,13 +23,14 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <Link href={home ? "#inicio" : "/"} aria-label="FW Labs — inicio"><BrandLogo priority /></Link>
-          <nav aria-label="Navegación principal" className={styles.nav}>
+          {/* En la home no hay menú: la landing de venta tiene una sola acción. Las páginas de caso lo conservan. */}
+          {!home && <nav aria-label="Navegación principal" className={styles.nav}>
             <Link href={`${prefix}#que-hace`}>Qué hace</Link>
             <Link href={`${prefix}#prueba`}>Altaterra</Link>
             <Link href={`${prefix}#como-funciona`}>Cómo funciona</Link>
             <Link href={`${prefix}#preguntas`}>Preguntas</Link>
-          </nav>
-          <Link href={`${prefix}#contacto`} className={styles.headerContact}>Diagnóstico gratis <Arrow /></Link>
+          </nav>}
+          <Link href="/chat" className={`${styles.button} ${styles.headerButton}`}>Hablá con Fawel <Arrow /></Link>
         </div>
       </header>
     </>

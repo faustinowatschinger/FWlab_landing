@@ -9,13 +9,15 @@ const inter = Inter({
 
 const SITE_URL = "https://fwlabsllc.com";
 
-const description = "Fawel, de FW Labs: un agente de IA que atiende a tus clientes por WhatsApp a cualquier hora y le pasa a tu equipo solo los que vienen en serio. Diagnóstico gratis.";
+const description = "Fawel, de FW Labs: un agente de IA que atiende a tus clientes por WhatsApp, Instagram o tu web, a cualquier hora, le pasa a tu equipo solo los que vienen en serio y te deja ver qué pasó con cada consulta.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: "Fawel | Ninguna consulta sin respuesta · FW Labs", template: "%s | FW Labs" },
   description,
   applicationName: "FW Labs",
+  // Verificación del dominio en Meta Business (15-11): tiene que estar en el <head> servido, no inyectada por JS.
+  verification: { other: { "facebook-domain-verification": "j4hfxjkuf2iem94qghpj3k39qx2cmw" } },
   authors: [{ name: "Faustino Watschinger", url: SITE_URL }],
   creator: "FW Labs",
   publisher: "FW Labs",

@@ -102,3 +102,33 @@
 .faqList details p{font-size:14px;line-height:1.8;color:var(--muted);max-width:760px;padding-bottom:24px}
 @media(max-width:1000px){.painList{grid-template-columns:1fr 1fr}.stepsFour{grid-template-columns:1fr 1fr}}
 @media(max-width:740px){.pains{padding-top:50px;padding-bottom:40px}.painList{grid-template-columns:1fr}.painList li{padding:18px 0 20px}.stepsFour{grid-template-columns:1fr}.proofStats{grid-template-columns:1fr}.proofStats>div,.proofStats>div+div{padding:22px 0;border-left:0}.proofStats>div+div{border-top:1px solid var(--line)}.proofNote{margin-bottom:32px!important}.fit{padding-top:45px}.fitGrid{grid-template-columns:1fr;gap:30px}.fitGrid li{font-size:14px}.faq{padding-top:40px}.faqList summary{font-size:16px;padding:18px 0}}
+
+/* Landing de venta (2026-11-15): costo de no hacer nada, prueba con capturas, autoeficacia y una sola acción. */
+.headerButton{padding:12px 18px;gap:16px}
+.heroMicro{font-size:13px!important;line-height:1.6;color:var(--muted);margin-top:16px!important;max-width:460px}
+.cost{padding:70px 0 80px;border-top:1px solid var(--line)}
+.costGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.costGrid p{font-size:15px;line-height:1.75;color:var(--muted);border-top:2px solid #b4472f;padding-top:20px}
+.costGrid strong{display:block;color:var(--ink);font-weight:600;font-size:17px;letter-spacing:-.02em;margin-bottom:8px}
+.costBridge{margin-top:56px!important;font-size:clamp(24px,2.6vw,34px);letter-spacing:-.035em;line-height:1.25;max-width:900px}
+.costBridge span{color:var(--blue)}
+.proofMedia{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:28px;align-items:start}
+.proofMedia figure{margin:0;min-width:0}
+.proofMedia figcaption{font-size:11px;line-height:1.6;color:var(--muted);margin-top:10px}
+.proofLink{display:flex;width:fit-content;gap:14px;align-items:center;font-size:13px;font-weight:500;margin-top:30px;padding:12px 0;border-bottom:1px solid var(--line)}
+.proofLink .arrowIcon{width:18px;height:18px}
+.relief{padding-top:80px;padding-bottom:30px}
+.reliefList h3::before{background:var(--blue)}
+.sectionCta{margin-top:40px}
+.buttonLight{background:#fff;color:var(--blue)}
+.site .buttonLight:hover,.site .contact .buttonLight:hover{background:#dce5fa;color:var(--blue)}
+.contact .buttonLight{font-size:14px;font-weight:600;padding:17px 24px}
+.contactAlt{margin-top:32px;border-top:1px solid #7b90c6;padding-top:6px}
+.contactAlt summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;font-size:13px;color:#e0e5f3}
+.contactAlt summary::-webkit-details-marker{display:none}
+.contactAlt summary::after{content:"+";font-size:20px;line-height:1;color:#fff}
+.contactAlt[open] summary::after{content:"–"}
+.contactAlt summary:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.contactAltNote{font-size:12px;color:#d2dcfa;margin-top:13px!important}
+@media(max-width:1000px){.costGrid{gap:25px}}
+@media(max-width:740px){.headerInner{height:auto;min-height:76px}.headerButton{padding:11px 14px;gap:10px;font-size:12px}.heroMicro{font-size:12px!important}.cost{padding:45px 0 50px}.costGrid{grid-template-columns:1fr;gap:24px}.costGrid p{font-size:14px}.costBridge{margin-top:36px!important;font-size:23px}.proofMedia{grid-template-columns:1fr;gap:24px}.relief{padding-top:45px;padding-bottom:20px}.sectionCta{margin-top:28px}.contact .buttonLight{width:100%;justify-content:space-between}}
