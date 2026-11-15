@@ -1,0 +1,242 @@
+/* Chat a pantalla completa. Paleta de app/corporate.module.css: azul #20409a, tinta #172c45, papel #faf9f6. */
+.pantalla {
+  --azul: #20409a;
+  --azul-hover: #152d77;
+  --tinta: #172c45;
+  --gris: #516174;
+  --papel: #faf9f6;
+  --linea: #d8dce2;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: calc(12px + env(safe-area-inset-top)) 18px 12px;
+  background: var(--azul);
+  color: #fff;
+  flex-shrink: 0;
+}
+.logo {
+  width: 56px;
+  height: auto;
+  padding-right: 14px;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+.quien {
+  min-width: 0;
+}
+.nombre {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.estado {
+  margin: 1px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #d2dcfa;
+}
+.punto {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #6ee7a8;
+}
+
+.lista {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 16px 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+}
+.aviso {
+  align-self: center;
+  margin: 0 0 6px;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--gris);
+  text-align: center;
+}
+.agente,
+.usuario {
+  max-width: 84%;
+  padding: 10px 13px;
+  border-radius: 14px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  animation: entra 0.18s ease-out;
+}
+.agente {
+  align-self: flex-start;
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-bottom-left-radius: 4px;
+}
+.usuario {
+  align-self: flex-end;
+  background: var(--azul);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+@keyframes entra {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+.escribiendo {
+  display: flex;
+  gap: 4px;
+  padding: 14px 15px;
+}
+.escribiendo span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #9aa6b8;
+  animation: salta 1s infinite ease-in-out;
+}
+.escribiendo span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.escribiendo span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes salta {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+.agenda {
+  position: relative;
+  display: grid;
+  gap: 3px;
+  margin-top: 6px;
+  padding: 15px 52px 15px 16px;
+  background: var(--azul);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  animation: entra 0.25s ease-out;
+}
+.agenda:hover {
+  background: var(--azul-hover);
+}
+.agenda:focus-visible {
+  outline: 3px solid #b67c28;
+  outline-offset: 3px;
+}
+.agendaTitulo {
+  font-size: 15px;
+  font-weight: 600;
+}
+.agendaDetalle {
+  font-size: 12px;
+  color: #d2dcfa;
+}
+.agendaFlecha {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+}
+
+.error {
+  align-self: center;
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #b4472f;
+  text-align: center;
+}
+
+.barra {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--linea);
+  background: #fff;
+  flex-shrink: 0;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+}
+.campo {
+  flex: 1;
+  min-height: 44px;
+  max-height: 120px;
+  resize: none;
+  field-sizing: content;
+  padding: 11px 14px;
+  border: 1px solid var(--linea);
+  border-radius: 22px;
+  background: var(--papel);
+  color: var(--tinta);
+  /* 16px evita el zoom automático de iOS al enfocar */
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.campo:focus {
+  outline: none;
+  border-color: var(--azul);
+}
+.enviar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--azul);
+  color: #fff;
+  cursor: pointer;
+}
+.enviar:disabled {
+  background: #b9c8ee;
+  cursor: default;
+}
+.enviar:focus-visible {
+  outline: 3px solid #b67c28;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agente,
+  .usuario,
+  .agenda,
+  .escribiendo span {
+    animation: none;
+  }
+}
