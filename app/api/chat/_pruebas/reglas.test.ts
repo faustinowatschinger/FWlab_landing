@@ -53,13 +53,21 @@ for (const [id, malo, bueno] of casos) {
 // Filtro por código
 const base: Salida = {
   mensaje: "x", estado: "califica", mostrar_agenda: true, rubro: "x", negocio: null, nombre: null,
-  whatsapp: null, consultas_por_dia: 9, ticket: "x", ticket_alto: "si", dolor: null,
+  whatsapp: null, consultas_por_dia: 9, ticket: "x", ticket_monto: null, ticket_moneda: null, ticket_alto: "si", dolor: null,
 };
 espero("no deja calificar con 9 por día", normalizar(base, "conversando").salida.estado === "conversando");
 espero("no muestra agenda con 9 por día", normalizar(base, "conversando").salida.mostrar_agenda === false);
 espero("no deja calificar con ticket bajo", normalizar({ ...base, consultas_por_dia: 50, ticket_alto: "no" }, "conversando").salida.estado === "conversando");
 espero("deja calificar con 10 por día y ticket alto", normalizar({ ...base, consultas_por_dia: 10 }, "conversando").salida.estado === "califica");
 espero("no muestra agenda si no califica", normalizar({ ...base, estado: "conversando", consultas_por_dia: 30 }, "conversando").salida.mostrar_agenda === false);
+espero("piso: USD 300 no califica aunque el modelo diga alto", normalizar({ ...base, consultas_por_dia: 20, ticket_monto: 300, ticket_moneda: "USD" }, "conversando").salida.estado === "conversando");
+espero("piso: USD 500 califica", normalizar({ ...base, consultas_por_dia: 20, ticket_monto: 500, ticket_moneda: "USD" }, "conversando").salida.estado === "califica");
+espero("piso: USD 1.200 califica aunque el modelo dude", normalizar({ ...base, consultas_por_dia: 20, ticket_monto: 1200, ticket_moneda: "USD", ticket_alto: "no_se" }, "conversando").salida.estado === "califica");
+espero("piso: pesos sin tipo de cambio queda al juicio del modelo", (delete process.env.CHAT_ARS_POR_USD, normalizar({ ...base, consultas_por_dia: 20, ticket_monto: 400000, ticket_moneda: "ARS" }, "conversando").salida.estado === "califica"));
+process.env.CHAT_ARS_POR_USD = "1000";
+espero("piso: 400 mil pesos a 1000 no califica", normalizar({ ...base, consultas_por_dia: 20, ticket_monto: 400000, ticket_moneda: "ARS" }, "conversando").salida.estado === "conversando");
+espero("piso: 900 mil pesos a 1000 califica", normalizar({ ...base, consultas_por_dia: 20, ticket_monto: 900000, ticket_moneda: "ARS" }, "conversando").salida.estado === "califica");
+delete process.env.CHAT_ARS_POR_USD;
 espero("whatsapp válido", normalizarWhatsapp("+54 9 299 512-3456") === "+5492995123456");
 espero("whatsapp inválido", normalizarWhatsapp("1234") === null);
 

@@ -10,6 +10,31 @@
  */
 
 export const MIN_CONSULTAS_POR_DIA = 10;
+/** Piso de "ticket alto": una venta típica de USD 500 o más (Faustino, 15-11). */
+export const MIN_TICKET_USD = 500;
+/** Pesos por dólar para pasar un ticket en ARS. Sin esta variable, un ticket en pesos queda a juicio del modelo. */
+const ARS_POR_USD = () => {
+  const v = Number(process.env.CHAT_ARS_POR_USD);
+  return Number.isFinite(v) && v > 0 ? v : null;
+};
+
+/** Ticket en dólares, o null si no se puede calcular (sin monto, otra moneda o sin tipo de cambio). */
+export function ticketEnUsd(s: Pick<Salida, "ticket_monto" | "ticket_moneda">): number | null {
+  if (s.ticket_monto == null || !(s.ticket_monto > 0)) return null;
+  if (s.ticket_moneda === "USD") return s.ticket_monto;
+  if (s.ticket_moneda === "ARS") {
+    const tc = ARS_POR_USD();
+    return tc ? s.ticket_monto / tc : null;
+  }
+  return null;
+}
+
+/** Ticket alto según el código: con monto calculable manda el piso; si no, el juicio del modelo. */
+export function ticketAlto(s: Salida): boolean {
+  const usd = ticketEnUsd(s);
+  if (usd !== null) return usd >= MIN_TICKET_USD;
+  return s.ticket_alto === "si";
+}
 
 export type Estado = "conversando" | "califica" | "no_califica" | "pendiente" | "derivar";
 
@@ -23,6 +48,8 @@ export type Salida = {
   whatsapp: string | null;
   consultas_por_dia: number | null;
   ticket: string | null;
+  ticket_monto: number | null;
+  ticket_moneda: "USD" | "ARS" | "otra" | null;
   ticket_alto: "si" | "no" | "no_se" | null;
   dolor: string | null;
 };
@@ -107,7 +134,7 @@ export function normalizarWhatsapp(valor: string | null): string | null {
 
 /**
  * Lo que el código no le deja decidir al modelo:
- * - "califica" exige 10 o más consultas por día y ticket alto.
+ * - "califica" exige 10 o más consultas por día y ticket alto (USD 500 o más cuando hay monto).
  * - La agenda se muestra solo con estado "califica".
  * - Un estado final no vuelve atrás a "conversando".
  * - El WhatsApp se valida acá.
@@ -121,8 +148,10 @@ export function normalizar(s: Salida, previo: Estado): { salida: Salida; rechazo
 
   if (salida.estado === "califica" && previo !== "califica") {
     const volumen = salida.consultas_por_dia ?? 0;
-    if (volumen < MIN_CONSULTAS_POR_DIA || salida.ticket_alto !== "si") {
-      rechazo = `No pasa el filtro: consultas por día = ${salida.consultas_por_dia ?? "sin dato"} (mínimo ${MIN_CONSULTAS_POR_DIA}), ticket alto = ${salida.ticket_alto ?? "sin dato"}.`;
+    if (volumen < MIN_CONSULTAS_POR_DIA || !ticketAlto(salida)) {
+      const usd = ticketEnUsd(salida);
+      const ticket = usd !== null ? `USD ${Math.round(usd)} (mínimo USD ${MIN_TICKET_USD})` : `ticket alto = ${salida.ticket_alto ?? "sin dato"}`;
+      rechazo = `No pasa el filtro: consultas por día = ${salida.consultas_por_dia ?? "sin dato"} (mínimo ${MIN_CONSULTAS_POR_DIA}), ${ticket}.`;
       salida.estado = "conversando";
     }
   }

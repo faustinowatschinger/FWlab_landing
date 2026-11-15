@@ -22,6 +22,7 @@ import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 
 import { cargarLead } from "./crm";
+import { avisarFaustino } from "./aviso";
 import { responder } from "./motor";
 import { firmar, hayClave, leer, nueva } from "./sesion";
 
@@ -166,6 +167,11 @@ export async function POST(req: NextRequest) {
     const r = await cargarLead(sesion, s);
     // Si está apagado se marca igual: no tiene sentido reintentar en cada turno.
     sesion.enCrm = r !== "error";
+  }
+
+  // Mail a Faustino la primera vez que deja WhatsApp: el agente promete que él le escribe.
+  if (s.whatsapp && !sesion.avisado) {
+    sesion.avisado = (await avisarFaustino(sesion, s)) !== "error";
   }
 
   return json({

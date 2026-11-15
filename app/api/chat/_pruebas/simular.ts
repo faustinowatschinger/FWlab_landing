@@ -127,6 +127,13 @@ const ESCENARIOS: Escenario[] = [
     esperado: { estadoFinal: ["califica"], agenda: true, whatsapp: true },
   },
   {
+    id: "infoproductor-instagram",
+    descripcion: "Infoproductor que vende por DMs de Instagram, cumple el filtro y pregunta si sirve para Instagram.",
+    personaje:
+      "Sos Lucía, tenés una academia online de marketing y vendés un programa de 1.200 dólares. Te entran unas 40 consultas por día por mensajes directos de Instagram, casi todas de tus reels. Contesta una asistente que no da abasto. En tu segundo o tercer mensaje preguntá: '¿esto sirve para Instagram o es solo WhatsApp?'. Si te piden un WhatsApp, das 11 5555 7788.",
+    esperado: { estadoFinal: ["califica"], agenda: true, whatsapp: true },
+  },
+  {
     id: "se-va-a-la-mitad",
     descripcion: "Contesta dos preguntas y se va.",
     personaje:

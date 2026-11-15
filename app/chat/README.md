@@ -42,6 +42,8 @@ app/api/chat/_pruebas/   simulador de leads y prueba de las guardas.
 | `NEXT_PUBLIC_CALENDLY_URL` | `https://calendly.com/fwlabs/llamada-gratuita` | Link del botón. Se le agrega `name` y `utm_source=fawel-chat` |
 | `NEXT_PUBLIC_META_PIXEL_ID` | `2300484020732999` | ID del píxel (es público: va en el HTML) |
 | `CHAT_CRM_ACTIVO` | apagado | `1` para cargar los leads en FW Central. Con cualquier otro valor no escribe nada |
+| `CHAT_ARS_POR_USD` | vacío | pesos por dólar para pasar a USD un ticket dicho en pesos. Sin valor, un ticket en pesos queda a juicio del modelo |
+| `SMTP_*`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` | los de `/api/contact` | mail a Faustino la primera vez que un lead deja WhatsApp (`aviso.ts`). Sin SMTP queda en el log |
 | `FW_CENTRAL_API_TOKEN` | — | Token con alcance `crm` y escritura (el de la landing) |
 | `FW_CENTRAL_URL` | `https://panel.fwlabsllc.com` | |
 | `CHAT_MAX_MENSAJES` | 16 | Mensajes del usuario por conversación |
@@ -94,3 +96,12 @@ OPENAI_API_KEY=... CHAT_PROMPT_PRECIO="..." \
 El simulador corre el mismo motor y prompt que la ruta, de a una conversación, con los
 estímulos clave sembrados. Sale con 1 si algún escenario falla. Leé las conversaciones,
 no solo el resumen: un rojo puede ser falso positivo y un verde puede no haber ejercitado nada.
+
+
+## Decisiones de Faustino (15-11)
+
+- **Piso de ticket: USD 500.** El modelo anota `ticket_monto` y `ticket_moneda` tal cual; `reglas.ts` hace la cuenta y no deja calificar por debajo, diga lo que diga el modelo. Sin monto, otra moneda o pesos sin `CHAT_ARS_POR_USD`, decide el juicio del modelo.
+- **Umbral de volumen: 10 consultas por día** (§123).
+- **Aviso por mail** a Faustino la primera vez que un lead deja su WhatsApp, con el estado en el asunto (`aviso.ts`).
+- Quedan `noindex`, los `utm_*`/`v` en el píxel y el CRM, y el estado `pendiente`.
+- Fawel atiende en cualquier canal y para cualquier rubro (§125): el prompt no habla solo de WhatsApp.
