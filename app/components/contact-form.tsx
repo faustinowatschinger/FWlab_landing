@@ -47,14 +47,14 @@ export function ContactForm() {
     <form ref={formRef} className={styles.contactForm} onSubmit={submit} aria-describedby="contact-form-note">
       <div className={styles.contactFormHeading}>
         <p className={styles.contactFormEyebrow}>Escribime directo</p>
-        <p>Con estos datos puedo entender por dónde empezar y responderte mejor.</p>
+        <p>Con esto ya puedo ver si Fawel tiene sentido para tu negocio.</p>
       </div>
       <div className={styles.contactFormFields}>
         <label>Nombre<input name="name" autoComplete="name" required maxLength={120} placeholder="Tu nombre" /></label>
         <label>Empresa <span>(opcional)</span><input name="company" autoComplete="organization" maxLength={160} /></label>
         <label>Mail<input name="email" type="email" autoComplete="email" required maxLength={254} placeholder="nombre@empresa.com" /></label>
         <label>Teléfono<input name="phone" type="tel" autoComplete="tel" inputMode="tel" required maxLength={40} placeholder="Tu número con característica" /></label>
-        <label className={styles.contactFormMessage}>¿Qué te gustaría resolver?<textarea name="message" required minLength={10} maxLength={3000} rows={5} /></label>
+        <label className={styles.contactFormMessage}>¿Cuántas consultas te llegan por día y quién las contesta hoy?<textarea name="message" required minLength={10} maxLength={3000} rows={5} /></label>
         <label className={styles.contactFormHoneypot} aria-hidden="true">No completar<input name="website" tabIndex={-1} autoComplete="off" /></label>
       </div>
       <button className={styles.contactFormSubmit} type="submit" disabled={sending}>{sending ? "Enviando…" : "Enviar mensaje"}<ArrowIcon className={styles.arrowIcon} /></button>

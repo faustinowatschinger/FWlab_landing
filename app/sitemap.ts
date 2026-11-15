@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { clients, clientPath } from "./clientes/clients";
 
 const SITE_URL = "https://fwlabsllc.com";
-const LAST_MODIFIED = new Date("2026-10-05");
+const LAST_MODIFIED = new Date("2026-11-13");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

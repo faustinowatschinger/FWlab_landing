@@ -24,12 +24,12 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
         <div className={styles.headerInner}>
           <Link href={home ? "#inicio" : "/"} aria-label="FW Labs — inicio"><BrandLogo priority /></Link>
           <nav aria-label="Navegación principal" className={styles.nav}>
-            <Link href={`${prefix}#proyectos`}>Empresas</Link>
-            <Link href={`${prefix}#productos`}>Productos</Link>
-            <Link href={`${prefix}#forma-de-trabajar`}>Cómo trabajamos</Link>
-            <Link href={`${prefix}#faustino`}>Quién está detrás</Link>
+            <Link href={`${prefix}#que-hace`}>Qué hace</Link>
+            <Link href={`${prefix}#prueba`}>Altaterra</Link>
+            <Link href={`${prefix}#como-funciona`}>Cómo funciona</Link>
+            <Link href={`${prefix}#preguntas`}>Preguntas</Link>
           </nav>
-          <Link href={`${prefix}#contacto`} className={styles.headerContact}>Conversemos <Arrow /></Link>
+          <Link href={`${prefix}#contacto`} className={styles.headerContact}>Diagnóstico gratis <Arrow /></Link>
         </div>
       </header>
     </>
@@ -38,7 +38,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
 
 export function SiteFooter({ home = false }: { home?: boolean }) {
   return (
-    <footer className={styles.footer}><div className={styles.container}><Link href={home ? "#inicio" : "/"} aria-label="FW Labs — volver al inicio"><BrandLogo /></Link><p>Software, criterio y personas.</p><span>FW Labs LLC · {new Date().getFullYear()}</span></div></footer>
+    <footer className={styles.footer}><div className={styles.container}><Link href={home ? "#inicio" : "/"} aria-label="FW Labs — volver al inicio"><BrandLogo /></Link><p>Fawel: ninguna consulta sin respuesta.</p><span>FW Labs LLC · {new Date().getFullYear()}</span></div></footer>
   );
 }
 

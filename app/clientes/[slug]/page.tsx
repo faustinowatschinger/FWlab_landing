@@ -43,7 +43,7 @@ export default async function ClientPage({ params }: Props) {
       <SiteHeader />
       <main id="contenido">
         <section className={`${styles.container} ${styles.clientIntro}`} aria-labelledby="client-title">
-          <Link href="/#proyectos" className={styles.backLink}><BackArrow />Volver a las empresas</Link>
+          <Link href="/#prueba" className={styles.backLink}><BackArrow />Volver al inicio</Link>
           <p className={styles.eyebrow}>{client.name} / {client.sector}</p>
           <h1 id="client-title">{client.headline.split("\n").map((line, i) => <span key={line}>{i > 0 ? <br /> : null}{line}</span>)}</h1>
           <p className={styles.clientLead}>{client.context}</p>
@@ -82,7 +82,7 @@ export default async function ClientPage({ params }: Props) {
             {client.photos ? <PhotoCarousel images={client.photos} /> : null}
           </div>
         </section>
-        <section className={styles.clientNext} aria-labelledby="next-title"><div className={styles.container}><div><p className={styles.eyebrow}>Sigamos conversando</p><h2 id="next-title">¿Qué necesita tu empresa?</h2></div><Link className={styles.button} href="/#contacto">Contame en qué estás trabajando <Arrow /></Link></div></section>
+        <section className={styles.clientNext} aria-labelledby="next-title"><div className={styles.container}><div><p className={styles.eyebrow}>Diagnóstico gratis</p><h2 id="next-title">¿Te quedan consultas sin contestar?</h2></div><Link className={styles.button} href="/#contacto">Pedí el diagnóstico gratis <Arrow /></Link></div></section>
       </main>
       <SiteFooter />
     </div>

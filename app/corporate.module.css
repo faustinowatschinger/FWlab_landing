@@ -69,3 +69,36 @@
 @media(max-width:740px){.productsSection{padding-top:10px;padding-bottom:50px}.productCard{grid-template-columns:1fr;gap:0}.productCard .clientLogoStage{min-height:200px}.productCard .clientLogo{height:110px;max-width:220px}.productCard .clientCardCopy{padding-top:20px}.productCard h3{font-size:28px}}
 /* Four nav items only fit on one line below 375px with a smaller type size. */
 @media(max-width:374px){.nav{font-size:10px;gap:2px}.nav a{white-space:nowrap}}
+
+/* Fawel (2026-11-13): problema, prueba, para quién y preguntas. */
+.pains{padding-top:88px;padding-bottom:80px}
+.painList{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px}
+.painList li{border-top:1px solid var(--line);padding:22px 0 28px}
+.painList h3{font-size:21px;letter-spacing:-.03em}
+.painList h3::before{content:"";display:block;width:22px;height:2px;background:#b4472f;margin-bottom:16px}
+.painList p{font-size:14px;line-height:1.75;color:var(--muted);margin-top:10px!important}
+.stepsFour{grid-template-columns:repeat(4,1fr)}
+.proofStats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.proofStats>div{display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:12px;padding:28px 28px 30px 0}
+.proofStats>div+div{padding-left:28px;border-left:1px solid var(--line)}
+.proofStats dd{margin:0;white-space:nowrap;font-size:clamp(40px,4.4vw,60px);font-weight:500;letter-spacing:-.06em;line-height:1;color:var(--blue)}
+.proofStats dt{font-size:14px;line-height:1.6;color:var(--muted);max-width:260px}
+.proofNote{font-size:11px;color:var(--muted);margin:14px 0 48px!important}
+.fit{padding-top:80px;padding-bottom:40px}
+.fitGrid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.fitGrid>div{border-top:2px solid var(--blue);padding-top:22px}
+.fitGrid>.fitNo{border-top-color:#b4472f}
+.fitGrid h3{font-size:22px;letter-spacing:-.03em}
+.fitGrid ul{margin:16px 0 0;padding:0;list-style:none}
+.fitGrid li{font-size:15px;line-height:1.6;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line)}
+.faq{padding-top:60px;padding-bottom:40px}
+.faqList{border-top:1px solid var(--line)}
+.faqList details{border-bottom:1px solid var(--line)}
+.faqList summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font-size:19px;letter-spacing:-.02em}
+.faqList summary::-webkit-details-marker{display:none}
+.faqList summary::after{content:"+";font-size:24px;color:var(--blue);line-height:1}
+.faqList details[open] summary::after{content:"–"}
+.faqList summary:focus-visible{outline:3px solid #b67c28;outline-offset:4px}
+.faqList details p{font-size:14px;line-height:1.8;color:var(--muted);max-width:760px;padding-bottom:24px}
+@media(max-width:1000px){.painList{grid-template-columns:1fr 1fr}.stepsFour{grid-template-columns:1fr 1fr}}
+@media(max-width:740px){.pains{padding-top:50px;padding-bottom:40px}.painList{grid-template-columns:1fr}.painList li{padding:18px 0 20px}.stepsFour{grid-template-columns:1fr}.proofStats{grid-template-columns:1fr}.proofStats>div,.proofStats>div+div{padding:22px 0;border-left:0}.proofStats>div+div{border-top:1px solid var(--line)}.proofNote{margin-bottom:32px!important}.fit{padding-top:45px}.fitGrid{grid-template-columns:1fr;gap:30px}.fitGrid li{font-size:14px}.faq{padding-top:40px}.faqList summary{font-size:16px;padding:18px 0}}

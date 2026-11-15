@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-export const alt = "FW Labs — Soluciones tecnológicas";
+export const alt = "Fawel, de FW Labs — Ninguna consulta sin respuesta";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -38,7 +38,7 @@ export default async function OpengraphImage() {
               marginBottom: "26px",
             }}
           >
-            SOFTWARE / INTEGRACIONES / AUTOMATIZACIÓN / IA
+            FAWEL / AGENTES DE IA DE ATENCIÓN AL CLIENTE
           </div>
           <div
             style={{
@@ -50,7 +50,7 @@ export default async function OpengraphImage() {
               maxWidth: "1010px",
             }}
           >
-            Tecnología que resuelve problemas reales
+            Ninguna consulta sin respuesta
           </div>
         </div>
 
@@ -60,7 +60,7 @@ export default async function OpengraphImage() {
             fwlabsllc.com
           </div>
           <div style={{ display: "flex", color: "#cbd5e1", fontSize: "24px" }}>
-            {"Soluciones tecnológicas para empresas"}
+            {"Diagnóstico gratis"}
           </div>
         </div>
       </div>

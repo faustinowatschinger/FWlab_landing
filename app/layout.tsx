@@ -9,19 +9,19 @@ const inter = Inter({
 
 const SITE_URL = "https://fwlabsllc.com";
 
-const description = "Software y automatizaciones con IA a medida para resolver problemas reales. Soy Faustino, fundador de FW Labs. Conocé mi trabajo con 3W y Altaterra.";
+const description = "Fawel, de FW Labs: un agente de IA que atiende a tus clientes por WhatsApp a cualquier hora y le pasa a tu equipo solo los que vienen en serio. Diagnóstico gratis.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "FW Labs | Soluciones tecnológicas", template: "%s | FW Labs" },
+  title: { default: "Fawel | Ninguna consulta sin respuesta · FW Labs", template: "%s | FW Labs" },
   description,
   applicationName: "FW Labs",
   authors: [{ name: "Faustino Watschinger", url: SITE_URL }],
   creator: "FW Labs",
   publisher: "FW Labs",
   category: "technology",
-  openGraph: { type: "website", locale: "es_AR", url: SITE_URL, siteName: "FW Labs", title: "FW Labs | Soluciones tecnológicas", description },
-  twitter: { card: "summary_large_image", title: "FW Labs | Soluciones tecnológicas", description },
+  openGraph: { type: "website", locale: "es_AR", url: SITE_URL, siteName: "FW Labs", title: "Fawel | Ninguna consulta sin respuesta · FW Labs", description },
+  twitter: { card: "summary_large_image", title: "Fawel | Ninguna consulta sin respuesta · FW Labs", description },
   robots: { index: true, follow: true },
   icons: { icon: "/logo2.png", shortcut: "/logo2.png", apple: "/logo2.png" },
 };

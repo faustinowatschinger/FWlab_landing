@@ -1,5 +1,3 @@
-import { FAWEL_URL } from "../productos/products";
-
 export type StoryImage ={ src: string; width: number; height: number; alt: string; caption: string };
 
 export type ClientWork = {
@@ -38,7 +36,7 @@ export const clients: ClientStory[] = [
     slug: "3w",
     name: "3W",
     sector: "Refrigeración industrial y atmósfera controlada",
-    summary: "Trabajo con ellos como socio tecnológico: mantengo y amplío 3W Control, renovamos la gestión interna con 3W Stock y desarrollé su web. Cada trabajo surgió de una necesidad concreta de la operación.",
+    summary: "Desarrollé 3W Control, la app con la que siguen sus plantas frigoríficas desde el teléfono, y su sistema de gestión interna. No es Fawel: muestra que lo que construyo funciona en una operación real.",
     logo: { src: "/clientes/logo-3w.webp", width: 960, height: 250 },
     headline: "Una relación que empezó en casa.\nY creció con cada desarrollo.",
     description: "El trabajo con 3W: monitoreo industrial, gestión interna y web institucional, con un alcance y estado propio para cada sistema.",
@@ -98,17 +96,16 @@ export const clients: ClientStory[] = [
         images: [{ src: "/media/3w-web-completa.webp", width: 2000, height: 1028, alt: "Web institucional de 3W: navegación, presentación y accesos de contacto.", caption: "Captura completa de la web institucional." }],
       },
     ],
-    note: "Estos trabajos son independientes de Fawel, el producto de FW Labs que genera programas de PLC y pantallas HMI con IA. Sigue en desarrollo y todavía no está disponible para contratar.",
-    noteLink: { href: FAWEL_URL, label: "Conocé Fawel" },
+    note: "Estos sistemas son de 3W y no son Fawel. Muestran cómo trabajo dentro de una operación real.",
   },
   {
     slug: "altaterra",
     name: "Altaterra",
     sector: "Comercialización de loteos",
-    summary: "Desarrollé un agente de WhatsApp que atiende consultas y deriva al equipo humano cuando identifica un interés concreto. Está en prueba en un solo loteo, antes de evaluar su ampliación.",
+    summary: "Fawel atiende las consultas de su loteo por WhatsApp, a cualquier hora, y le pasa al equipo los que muestran un interés concreto, con aviso.",
     logo: { src: "/clientes/logo-altaterra.png", width: 300, height: 183 },
     headline: "Consultas de un loteo.\nUna conversación que continúa.",
-    description: "Agente de WhatsApp y panel para acompañar la atención comercial de un loteo. En fase de prueba, con coordinación humana de las visitas.",
+    description: "Fawel en Altaterra: agente de WhatsApp y panel para atender las consultas de un loteo, con el equipo coordinando las visitas.",
     context: "Altaterra es una empresa inmobiliaria que comercializa loteos en pozo y terminados. El trabajo actual se concentra en la atención de consultas por WhatsApp de un solo loteo.",
     relationship: [
       "La relación empezó con una llamada en frío. Aunque el comienzo fue difícil, al seguir conversando descubrimos varias conexiones en común y que estaban buscando a alguien que pudiera ayudarlos con tecnología.",
@@ -118,10 +115,10 @@ export const clients: ClientStory[] = [
       {
         title: "Agente de consultas y panel comercial",
         category: "WhatsApp / Supervisión del equipo",
-        status: "En prueba",
+        status: "Implementado",
         need: "Les llegaban muchas consultas por WhatsApp. Parte de esas personas escribía una vez y después no respondía, pero atenderlas igualmente llevaba tiempo del equipo.",
         solution: "Desarrollé un agente de IA que atiende las consultas del loteo y deriva al equipo humano cuando identifica un interés concreto. Desde ese momento, el equipo continúa la conversación, coordina reuniones y acompaña el proceso comercial. También desarrollé un panel para revisar las conversaciones, consultar los contactos y seguir la actividad del agente.",
-        state: "El agente está implementado en un solo loteo para evaluar su comportamiento en un alcance acotado. La ampliación a otros loteos queda pendiente de los resultados de esta prueba.",
+        state: "Funcionando en el loteo Rincón del Valle. Entre el 18 de septiembre y el 2 de noviembre de 2026 atendió a 224 interesados, con la primera respuesta en alrededor de un minuto y medio, a cualquier hora. De los que conversaron en serio, 3 de cada 4 llegaron al equipo calificados y con aviso.",
         imageTitle: "Una conversación y su contexto.",
         imageDetail: "Capturas completas suministradas de conversación y panel.",
         images: [
