@@ -10,7 +10,7 @@
  */
 
 export const MIN_CONSULTAS_POR_DIA = 10;
-/** Piso de "ticket alto": una venta típica de USD 500 o más (Faustino, 15-11). */
+/** Piso de "ticket alto": las ventas de mayor valor que entran por consultas valen USD 500 o más (15-11). */
 export const MIN_TICKET_USD = 500;
 /**
  * Pesos por dólar para pasar un ticket en ARS. Primero la cotización en vivo
@@ -75,6 +75,18 @@ function montosPermitidos(dichosPorLaPersona: string): Set<string> {
     const n = m[0].replace(/[.,]$/, "");
     montos.add(n);
     montos.add(n.replace(/[.,]/g, ""));
+  }
+  // "30 mil" o "2 millones" que dijo la persona y el agente reescribe como 30.000 o 2.000.000.
+  // Solo con "mil"/"millones" escrito por la persona; "12 y 30 mil" cuenta para los dos.
+  for (const m of dichosPorLaPersona.matchAll(/(\d[\d.,]*)((?:\s*(?:y|a|-|o|,)\s*\d[\d.,]*)*)\s*(mil(?:lones?)?|palos?)\b/gi)) {
+    const mult = /^mil$/i.test(m[3]) ? 1_000 : 1_000_000;
+    for (const crudo of `${m[1]} ${m[2]}`.match(/\d[\d.,]*/g) ?? []) {
+      const base = Number(crudo.replace(/[.,]$/, "").replace(/\./g, "").replace(",", "."));
+      if (!Number.isFinite(base) || base <= 0) continue;
+      const v = Math.round(base * mult);
+      montos.add(String(v));
+      montos.add(v.toLocaleString("es-AR"));
+    }
   }
   return montos;
 }

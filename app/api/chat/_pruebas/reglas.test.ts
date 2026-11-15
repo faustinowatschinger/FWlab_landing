@@ -74,6 +74,8 @@ process.env.CHAT_ARS_POR_USD = "100";
 espero("cotización viva le gana a la variable", normalizar({ ...base, consultas_por_dia: 20, ticket_monto: 400000, ticket_moneda: "ARS" }, "conversando").salida.estado === "conversando");
 delete process.env.CHAT_ARS_POR_USD;
 fijarCotizacion(null);
+espero("repetir '30 mil dólares' como 30.000 no es precio inventado", !violaciones("Un auto sale entre 12.000 y 30.000 dólares", "Un auto sale entre 12 y 30 mil dólares").includes("precio-no-autorizado"));
+espero("un monto que nadie dijo sigue marcando", violaciones("Te sale 45.000 dólares", "Un auto sale entre 12 y 30 mil dólares").includes("precio-no-autorizado"));
 espero("whatsapp válido", normalizarWhatsapp("+54 9 299 512-3456") === "+5492995123456");
 espero("whatsapp inválido", normalizarWhatsapp("1234") === null);
 

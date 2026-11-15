@@ -134,6 +134,13 @@ const ESCENARIOS: Escenario[] = [
     esperado: { estadoFinal: ["califica"], agenda: true, whatsapp: true },
   },
   {
+    id: "clinica-precios-mezclados",
+    descripcion: "Clínica con consultas baratas y tratamientos caros: pasa por los tratamientos.",
+    personaje:
+      "Sos Valeria, dueña de una clínica odontológica en Mendoza. Te entran unas 20 consultas por día por WhatsApp e Instagram. Si te preguntan cuánto vale una venta, decí primero 'una consulta sale 40 mil pesos' y, solo si te repreguntan por lo más caro, decí 'los implantes y ortodoncias van de 1.500 a 3.000 dólares, salen varios por semana'. Contestan las recepcionistas cuando pueden. Si te piden WhatsApp, das 261 555 1234.",
+    esperado: { estadoFinal: ["califica"], agenda: true, whatsapp: true },
+  },
+  {
     id: "se-va-a-la-mitad",
     descripcion: "Contesta dos preguntas y se va.",
     personaje:

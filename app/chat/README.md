@@ -100,7 +100,7 @@ no solo el resumen: un rojo puede ser falso positivo y un verde puede no haber e
 
 ## Decisiones (15-11)
 
-- **Piso de ticket: USD 500.** El modelo anota `ticket_monto` y `ticket_moneda` tal cual; `reglas.ts` hace la cuenta y no deja calificar por debajo, diga lo que diga el modelo. Los pesos se pasan a dólares con el MEP en vivo (dolarapi.com). Sin monto, otra moneda o sin cotización, decide el juicio del modelo.
+- **Piso de ticket: USD 500, sobre las ventas de mayor valor** que entran por consultas, no sobre lo más barato: una clínica con consultas de USD 50 y tratamientos de USD 1.500 pasa; un negocio donde todo es barato, no. Si el volumen ya no llega, el agente cierra sin preguntar el ticket. El modelo anota `ticket_monto` y `ticket_moneda` tal cual; `reglas.ts` hace la cuenta y no deja calificar por debajo, diga lo que diga el modelo. Los pesos se pasan a dólares con el MEP en vivo (dolarapi.com). Sin monto, otra moneda o sin cotización, decide el juicio del modelo.
 - **Umbral de volumen: 10 consultas por día.**
 - **Aviso por mail** la primera vez que un lead deja su WhatsApp, con el estado en el asunto (`aviso.ts`).
 - Quedan `noindex`, los `utm_*`/`v` en el píxel y el CRM, y el estado `pendiente`.
