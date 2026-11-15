@@ -82,7 +82,7 @@ export default async function ClientPage({ params }: Props) {
             {client.photos ? <PhotoCarousel images={client.photos} /> : null}
           </div>
         </section>
-        <section className={styles.clientNext} aria-labelledby="next-title"><div className={styles.container}><div><p className={styles.eyebrow}>Diagnóstico gratis</p><h2 id="next-title">¿Te quedan consultas sin contestar?</h2></div><Link className={styles.button} href="/#contacto">Pedí el diagnóstico gratis <Arrow /></Link></div></section>
+        <section className={styles.clientNext} aria-labelledby="next-title"><div className={styles.container}><div><p className={styles.eyebrow}>Diagnóstico gratis</p><h2 id="next-title">¿Te quedan consultas sin contestar?</h2></div><Link className={styles.button} href="/chat">Hablá con Fawel <Arrow /></Link></div></section>
       </main>
       <SiteFooter />
     </div>
