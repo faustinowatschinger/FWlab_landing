@@ -59,10 +59,8 @@ Los contadores por IP y global viven en memoria: alcanzan con una sola instancia
 
 ## Píxel de Meta
 
-`<MetaPixel />` está montado **provisoriamente en `app/chat/page.tsx`**. Tiene que ir
-**una sola vez en `app/layout.tsx`** para medir también la home; al montarlo ahí, se saca
-de `/chat` (si queda en los dos, el PageView de navegación sale doble). El layout no se
-tocó en esta rama porque lo cambia la rama de la home.
+`<MetaPixel />` está montado **una sola vez en `app/layout.tsx`** (15-11), así mide la home
+y `/chat`. No montarlo también en una página: el PageView de navegación saldría doble.
 
 | Momento | Evento |
 |---|---|

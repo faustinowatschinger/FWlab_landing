@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 
 import { SALUDO } from "../api/chat/prompt";
 import Chat from "./Chat";
-import MetaPixel from "../components/meta-pixel";
 
 export const metadata: Metadata = {
   title: "Hablá con Fawel",
@@ -26,8 +25,6 @@ export default function PaginaChat() {
   return (
     <>
       <Chat saludo={SALUDO} calendly={process.env.NEXT_PUBLIC_CALENDLY_URL || CALENDLY} />
-      {/* Provisorio: cuando MetaPixel se monte en app/layout.tsx (al juntar las ramas), sacarlo de acá. */}
-      <MetaPixel />
     </>
   );
 }
