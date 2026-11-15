@@ -2,7 +2,7 @@
  * POST /api/chat — un turno del chat de /chat.
  *
  * Entra:  { sesion?: string, mensaje: string, origen?: Record<string,string> }
- * Sale:   { sesion, mensaje, estado, mostrarAgenda, nombre, evento: { lead } }
+ * Sale:   { sesion, mensaje, estado, mostrarAgenda, nombre, evento: { lead, contacto } }
  *
  * El primer mensaje del agente (el saludo) lo pinta la página sin llamar acá:
  * el que entra desde el anuncio y se va sin escribir no gasta modelo.
@@ -155,11 +155,18 @@ export async function POST(req: NextRequest) {
   sesion.turnos = [...historial, { rol: "agente", texto: s.mensaje }];
   sesion.estado = s.estado;
 
-  // Lead del píxel: al calificar o al dejar el WhatsApp, una sola vez.
+  // Lead del píxel: SOLO al calificar, una vez. Es el evento con el que puede optimizar Meta,
+  // así que no lo disparan los que no califican.
   let eventoLead = false;
-  if (!sesion.lead && (s.estado === "califica" || s.whatsapp)) {
+  if (!sesion.lead && s.estado === "califica") {
     sesion.lead = true;
     eventoLead = true;
+  }
+  // Contacto sin calificar (dejó WhatsApp sin pasar el filtro): evento propio, una vez.
+  let eventoContacto = false;
+  if (!sesion.contacto && !eventoLead && !sesion.lead && s.whatsapp) {
+    sesion.contacto = true;
+    eventoContacto = true;
   }
 
   // FW Central: la primera vez que hay WhatsApp. No bloquea la respuesta más de 8 s.
@@ -184,6 +191,6 @@ export async function POST(req: NextRequest) {
     mostrarAgenda: s.mostrar_agenda,
     nombre: s.nombre,
     restantes: MAX_MENSAJES - delUsuario - 1,
-    evento: { lead: eventoLead },
+    evento: { lead: eventoLead, contacto: eventoContacto },
   });
 }

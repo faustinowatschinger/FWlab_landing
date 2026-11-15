@@ -66,7 +66,8 @@ y `/chat`. No montarlo también en una página: el PageView de navegación saldr
 |---|---|
 | Entra a `/chat` | `PageView` |
 | Manda su primer mensaje | `PrimerMensajeChat` (custom) |
-| Califica o deja el WhatsApp | `Lead`, una vez por conversación (lo decide el server) |
+| Califica | `Lead`, una vez por conversación (lo decide el server) |
+| Deja el WhatsApp sin calificar | `ContactoSinCalificar` (custom), una vez |
 | Toca el botón de la agenda | `Schedule` |
 
 Todos llevan los `utm_*` y `v` de la URL, para comparar variantes (`/chat?v=B`).

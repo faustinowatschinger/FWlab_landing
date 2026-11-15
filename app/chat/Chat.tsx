@@ -132,6 +132,7 @@ export default function Chat({ saludo, calendly }: { saludo: string; calendly: s
       if (datos.nombre) setNombre(datos.nombre);
       if (datos.mostrarAgenda) setAgenda(true);
       if (datos.evento?.lead) trackMeta("Lead", { estado: datos.estado, ...origen.current });
+      if (datos.evento?.contacto) trackMeta("ContactoSinCalificar", { estado: datos.estado, ...origen.current }, true);
       if (typeof datos.restantes === "number" && datos.restantes <= 0) setFin(true);
     } catch {
       setMensajes((m) => m.slice(0, -1));

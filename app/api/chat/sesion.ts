@@ -23,6 +23,8 @@ export type Sesion = {
   enCrm: boolean;
   /** Si ya se disparó el evento Lead del píxel. */
   lead: boolean;
+  /** Si ya se disparó ContactoSinCalificar. */
+  contacto?: boolean;
   /** Si ya se le mandó el mail de aviso a Faustino. */
   avisado?: boolean;
   origen: Record<string, string>;
