@@ -4,7 +4,7 @@
  * APAGADO POR DEFECTO. Solo escribe con `CHAT_CRM_ACTIVO=1` y `FW_CENTRAL_API_TOKEN`.
  * Sin eso registra en el log que no lo cargó y no toca nada.
  *
- * Mismo patrón que /mapa-operativo (ver su README y projects/CLAUDE.md):
+ * Mismo patrón que /mapa-operativo (ver su README):
  *   POST {FW_CENTRAL_URL}/api/v1/empresas   { "empresas": [ { ... } ] }
  * con `segmento: "inbound-meta-chat"`. Es el mismo handler que la operación
  * `crearEmpresas` de `POST /api/v1/empresas`. El token necesita alcance `crm` con

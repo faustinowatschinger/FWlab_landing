@@ -96,10 +96,10 @@ estímulos clave sembrados. Sale con 1 si algún escenario falla. Leé las conve
 no solo el resumen: un rojo puede ser falso positivo y un verde puede no haber ejercitado nada.
 
 
-## Decisiones de Faustino (15-11)
+## Decisiones (15-11)
 
 - **Piso de ticket: USD 500.** El modelo anota `ticket_monto` y `ticket_moneda` tal cual; `reglas.ts` hace la cuenta y no deja calificar por debajo, diga lo que diga el modelo. Sin monto, otra moneda o pesos sin `CHAT_ARS_POR_USD`, decide el juicio del modelo.
-- **Umbral de volumen: 10 consultas por día** (§123).
-- **Aviso por mail** a Faustino la primera vez que un lead deja su WhatsApp, con el estado en el asunto (`aviso.ts`).
+- **Umbral de volumen: 10 consultas por día.**
+- **Aviso por mail** la primera vez que un lead deja su WhatsApp, con el estado en el asunto (`aviso.ts`).
 - Quedan `noindex`, los `utm_*`/`v` en el píxel y el CRM, y el estado `pendiente`.
-- Fawel atiende en cualquier canal y para cualquier rubro (§125): el prompt no habla solo de WhatsApp.
+- Fawel atiende en cualquier canal y para cualquier rubro: el prompt no habla solo de WhatsApp.

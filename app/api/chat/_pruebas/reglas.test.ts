@@ -1,5 +1,5 @@
 /**
- * Prueba las guardas haciéndolas fallar a propósito (PROTOCOLO §3): cada regla
+ * Prueba las guardas haciéndolas fallar a propósito: cada regla
  * tiene un caso que la tiene que disparar y uno que no.
  *
  *   npx tsx app/api/chat/_pruebas/reglas.test.ts

@@ -17,9 +17,9 @@ const CTA_LABEL = "Hablá con Fawel";
 
 // Recorrido de venta (2026-11-15): dolor → costo de no hacer nada → mecanismo → prueba →
 // autoeficacia → encaje → autoridad → oferta → objeciones → una sola acción.
-// Fuentes de cada afirmación: .claude/estado/resultados/landing-venta-2026-11-15.md (workspace).
+// Toda afirmación de la página tiene fuente documentada; no agregar cifras sin medición.
 
-// Dolores: ventas/fawel-oferta.md, dichos en general y sin atribuirlos a un cliente (§123).
+// Dolores: dichos en general, sin atribuirlos a un cliente.
 const pains = [
   ["Te escriben de noche", "La gente consulta cuando tiene tiempo de mirar: a la noche y el fin de semana. La respuesta sale el lunes, cuando ya le escribió a otro."],
   ["Pagás para que te escriban", "Los anuncios traen consultas. Después esas consultas esperan a que alguien del equipo se libere."],
@@ -29,7 +29,7 @@ const pains = [
   ["El mes no cierra", "Preguntás cuántas consultas entraron y qué pasó con cada una, y la respuesta es una sensación, no un dato."],
 ];
 
-// Qué hace: ventas/fawel-oferta.md, "Qué incluye" 2 y 3.
+// Qué hace.
 const features = [
   ["Contesta a cualquier hora", "Atiende las consultas que entran por WhatsApp, Instagram o tu web, de día, de noche y el fin de semana, sin esperar a que alguien se libere."],
   ["Sabe de tu negocio, y no inventa", "Aprende tus precios, horarios y respuestas. Si no tiene un dato, no lo inventa: se lo pasa a una persona."],
@@ -37,15 +37,15 @@ const features = [
   ["Vos ves qué pasó con cada una", "Un panel con cada conversación de punta a punta. Cualquiera del equipo puede tomarla cuando quiera."],
 ];
 
-// Métricas medidas en el sistema de Altaterra, ventana 18-09 al 02-11-2026, con la fraseología de
-// ventas/playbook-prospector.md §4.1. Toda cifra nueva necesita fuente medida.
+// Métricas medidas en el sistema de Altaterra, ventana 18-09 al 02-11-2026.
+// Toda cifra nueva necesita fuente medida.
 const proof = [
   ["224", "interesados atendidos en 45 días"],
   ["~1,5 min", "para la primera respuesta, a cualquier hora"],
   ["3 de cada 4", "de los que conversaron en serio llegaron al equipo calificados y con aviso"],
 ];
 
-// Autoeficacia: lo que el dueño teme tener que hacer (avatar §8 y §10, objeciones 8 y 9).
+// Lo que el dueño teme tener que hacer.
 const relief = [
   ["Saber de tecnología", "Lo armo yo con lo que vos ya sabés de tu negocio: tus precios, tus horarios y lo que te preguntan siempre."],
   ["Arriesgar tu número", "El número no se toca sin tu decisión, y nada se cambia sin que lo apruebes."],
@@ -72,8 +72,7 @@ const fitNo = [
   "Buscás un bot que conteste cualquier cosa sin pasarle nunca a una persona.",
 ];
 
-// Objeciones del avatar (§10), en el orden en que pesan para este servicio. Las respuestas
-// textuales salen de ventas/playbook-prospector.md §5 y ventas/guion.md.
+// Objeciones frecuentes, en el orden en que pesan para este servicio.
 const faqs = [
   ["Ya probé un bot y contestaba cualquier cosa.", "Fawel no inventa datos de tu negocio: lo que no sabe, se lo pasa a una persona. Y ves cada conversación en el panel, así que nada pasa sin que te enteres."],
   ["¿Voy a perder mi número de WhatsApp?", "El número no se toca sin tu decisión, y nada se cambia sin que lo apruebes."],
@@ -125,7 +124,7 @@ export default function Home() {
       <SiteHeader home />
 
       <main id="contenido">
-        {/* Promesa aprobada (§123) y la acción. El dolor de control va en la nota. */}
+        {/* Promesa y la acción. El dolor de control va en la nota. */}
         <section id="inicio" className={`${styles.container} ${styles.hero}`} aria-labelledby="hero-title">
           <span id="fawel" className={styles.legacyAnchor} aria-hidden="true" />
           <p className={styles.eyebrow}>Fawel / Para negocios de ticket alto con al menos 10 a 15 consultas por día</p>
@@ -161,7 +160,7 @@ export default function Home() {
           </ul>
         </section>
 
-        {/* 2. Costo de no hacer nada (quinto eje de Florido) y la oportunidad: no es culpa suya. */}
+        {/* 2. Costo de no hacer nada y la oportunidad: no es culpa suya. */}
         <section id="costo" className={styles.cost} aria-labelledby="cost-title">
           <div className={styles.container}>
             <div className={styles.sectionHeading}>

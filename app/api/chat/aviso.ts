@@ -47,6 +47,10 @@ export async function avisarFaustino(sesion: Sesion, s: Salida): Promise<"enviad
         port: Number(SMTP_PORT ?? 587),
         secure: Number(SMTP_PORT ?? 587) === 465,
         auth: { user: SMTP_USER, pass: SMTP_PASS },
+        // Un SMTP que no contesta no puede colgar nada: corta a los 5 s.
+        connectionTimeout: 5000,
+        greetingTimeout: 5000,
+        socketTimeout: 5000,
       })
       .sendMail({ from, to, subject: asunto, text: resumen + armarAlta(sesion, s).empresas[0].notas });
     return "enviado";

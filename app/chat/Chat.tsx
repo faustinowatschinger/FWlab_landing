@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import styles from "./chat.module.css";
 import { trackMeta } from "../components/meta-pixel";
+import { CLAVE_ORIGEN } from "../components/origen-anuncio";
 
 type Mensaje = { de: "agente" | "usuario"; texto: string };
 
@@ -28,6 +29,19 @@ function origenDeLaUrl(): Record<string, string> {
   for (const k of CLAVES_ORIGEN) {
     const v = params.get(k);
     if (v) salida[k] = v;
+  }
+  if (Object.keys(salida).length) return salida;
+  // Llegó por un botón de la landing: el origen lo guardó OrigenAnuncio al entrar.
+  try {
+    const guardado = JSON.parse(sessionStorage.getItem(CLAVE_ORIGEN) ?? "null");
+    if (guardado && typeof guardado === "object") {
+      for (const k of CLAVES_ORIGEN) {
+        const v = (guardado as Record<string, unknown>)[k];
+        if (typeof v === "string" && v) salida[k] = v.slice(0, 80);
+      }
+    }
+  } catch {
+    /* sin storage o dato roto: sin etiqueta */
   }
   return salida;
 }

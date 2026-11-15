@@ -11,8 +11,7 @@ import { normalizar, violaciones, type Estado, type Salida } from "./reglas";
 export type Turno = { rol: "usuario" | "agente"; texto: string };
 
 /**
- * gpt-5.6-luna: es la más barata de la familia (USD 0,10 / 0,60 por millón,
- * tabla de precios de `projects/altaterra/agente/motor/simular-leads.mjs`) y la
+ * gpt-5.6-luna: es la más barata de la familia (USD 0,10 / 0,60 por millón) y la
  * que ya usa la landing para las preguntas del mapa operativo. Para un chat que
  * paga cada visitante del anuncio, la latencia y el costo mandan.
  */

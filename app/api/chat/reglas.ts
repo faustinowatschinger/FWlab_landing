@@ -101,9 +101,9 @@ const REGLAS: Regla[] = [
       return !(process.env.CHAT_PROMPT_PRECIO ?? "").toLowerCase().includes(m[2].toLowerCase());
     },
   },
-  // Lenguaje de venta hacia afuera (memoria feedback_lenguaje_sin_venta).
+  // Lenguaje de venta hacia afuera.
   { id: "lenguaje-venta", test: (t) => /\b(vender(te|les)?|te vendo|contrat\w*|nuestros clientes|mis clientes|clientes nuestros|cliente nuestro)\b/i.test(t) },
-  // Frases fijas de la §86.
+  // Frases fijas que no se usan.
   { id: "te-entiendo", test: (t) => /\bte entiendo\b/i.test(t) },
   { id: "gestionar", test: (t) => /\bgestion(ar|an|ás|amos|o)\b/i.test(t) },
   // Markdown que se ve como sistema.

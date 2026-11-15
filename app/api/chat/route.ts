@@ -18,7 +18,7 @@
  * Los contadores por IP y global viven en memoria: con una sola instancia
  * alcanzan; con varias, cada una lleva el suyo.
  */
-import { NextRequest, NextResponse } from "next/server";
+import { after, NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 
 import { cargarLead } from "./crm";
@@ -170,8 +170,11 @@ export async function POST(req: NextRequest) {
   }
 
   // Mail a Faustino la primera vez que deja WhatsApp: el agente promete que él le escribe.
+  // Va después de la respuesta (after) y se intenta una sola vez: si falla, queda en el log.
   if (s.whatsapp && !sesion.avisado) {
-    sesion.avisado = (await avisarFaustino(sesion, s)) !== "error";
+    sesion.avisado = true;
+    const copia = { ...sesion, turnos: [...sesion.turnos] };
+    after(() => avisarFaustino(copia, s).then(() => undefined));
   }
 
   return json({

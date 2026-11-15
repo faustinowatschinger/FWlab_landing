@@ -18,7 +18,7 @@ export const viewport: Viewport = {
   interactiveWidget: "resizes-content",
 };
 
-/** El Calendly de FW Labs (dado por el líder el 15-11). Se pisa con NEXT_PUBLIC_CALENDLY_URL. */
+/** El Calendly de FW Labs. Se pisa con NEXT_PUBLIC_CALENDLY_URL. */
 const CALENDLY = "https://calendly.com/fwlabs/llamada-gratuita";
 
 export default function PaginaChat() {

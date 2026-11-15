@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import MetaPixel from "./components/meta-pixel";
+import OrigenAnuncio from "./components/origen-anuncio";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -43,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-AR">
-      <body className={`${inter.variable} antialiased`}>{children}<MetaPixel /></body>
+      <body className={`${inter.variable} antialiased`}>{children}<MetaPixel /><OrigenAnuncio /></body>
     </html>
   );
 }
