@@ -4,7 +4,7 @@
  *
  *   npx tsx app/api/chat/_pruebas/reglas.test.ts
  */
-import { normalizar, normalizarWhatsapp, violaciones, type Salida } from "../reglas";
+import { fijarCotizacion, normalizar, normalizarWhatsapp, violaciones, type Salida } from "../reglas";
 import { diceFrasePrecio, tramosDelRango } from "./frase-precio";
 
 let fallas = 0;
@@ -68,6 +68,12 @@ process.env.CHAT_ARS_POR_USD = "1000";
 espero("piso: 400 mil pesos a 1000 no califica", normalizar({ ...base, consultas_por_dia: 20, ticket_monto: 400000, ticket_moneda: "ARS" }, "conversando").salida.estado === "conversando");
 espero("piso: 900 mil pesos a 1000 califica", normalizar({ ...base, consultas_por_dia: 20, ticket_monto: 900000, ticket_moneda: "ARS" }, "conversando").salida.estado === "califica");
 delete process.env.CHAT_ARS_POR_USD;
+fijarCotizacion(1580);
+espero("cotización viva: 400 mil pesos a 1580 no califica", normalizar({ ...base, consultas_por_dia: 20, ticket_monto: 400000, ticket_moneda: "ARS" }, "conversando").salida.estado === "conversando");
+process.env.CHAT_ARS_POR_USD = "100";
+espero("cotización viva le gana a la variable", normalizar({ ...base, consultas_por_dia: 20, ticket_monto: 400000, ticket_moneda: "ARS" }, "conversando").salida.estado === "conversando");
+delete process.env.CHAT_ARS_POR_USD;
+fijarCotizacion(null);
 espero("whatsapp válido", normalizarWhatsapp("+54 9 299 512-3456") === "+5492995123456");
 espero("whatsapp inválido", normalizarWhatsapp("1234") === null);
 

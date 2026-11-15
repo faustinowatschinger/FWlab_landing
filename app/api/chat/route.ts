@@ -23,6 +23,7 @@ import OpenAI from "openai";
 
 import { cargarLead } from "./crm";
 import { avisarFaustino } from "./aviso";
+import { refrescarCotizacion } from "./cotizacion";
 import { responder } from "./motor";
 import { firmar, hayClave, leer, nueva } from "./sesion";
 
@@ -134,6 +135,9 @@ export async function POST(req: NextRequest) {
   if (!pasaGlobal()) return json({ error: "Estamos con mucha demanda. Probá en un rato." }, 429);
 
   const historial = [...sesion.turnos, { rol: "usuario" as const, texto: mensaje }];
+
+  // Dólar en vivo para el piso de ticket en pesos (cacheado una hora; no traba si la API falla).
+  await refrescarCotizacion();
 
   let resultado;
   try {

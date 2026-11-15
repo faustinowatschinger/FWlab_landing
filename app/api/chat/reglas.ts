@@ -12,8 +12,17 @@
 export const MIN_CONSULTAS_POR_DIA = 10;
 /** Piso de "ticket alto": una venta típica de USD 500 o más (Faustino, 15-11). */
 export const MIN_TICKET_USD = 500;
-/** Pesos por dólar para pasar un ticket en ARS. Sin esta variable, un ticket en pesos queda a juicio del modelo. */
+/**
+ * Pesos por dólar para pasar un ticket en ARS. Primero la cotización en vivo
+ * (cotizacion.ts la fija antes de cada turno); si no hay, CHAT_ARS_POR_USD; si
+ * tampoco, un ticket en pesos queda a juicio del modelo.
+ */
+let cotizacionViva: number | null = null;
+export function fijarCotizacion(v: number | null) {
+  cotizacionViva = v !== null && Number.isFinite(v) && v > 0 ? v : null;
+}
 const ARS_POR_USD = () => {
+  if (cotizacionViva) return cotizacionViva;
   const v = Number(process.env.CHAT_ARS_POR_USD);
   return Number.isFinite(v) && v > 0 ? v : null;
 };
