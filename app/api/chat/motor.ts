@@ -98,7 +98,7 @@ export async function responder(
     nota = [
       "Corrección del sistema, la persona no la ve. Reescribí tu último mensaje.",
       rechazo ? `${rechazo} No lo pases a la agenda: seguí calificando o cerralo según el filtro.` : null,
-      rotas.length ? `Tu mensaje rompió estas reglas: ${rotas.join(", ")}. Revisá "Reglas que no se rompen" y "Precio".` : null,
+      rotas.length ? `Tu mensaje rompió estas reglas: ${rotas.join(", ")}. Revisá "Reglas que no se rompen" y "Precio".${rotas.some((r) => r.startsWith("precio")) ? " En este mensaje no escribas ningún monto." : ""}` : null,
     ]
       .filter(Boolean)
       .join(" ");

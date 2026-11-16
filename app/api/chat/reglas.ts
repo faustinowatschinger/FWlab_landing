@@ -76,10 +76,10 @@ function montosPermitidos(dichosPorLaPersona: string): Set<string> {
     montos.add(n);
     montos.add(n.replace(/[.,]/g, ""));
   }
-  // "30 mil" o "2 millones" que dijo la persona y el agente reescribe como 30.000 o 2.000.000.
-  // Solo con "mil"/"millones" escrito por la persona; "12 y 30 mil" cuenta para los dos.
-  for (const m of dichosPorLaPersona.matchAll(/(\d[\d.,]*)((?:\s*(?:y|a|-|o|,)\s*\d[\d.,]*)*)\s*(mil(?:lones?)?|palos?)\b/gi)) {
-    const mult = /^mil$/i.test(m[3]) ? 1_000 : 1_000_000;
+  // "30 mil", "3 lucas", "80k" o "2 millones/palos" que dijo la persona y el agente reescribe
+  // como 30.000, 3.000, 80.000 o 2.000.000. Solo con esa palabra escrita por la persona; "12 y 30 mil" cuenta para los dos.
+  for (const m of dichosPorLaPersona.matchAll(/(\d[\d.,]*)((?:\s*(?:y|a|-|o|,)\s*\d[\d.,]*)*)\s*(mil(?:lones?)?|palos?|lucas?|k)\b/gi)) {
+    const mult = /^(mil|lucas?|k)$/i.test(m[3]) ? 1_000 : 1_000_000;
     for (const crudo of `${m[1]} ${m[2]}`.match(/\d[\d.,]*/g) ?? []) {
       const base = Number(crudo.replace(/[.,]$/, "").replace(/\./g, "").replace(",", "."));
       if (!Number.isFinite(base) || base <= 0) continue;
@@ -166,6 +166,19 @@ export function normalizarWhatsapp(valor: string | null): string | null {
 export function normalizar(s: Salida, previo: Estado): { salida: Salida; rechazo: string | null } {
   const salida: Salida = { ...s, whatsapp: normalizarWhatsapp(s.whatsapp) };
   let rechazo: string | null = null;
+
+  // Un monto sin moneda no alcanza para decidir por el ticket: hay que preguntar dólares o pesos.
+  const faltaMoneda = salida.ticket_monto != null && salida.ticket_monto > 0 && salida.ticket_moneda == null;
+  if (
+    faltaMoneda &&
+    (salida.estado === "califica" || salida.estado === "no_califica") &&
+    previo !== salida.estado &&
+    (salida.consultas_por_dia ?? 0) >= MIN_CONSULTAS_POR_DIA
+  ) {
+    rechazo = "Falta la moneda del monto: preguntá si es en dólares o en pesos antes de decidir.";
+    salida.estado = "conversando";
+    salida.mostrar_agenda = false;
+  }
 
   if (salida.estado === "califica" && previo !== "califica") {
     const volumen = salida.consultas_por_dia ?? 0;

@@ -25,6 +25,8 @@ export type Sesion = {
   lead: boolean;
   /** Si ya se disparó ContactoSinCalificar. */
   contacto?: boolean;
+  /** Si ya se le mostró el botón de la agenda. */
+  vioAgenda?: boolean;
   /** Si ya se le mandó el mail de aviso a Faustino. */
   avisado?: boolean;
   origen: Record<string, string>;

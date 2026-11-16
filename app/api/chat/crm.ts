@@ -20,7 +20,7 @@
 import type { Sesion } from "./sesion";
 import type { Salida } from "./reglas";
 
-const URL_CRM = () => process.env.FW_CENTRAL_URL ?? "https://panel.fwlabsllc.com";
+export const URL_CRM = () => process.env.FW_CENTRAL_URL ?? "https://panel.fwlabsllc.com";
 export const CRM_ACTIVO = () => process.env.CHAT_CRM_ACTIVO === "1";
 
 export function armarAlta(sesion: Sesion, s: Salida) {

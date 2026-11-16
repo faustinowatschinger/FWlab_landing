@@ -24,6 +24,7 @@ import OpenAI from "openai";
 import { cargarLead } from "./crm";
 import { avisarFaustino } from "./aviso";
 import { refrescarCotizacion } from "./cotizacion";
+import { guardarConversacion } from "./conversaciones";
 import { responder } from "./motor";
 import { firmar, hayClave, leer, nueva } from "./sesion";
 
@@ -186,6 +187,14 @@ export async function POST(req: NextRequest) {
     sesion.avisado = true;
     const copia = { ...sesion, turnos: [...sesion.turnos] };
     after(() => avisarFaustino(copia, s).then(() => undefined));
+  }
+
+  // Toda conversación queda en FW Central (con o sin WhatsApp), después de responder.
+  if (s.mostrar_agenda) sesion.vioAgenda = true;
+  {
+    const copia = { ...sesion, turnos: [...sesion.turnos] };
+    const vio = Boolean(sesion.vioAgenda);
+    after(() => guardarConversacion(copia, s, vio).then(() => undefined));
   }
 
   return json({

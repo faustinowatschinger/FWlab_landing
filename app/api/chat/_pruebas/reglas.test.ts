@@ -76,6 +76,12 @@ delete process.env.CHAT_ARS_POR_USD;
 fijarCotizacion(null);
 espero("repetir '30 mil dólares' como 30.000 no es precio inventado", !violaciones("Un auto sale entre 12.000 y 30.000 dólares", "Un auto sale entre 12 y 30 mil dólares").includes("precio-no-autorizado"));
 espero("un monto que nadie dijo sigue marcando", violaciones("Te sale 45.000 dólares", "Un auto sale entre 12 y 30 mil dólares").includes("precio-no-autorizado"));
+espero("'3 lucas verdes' repetido como 3.000 dólares no es inventado", !violaciones("Paquetes de 3.000 dólares", "salen 3 lucas verdes").includes("precio-no-autorizado"));
+espero("'80k usd' repetido como 80.000 no es inventado", !violaciones("Departamentos de 80.000 dólares", "los deptos 80k usd").includes("precio-no-autorizado"));
+espero("con lucas, un monto que nadie dijo sigue marcando", violaciones("Te sale 5.000 dólares", "salen 3 lucas verdes").includes("precio-no-autorizado"));
+espero("monto sin moneda no deja calificar", normalizar({ ...base, consultas_por_dia: 20, ticket_monto: 800, ticket_moneda: null }, "conversando").salida.estado === "conversando");
+espero("monto sin moneda no deja cerrar por ticket", normalizar({ ...base, estado: "no_califica", consultas_por_dia: 20, ticket_monto: 800, ticket_moneda: null }, "conversando").salida.estado === "conversando");
+espero("sin volumen, no hace falta la moneda para cerrar", normalizar({ ...base, estado: "no_califica", consultas_por_dia: 3, ticket_monto: 800, ticket_moneda: null }, "conversando").salida.estado === "no_califica");
 espero("whatsapp válido", normalizarWhatsapp("+54 9 299 512-3456") === "+5492995123456");
 espero("whatsapp inválido", normalizarWhatsapp("1234") === null);
 
