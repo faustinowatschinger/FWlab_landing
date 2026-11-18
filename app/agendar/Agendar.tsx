@@ -54,8 +54,8 @@ export default function Agendar({ calendly }: { calendly: string }) {
       <section className={styles.intro}>
         <h1 className={styles.titulo}>Elegí un horario para el diagnóstico gratis</h1>
         <p className={styles.bajada}>
-          Es una llamada con Faustino para entender cómo te entran las consultas. Antes te pide dos datos de tu negocio,
-          para llegar con algo concreto.
+          Es una llamada con Faustino para entender cómo te entran las consultas. Antes te hace unas preguntas cortas de tu
+          negocio, para ver si encaja con lo que toma.
         </p>
       </section>
 
