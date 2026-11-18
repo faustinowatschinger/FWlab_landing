@@ -37,6 +37,7 @@ export function armarAlta(sesion: Sesion, s: Salida) {
     `Estado: ${s.estado}. Persona: ${s.nombre ?? "sin dato"}. Rubro: ${s.rubro ?? "sin dato"}.`,
     `Consultas por día: ${s.consultas_por_dia ?? "sin dato"}. Ticket: ${s.ticket ?? "sin dato"} (monto: ${s.ticket_monto ?? "sin dato"} ${s.ticket_moneda ?? ""}, alto según el modelo: ${s.ticket_alto ?? "sin dato"}).`,
     `Qué pasa hoy: ${s.dolor ?? "sin dato"}.`,
+    `Por qué ahora: ${s.por_que_ahora ?? "sin dato"}.`,
     origen ? `Origen: ${origen}.` : null,
     "",
     "Conversación:",

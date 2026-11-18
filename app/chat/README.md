@@ -1,14 +1,24 @@
 # /chat — Fawel en la web
 
-Página de destino de los anuncios de Meta. Habla un agente de IA que en pocas preguntas
-le dice al dueño del negocio si Fawel le sirve; si le sirve, le pide el WhatsApp y le
-muestra el botón para coordinar el diagnóstico gratis con Faustino (Calendly).
+Página de destino de los anuncios de Meta (variante B; la A es `/agendar`, la agenda
+directa). Habla un agente de IA que en pocas preguntas ve si el negocio **encaja con lo
+que Faustino toma**; si encaja, le pregunta por qué quiere resolverlo ahora, le pide el
+WhatsApp y le muestra el botón para elegir el horario del diagnóstico gratis (Calendly,
+en un popup dentro de la página).
+
+**El marco (18-11):** el que tiene que encajar es el negocio, no Faustino. El saludo lo
+dice y es verdad: Faustino arma cada proyecto él mismo y toma pocos. El que juzga es el
+criterio, nunca el bot: no dice "te aprobé" ni inventa cupos (el diagnóstico no tiene
+cupo). Al que no encaja se le dice con respeto y se le deja un consejo útil.
 
 ## Cómo está armado
 
 ```
 app/chat/page.tsx        página (estática). Pinta el saludo sin llamar al modelo.
 app/chat/Chat.tsx        el chat (cliente). Guarda la conversación en sessionStorage.
+app/agendar/             /agendar: la agenda directa, con el Calendly embebido.
+app/components/calendly.ts  carga de Calendly (inline y popup), link con utm y la
+                         escucha de la reserva confirmada (Schedule).
 app/components/meta-pixel.tsx  píxel de Meta de toda la landing: <MetaPixel/> (init +
                          PageView, y PageView en cada navegación) y trackMeta().
 app/api/chat/route.ts    POST /api/chat: un turno. Origen, límites, sesión, CRM.
@@ -27,7 +37,8 @@ app/api/chat/_pruebas/   simulador de leads y prueba de las guardas.
   10 consultas por día ni sin ticket alto, y la agenda solo aparece con "califica".
 - **Reglas duras por código** (`violaciones()`): links, mails, montos fuera del rango,
   lenguaje de venta, "te entiendo", "gestionar", markdown, reservas que no hizo,
-  promesas de resultados, decir que es humano. Si una respuesta rompe una, se le pide
+  promesas de resultados, decir que es humano, hacer de juez ("te aprobé", "pasaste el
+  filtro") y escasez inventada (cupos, lugares, proyectos por mes). Si una respuesta rompe una, se le pide
   otra al modelo una vez; si vuelve a romperla, se muestra un texto neutro y queda en el log.
 
 ## Variables de entorno
@@ -60,8 +71,8 @@ Los contadores por IP y global viven en memoria: alcanzan con una sola instancia
 
 ## Píxel de Meta
 
-`<MetaPixel />` está montado **una sola vez en `app/layout.tsx`** (15-11), así mide la home
-y `/chat`. No montarlo también en una página: el PageView de navegación saldría doble.
+`<MetaPixel />` está montado **una sola vez en `app/layout.tsx`** (15-11), así mide la home,
+`/chat` y `/agendar`. No montarlo también en una página: el PageView de navegación saldría doble.
 
 | Momento | Evento |
 |---|---|
@@ -69,9 +80,17 @@ y `/chat`. No montarlo también en una página: el PageView de navegación saldr
 | Manda su primer mensaje | `PrimerMensajeChat` (custom) |
 | Califica | `Lead`, una vez por conversación (lo decide el server) |
 | Deja el WhatsApp sin calificar | `ContactoSinCalificar` (custom), una vez |
-| Toca el botón de la agenda | `Schedule` |
+| Ve la agenda: toca el botón en `/chat`, o carga `/agendar` | `AbreAgenda` (custom), con `destino` |
+| **Reserva confirmada** en Calendly (las dos variantes) | `Schedule`, con `destino`, una vez |
 
-Todos llevan los `utm_*` y `v` de la URL, para comparar variantes (`/chat?v=B`).
+Todos llevan los `utm_*` y `v` de la URL, para comparar variantes (`/agendar?v=A`, `/chat?v=B`).
+Hasta el 18-11, `Schedule` se mandaba al tocar el botón y no medía la reserva.
+
+La reserva se ve porque Calendly va embebido: avisa con `postMessage`
+(`calendly.event_scheduled`, solo se acepta de `calendly.com`). Si el script de Calendly
+no carga, cae al link en otra pestaña y esa reserva no se mide. El link lleva los `utm_*`
+del anuncio (si no hay `utm_source`, `fawel-chat` o `fawel-agendar`; la variante va en
+`utm_content=v-A|v-B`), y Calendly los guarda en la reserva.
 
 ## FW Central
 

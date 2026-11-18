@@ -88,7 +88,7 @@ type Registro = {
 async function actuarLead(client: OpenAI, e: Escenario, conversacion: Turno[], uso: Uso): Promise<string> {
   const r = await client.responses.create({
     model: MODELO_LEAD,
-    instructions: `Estás actuando de una persona que entró al chat de la web de FW Labs desde un anuncio. ${e.personaje}\nEscribí SOLO tu próximo mensaje, como en un chat de celular: corto, natural, sin comillas. Contestá lo que te pregunten con los datos de tu personaje. Escribí exactamente FIN solo si ya te despediste o si te mostraron el botón para coordinar el diagnóstico y no tenés nada más que decir; nunca antes.`,
+    instructions: `Estás actuando de una persona que entró al chat de la web de FW Labs desde un anuncio. ${e.personaje}\nEscribí SOLO tu próximo mensaje, como en un chat de celular: corto, natural, sin comillas. Contestá lo que te pregunten con los datos de tu personaje; si te preguntan algo que tu personaje no dice (por ejemplo, por qué querés resolverlo ahora), contestá corto y coherente con él. Escribí exactamente FIN solo si ya te despediste o si te mostraron el botón para coordinar el diagnóstico y no tenés nada más que decir; nunca antes.`,
     // Desde el lado del lead, lo que dice el agente es "user" y lo que dice él es "assistant".
     input: [
       { role: "user" as const, content: SALUDO },

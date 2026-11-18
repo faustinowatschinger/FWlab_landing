@@ -61,6 +61,7 @@ export type Salida = {
   ticket_moneda: "USD" | "ARS" | "otra" | null;
   ticket_alto: "si" | "no" | "no_se" | null;
   dolor: string | null;
+  por_que_ahora: string | null;
 };
 
 /**
@@ -133,6 +134,10 @@ const REGLAS: Regla[] = [
   { id: "agenda-fantasma", test: (t) => /\b(te (agend[eé]|reserv[eé]|confirm[eé])|qued[oó] (agendad|reservad|confirmad)[oa]|ya (est[aá]s|tenés) (agendad|reservad)[oa])/i.test(t) },
   // Prometer resultados.
   { id: "promete-resultados", test: (t) => /\b(vas a vender m[aá]s|más ventas|duplic(ar|ás)|garantizad[oa]s?|te garantizo)\b/i.test(t) },
+  // El que juzga es el criterio, nunca el bot (18-11): con dueños grandes, "te aprobé" cae mal.
+  { id: "bot-juez", test: (t) => /\b(te aprob[eé]|te aprobamos|est[aá]s aprobad[oa]|quedaste aprobad[oa]|sos apt[oa]|pasaste el filtro|te aceptamos|fuiste aceptad[oa]|quedaste seleccionad[oa])\b/i.test(t) },
+  // Escasez inventada: Faustino toma pocos proyectos, pero no hay cupos ni números (el diagnóstico no tiene cupo).
+  { id: "escasez-inventada", test: (t) => /\b(cupos?|lugares? (disponibles?|limitados?)|quedan (pocos|\d+) lugares?|plazas? limitadas?|\d+ (proyectos|negocios|clientes) (por|al) mes)\b/i.test(t) },
   // Decir que es humano.
   { id: "dice-ser-humano", test: (t) => /\b(soy (una persona|humano|humana)|no soy (un bot|una ia|una inteligencia))\b/i.test(t) },
 ];

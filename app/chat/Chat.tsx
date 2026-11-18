@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 import styles from "./chat.module.css";
+import { abrirPopup, cargarCalendly, urlAgenda, useReservaCalendly } from "../components/calendly";
 import { trackMeta } from "../components/meta-pixel";
 import { CLAVE_ORIGEN } from "../components/origen-anuncio";
 
@@ -46,17 +47,6 @@ function origenDeLaUrl(): Record<string, string> {
   return salida;
 }
 
-function linkAgenda(base: string, nombre: string | null) {
-  try {
-    const url = new URL(base);
-    if (nombre) url.searchParams.set("name", nombre);
-    url.searchParams.set("utm_source", "fawel-chat");
-    return url.toString();
-  } catch {
-    return base;
-  }
-}
-
 export default function Chat({ saludo, calendly }: { saludo: string; calendly: string }) {
   const [mensajes, setMensajes] = useState<Mensaje[]>([{ de: "agente", texto: saludo }]);
   const [sesion, setSesion] = useState<string | null>(null);
@@ -69,6 +59,13 @@ export default function Chat({ saludo, calendly }: { saludo: string; calendly: s
   const lista = useRef<HTMLDivElement>(null);
   const campo = useRef<HTMLTextAreaElement>(null);
   const origen = useRef<Record<string, string>>({});
+
+  useReservaCalendly("chat", origen);
+
+  // Con la agenda a la vista, el script de Calendly se precarga para que el popup abra al toque.
+  useEffect(() => {
+    if (agenda) cargarCalendly().catch(() => {});
+  }, [agenda]);
 
   // Recupera la conversación si recargó la página (pasa seguido en el navegador de Instagram).
   useEffect(() => {
@@ -173,10 +170,15 @@ export default function Chat({ saludo, calendly }: { saludo: string; calendly: s
         {agenda && (
           <a
             className={styles.agenda}
-            href={linkAgenda(calendly, nombre)}
+            href={urlAgenda(calendly, { nombre, origen: origen.current, fuente: "fawel-chat" })}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackMeta("Schedule", origen.current)}
+            onClick={(e) => {
+              // Popup adentro de la página: así se ve la reserva (Schedule). El href queda de respaldo.
+              e.preventDefault();
+              trackMeta("AbreAgenda", { destino: "chat", ...origen.current }, true);
+              abrirPopup(urlAgenda(calendly, { nombre, origen: origen.current, fuente: "fawel-chat" }));
+            }}
           >
             <span className={styles.agendaTitulo}>Coordiná el diagnóstico gratis con Faustino</span>
             <span className={styles.agendaDetalle}>Elegí el día y la hora que te queden cómodos</span>

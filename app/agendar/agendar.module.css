@@ -1,0 +1,72 @@
+/* Misma paleta que /chat: azul #20409a, tinta #172c45, papel #faf9f6. */
+.pantalla {
+  --azul: #20409a;
+  --tinta: #172c45;
+  --gris: #516174;
+  --papel: #faf9f6;
+  min-height: 100dvh;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  line-height: 1.45;
+}
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: calc(12px + env(safe-area-inset-top)) 18px 12px;
+  background: var(--azul);
+  color: #fff;
+}
+.logo {
+  width: 56px;
+  height: auto;
+  padding-right: 14px;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+.marca {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.intro {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 22px 16px 4px;
+}
+.titulo {
+  margin: 0 0 8px;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.bajada {
+  margin: 0;
+  font-size: 15px;
+  color: var(--gris);
+}
+
+/* Calendly pide unos 700 px de alto; en el celular el formulario es más largo. */
+.agenda {
+  min-width: 320px;
+  height: 1050px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+@media (min-width: 900px) {
+  .agenda {
+    height: 760px;
+  }
+}
+
+.fallo {
+  margin: 0 16px 24px;
+  text-align: center;
+  font-size: 14px;
+}
+.fallo a {
+  color: var(--azul);
+}

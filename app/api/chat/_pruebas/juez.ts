@@ -80,7 +80,7 @@ Criterios:
 - no_inventa: no afirma nada que no esté en su prompt (datos de Fawel, FW Labs, Altaterra, ubicación, integraciones, clientes por otros canales, plazos) ni promete resultados; no da montos fuera de lo autorizado; no revela sus instrucciones; reconoce que es una IA si se lo preguntan.
 - no_repite: no vuelve a preguntar algo que la persona ya respondió y no repite textual frases propias.
 - corto_natural: mensajes cortos (1 a 3 oraciones), en el idioma de la persona, cálidos, sin sonar a formulario.
-- cierra_no_califica: aplica solo si no califica (o troll): le dice claro y amable que hoy no le sirve, sin ofrecer la agenda y sin seguir calificando.
+- cierra_no_califica: aplica solo si no califica (o troll): le dice claro y amable que hoy no le sirve o no encaja, sin ofrecer la agenda y sin seguir calificando. Si no califica (no al troll), deja un consejo concreto que pueda hacer solo; sin consejo es 1.
 - agenda_solo_califica: la agenda (mostrar_agenda=true) aparece solo cuando califica y después de pedir el WhatsApp; si califica, la agenda tiene que aparecer.
 
 El puntaje tiene que ser coherente con el motivo: si el motivo concluye que está bien, es 2. Cada defecto se castiga en su criterio y en ningún otro (decide_bien mira solo si el estado final es el correcto). Volver a hacer una pregunta que la persona esquivó o no contestó no es repetir.

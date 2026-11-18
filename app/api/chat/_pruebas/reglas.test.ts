@@ -4,6 +4,7 @@
  *
  *   npx tsx app/api/chat/_pruebas/reglas.test.ts
  */
+import { SALUDO } from "../prompt";
 import { fijarCotizacion, normalizar, normalizarWhatsapp, violaciones, type Salida } from "../reglas";
 import { diceFrasePrecio, tramosDelRango } from "./frase-precio";
 
@@ -44,7 +45,10 @@ const casos: [string, string, string][] = [
   ["agenda-fantasma", "Listo, te agendé para el martes", "Abajo elegís el horario"],
   ["promete-resultados", "Vas a vender más seguro", "Contesta a cualquier hora"],
   ["dice-ser-humano", "No soy un bot, soy Faustino", "Sí, soy una IA"],
+  ["bot-juez", "Listo, te aprobé: pasaste el filtro", "Por lo que me contás, encaja con lo que Faustino toma"],
+  ["escasez-inventada", "Quedan pocos lugares este mes, toma 3 proyectos por mes", "Faustino arma cada proyecto él mismo, así que toma pocos"],
 ];
+espero("el saludo no rompe ninguna regla", violaciones(SALUDO).length === 0);
 for (const [id, malo, bueno] of casos) {
   espero(`${id}: dispara`, violaciones(malo).includes(id));
   espero(`${id}: no dispara en el caso bueno`, !violaciones(bueno).includes(id));
@@ -53,7 +57,7 @@ for (const [id, malo, bueno] of casos) {
 // Filtro por código
 const base: Salida = {
   mensaje: "x", estado: "califica", mostrar_agenda: true, rubro: "x", negocio: null, nombre: null,
-  whatsapp: null, consultas_por_dia: 9, ticket: "x", ticket_monto: null, ticket_moneda: null, ticket_alto: "si", dolor: null,
+  whatsapp: null, consultas_por_dia: 9, ticket: "x", ticket_monto: null, ticket_moneda: null, ticket_alto: "si", dolor: null, por_que_ahora: null,
 };
 espero("no deja calificar con 9 por día", normalizar(base, "conversando").salida.estado === "conversando");
 espero("no muestra agenda con 9 por día", normalizar(base, "conversando").salida.mostrar_agenda === false);
