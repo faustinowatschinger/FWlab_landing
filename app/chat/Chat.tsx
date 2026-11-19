@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import styles from "./chat.module.css";
@@ -144,7 +145,9 @@ export default function Chat({ saludo, calendly }: { saludo: string; calendly: s
   return (
     <main className={styles.pantalla}>
       <header className={styles.cabecera}>
-        <Image src="/logo-fw-white.png" alt="FW Labs" width={70} height={25} priority className={styles.logo} />
+        <Link href="/" aria-label="Ir al inicio de FW Labs">
+          <Image src="/logo-fw-white.png" alt="FW Labs" width={70} height={25} priority className={styles.logo} />
+        </Link>
         <div className={styles.quien}>
           <p className={styles.nombre}>Fawel</p>
           <p className={styles.estado}>

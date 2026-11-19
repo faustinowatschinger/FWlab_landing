@@ -48,16 +48,23 @@ const proof = [
 // Lo que el dueño teme tener que hacer.
 const relief = [
   ["Saber de tecnología", "Lo armo yo con lo que vos ya sabés de tu negocio: tus precios, tus horarios y lo que te preguntan siempre."],
-  ["Arriesgar tu número", "El número no se toca sin tu decisión, y nada se cambia sin que lo apruebes."],
-  ["Que tu equipo aprenda un sistema", "Les llega un aviso con el resumen de la conversación y la toman desde ahí."],
+  ["Cambiar cómo trabaja tu equipo", "Fawel se conecta al CRM que ya usás, sin migrar nada. A tu equipo le llega un aviso con el resumen de cada conversación, y lo toma desde ahí."],
+  ["Arriesgar tu número", "Tu número, tus conversaciones y tus datos son tuyos. Nada se cambia sin que lo apruebes, y si un día te querés ir, te vas con todo."],
 ];
 
 const steps = [
   ["Diagnóstico gratis", "Dos reuniones. En la primera, de 20 minutos, entiendo por dónde entran tus consultas, quién las contesta, a qué hora y qué te preguntan siempre. En la segunda te muestro lo que encontré. Te quedás con el informe aunque no sigamos."],
-  ["Construcción", "Fawel aprende tu negocio (precios, horarios, respuestas) y se conecta a tus canales (WhatsApp, Instagram, tu web) y a tus datos."],
-  ["Puesta en marcha", "Definimos a quién avisa y con qué resumen. Tu equipo sigue cada consulta en el panel y puede tomar cualquier conversación."],
-  ["6 meses de acompañamiento", "Si necesitás un cambio en el sistema para usarlo mejor, se hace. Después sigue el mantenimiento."],
+  ["Construcción", "Fawel aprende tu negocio (precios, horarios, respuestas) y se conecta a tus canales (WhatsApp, Instagram, tu web), al CRM que ya usás y a tus datos."],
+  ["Prueba y puesta en marcha", "Antes de que le hable a un cliente, lo probás con conversaciones reales de tu negocio y lo aprobás. Capacito a tu equipo y le dejo la documentación y un video de cómo funciona."],
+  ["6 meses de acompañamiento", "Cualquier cambio en el sistema para usarlo mejor, se hace. Cada mes te llega un informe de cómo atendió. Después sigue el mantenimiento, con el primer mes gratis."],
 ];
+
+// La garantía y la salida: aprobación previa y sin permanencia.
+const guarantee = {
+  title: "Hasta que no responda como ustedes, no pagás.",
+  text: "Antes de salir en vivo, Fawel se prueba con conversaciones reales de tu negocio y vos lo aprobás. Hasta que no responda como ustedes, no pagás el segundo pago ni el mantenimiento.",
+  exit: "Y sin permanencia: tu número, tus conversaciones y tus datos son tuyos. Si te querés ir, avisás con 30 días y te vas con todo.",
+};
 
 const fitYes = [
   "Vivís de contestar consultas: inmobiliaria, clínica, academia, infoproducto o el rubro que sea.",
@@ -74,13 +81,18 @@ const fitNo = [
 
 // Objeciones frecuentes, en el orden en que pesan para este servicio.
 const faqs = [
-  ["Ya probé un bot y contestaba cualquier cosa.", "Fawel no inventa datos de tu negocio: lo que no sabe, se lo pasa a una persona. Y ves cada conversación en el panel, así que nada pasa sin que te enteres."],
-  ["¿Voy a perder mi número de WhatsApp?", "El número no se toca sin tu decisión, y nada se cambia sin que lo apruebes."],
+  ["Ya probé un bot y contestaba cualquier cosa.", "Fawel no inventa datos de tu negocio: si no sabe si una propiedad sigue disponible, se lo pasa a una persona. Y no sale en vivo hasta que lo apruebes con conversaciones reales tuyas. Hasta que no responda como ustedes, no pagás el segundo pago ni el mantenimiento."],
+  ["Se va a notar que es un robot.", "Aprende cómo hablan ustedes y lo probás antes de que hable con nadie: si no suena a tu negocio, no sale. Y si alguien prefiere hablar con una persona, le avisa a tu equipo al momento, con el resumen de lo que ya se habló."],
+  ["¿Voy a perder mi número de WhatsApp?", "No. El número es tuyo, y las conversaciones y los datos también. Nada se cambia sin que lo apruebes."],
+  ["Ya tengo un CRM.", "Mejor. Fawel se conecta al que ya usás, así las consultas quedan donde tu equipo ya trabaja, sin migrar nada. En el diagnóstico vemos cómo se conecta el tuyo."],
   ["Lo manejamos bien así.", "Puede ser. La prueba es simple: si hoy podés decir cuántas consultas entraron el mes pasado y qué pasó con cada una, quizás no lo necesitás. Si no podés, ahí está lo que se te escapa."],
-  ["Mi negocio es muy particular.", "Por eso no te traigo nada armado. Primero miro cómo trabajás vos, y Fawel aprende tus respuestas, no unas genéricas."],
+  ["Mi negocio es muy particular.", "Por eso no te traigo nada armado. Primero miro cómo trabajás vos, y Fawel aprende tus respuestas, no unas genéricas. Y no sale en vivo hasta que responda como ustedes."],
   ["¿Tenés algún caso en mi rubro?", "El caso que puedo mostrar es Altaterra, que vende lotes. Si tu negocio es otro, en el diagnóstico te digo si aplica y por qué. No te voy a inventar un caso."],
   ["¿Mi equipo deja de atender?", "No. Fawel atiende primero y filtra. Tu equipo se queda con los que vienen en serio, con el resumen de lo que ya se habló, y puede entrar en cualquier conversación."],
-  ["¿Cuánto cuesta?", "Depende de tu negocio: del volumen de consultas y de lo que tenga que hacer Fawel. Te paso el precio después del diagnóstico, que es gratis. El uso de la IA y de plataformas como WhatsApp tiene un costo aparte, que se paga directo a cada proveedor; te lo estimo antes de empezar."],
+  ["Mi equipo no va a usar otro sistema.", "No tiene que aprender uno: le llega un aviso con el resumen y toma la conversación desde ahí. Igual los capacito, les dejo documentación y un video, y durante seis meses me piden a mí lo que necesiten."],
+  ["¿Cómo sé si me está rindiendo?", "Cada mes, durante los seis meses de acompañamiento, te llega un informe: cuántas consultas atendió, a qué hora, cuántas le pasó a tu equipo y en cuánto tiempo respondió. Más ventas no te prometo, porque sería inventar un número."],
+  ["¿Y si me quiero ir?", "Te vas. No hay permanencia: avisás con 30 días y te llevás tu número, tus conversaciones y tus datos."],
+  ["¿Cuánto cuesta?", "Depende de tu negocio: del volumen de consultas y de lo que tenga que hacer Fawel. Te paso el precio después del diagnóstico, que es gratis. Se paga la mitad al empezar y la otra mitad cuando aprobás cómo responde. El uso de la IA y de plataformas como WhatsApp tiene un costo aparte, que se paga directo a cada proveedor; te lo estimo antes de empezar."],
 ];
 
 const altaterra = clients.find((client) => client.slug === "altaterra");
@@ -249,6 +261,12 @@ export default function Home() {
               <p>Un solo servicio, armado para tu negocio. El primer paso es gratis y te quedás con el informe aunque no sigamos.</p>
             </div>
             <ol className={`${styles.steps} ${styles.stepsFour}`}>{steps.map(([title, text], index) => <li key={title}><span className={styles.stepNumber}>0{index + 1}</span><h3>{title}</h3><p>{text}</p></li>)}</ol>
+            <aside id="garantia" className={styles.guarantee} aria-labelledby="guarantee-title">
+              <p className={styles.eyebrow}>La garantía</p>
+              <h3 id="guarantee-title">{guarantee.title}</h3>
+              <p>{guarantee.text}</p>
+              <p className={styles.guaranteeExit}>{guarantee.exit}</p>
+            </aside>
             <div className={styles.sectionCta}><ChatButton /></div>
           </div>
         </section>

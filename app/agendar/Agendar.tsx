@@ -6,6 +6,7 @@
  * reserva; el filtro de esta variante son las preguntas del formulario de Calendly.
  */
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import styles from "./agendar.module.css";
@@ -47,7 +48,9 @@ export default function Agendar({ calendly }: { calendly: string }) {
   return (
     <main className={styles.pantalla}>
       <header className={styles.cabecera}>
-        <Image src="/logo-fw-white.png" alt="FW Labs" width={70} height={25} priority className={styles.logo} />
+        <Link href="/" aria-label="Ir al inicio de FW Labs">
+          <Image src="/logo-fw-white.png" alt="FW Labs" width={70} height={25} priority className={styles.logo} />
+        </Link>
         <p className={styles.marca}>Fawel</p>
       </header>
 

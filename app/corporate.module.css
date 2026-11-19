@@ -120,6 +120,11 @@
 .relief{padding-top:80px;padding-bottom:30px}
 .reliefList h3::before{background:var(--blue)}
 .sectionCta{margin-top:40px}
+.guarantee{scroll-margin-top:105px;margin-top:48px;max-width:900px;background:#fff;border:1px solid #cdd3dd;border-left:3px solid var(--blue);padding:30px 34px}
+.guarantee h3{font-size:clamp(24px,2.6vw,32px);letter-spacing:-.035em;line-height:1.2;margin-top:14px!important}
+.guarantee p:not(.eyebrow){font-size:15px;line-height:1.7;margin-top:14px!important;max-width:720px}
+.site .guarantee .guaranteeExit{font-size:13px;color:var(--muted);padding-top:14px;border-top:1px solid var(--line)}
+@media(max-width:740px){.guarantee{margin-top:36px;padding:22px 20px}.guarantee p:not(.eyebrow){font-size:14px}}
 .buttonLight{background:#fff;color:var(--blue)}
 .site .buttonLight:hover,.site .contact .buttonLight:hover{background:#dce5fa;color:var(--blue)}
 .contact .buttonLight{font-size:14px;font-weight:600;padding:17px 24px}
