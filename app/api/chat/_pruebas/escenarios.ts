@@ -397,4 +397,60 @@ export const ESCENARIOS: Escenario[] = [
     guion: { 0: "hola! te dejo mi whatsapp de una 351 400 5566, tengo un estudio de arquitectura y reformas" },
     esperado: CALIFICA,
   },
+
+  // ---------- Venta y objeciones con la oferta (19-11) ----------
+  {
+    id: "venta-inmobiliaria-garantia",
+    descripcion: "Inmobiliaria que califica sin objeciones: la venta tiene que llegar a la garantía antes de la agenda.",
+    personaje:
+      "Sos Lucía, dueña de una inmobiliaria en Cipolletti. 20 consultas por día entre WhatsApp e Instagram, una venta deja unos 4 mil dólares de comisión. Contestás vos y una empleada; lo de la noche queda para el otro día. Si te preguntan por qué ahora, decí que en temporada se te escapan muchas. Si te piden el WhatsApp, das 299 455 1122.",
+    esperado: { ...CALIFICA, dice: [/garant[ií]a|devolv|devuelv/i], nuncaDice: [/te garantizo|garantizad[oa]/i] },
+  },
+  {
+    id: "objecion-bot-previo",
+    descripcion: "Ya probó un bot que contestaba mal: pregunta qué pasó y contesta con la aprobación previa.",
+    personaje:
+      "Sos Diego, de una inmobiliaria en Neuquén. 15 consultas por día, propiedades de 80 a 200 mil dólares. Contesta la secretaria. Ya probaron un chatbot de una agencia que respondía cualquier cosa y lo apagaron. Si te preguntan qué pasó, contá que inventaba precios. Si te piden el WhatsApp, das 299 433 7788.",
+    guion: { 1: "te aviso que ya probamos un bot y contestaba cualquier cosa, lo terminamos apagando" },
+    esperado: { ...CALIFICA, dice: [/aprob|como ustedes|devolv|devuelv/i], nuncaDice: [/te garantizo|garantizad[oa]/i] },
+  },
+  {
+    id: "objecion-robot-personas",
+    descripcion: "Teme que se note el robot y que sus clientes quieran personas.",
+    personaje:
+      "Sos Marcela, de una clínica estética en Córdoba. 25 consultas por día, tratamientos de 800 a 2.000 dólares. Contestan dos recepcionistas. Si te piden el WhatsApp, das 351 222 3344.",
+    guion: { 2: "me preocupa que se note que es un robot, mis pacientes quieren hablar con personas" },
+    esperado: { ...CALIFICA, dice: [/persona|equipo/i] },
+  },
+  {
+    id: "objecion-crm",
+    descripcion: "Ya usa un CRM inmobiliario: Fawel se conecta al que ya usa.",
+    personaje:
+      "Sos Pablo, de una inmobiliaria en Mendoza. 18 consultas por día, operaciones de 100 mil dólares. Las cargan a mano en Tokko. Si te piden el WhatsApp, das 261 555 6677.",
+    guion: { 1: "nosotros ya tenemos Tokko, no vamos a cambiar de sistema" },
+    esperado: { ...CALIFICA, dice: [/conect|CRM|Tokko/i] },
+  },
+  {
+    id: "objecion-numero-y-salida",
+    descripcion: "Pregunta si pierde el número y qué pasa si se quiere ir.",
+    personaje:
+      "Sos Andrea, de una concesionaria en Rosario. 30 consultas por día, autos de 20 a 40 mil dólares. Contestan los vendedores. Si te piden el WhatsApp, das 341 666 7788.",
+    guion: { 2: "y si después me quiero ir, pierdo el número de whatsapp o algo?" },
+    esperado: { ...CALIFICA, dice: [/tuy[oa]s?|permanencia|30 d[ií]as/i] },
+  },
+  {
+    id: "objecion-rinde",
+    descripcion: "Pregunta cómo sabe si le rinde: informe mensual, sin prometer ventas.",
+    personaje:
+      "Sos Hernán, de una academia de idiomas online. Cuando te pregunten el volumen, decí exactamente 'unas 15 por día' (no des un rango). Los cursos anuales salen 900 dólares. Contestás vos. Si te piden el WhatsApp, das 11 4555 6677.",
+    guion: { 2: "y cómo sé si esto me rinde? no quiero pagar por algo que no sé si funciona" },
+    esperado: { ...CALIFICA, dice: [/informe/i], nuncaDice: [/más ventas|vas a vender/i] },
+  },
+  {
+    id: "duda-socio-tras-calificar",
+    descripcion: "Califica y al pedirle el WhatsApp dice que lo tiene que hablar con el socio.",
+    personaje:
+      "Sos Gustavo, socio de una inmobiliaria en Bariloche. 15 consultas por día, propiedades de 150 mil dólares. Contesta tu socio a la noche cuando puede. Cuando te pidan el WhatsApp, primero decí que lo tenés que hablar con tu socio; si te proponen sumarlo al diagnóstico, aceptá y das 294 455 6677.",
+    esperado: { ...CALIFICA, dice: [/socio/i] },
+  },
 ];

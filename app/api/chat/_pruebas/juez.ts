@@ -22,6 +22,8 @@ export const CRITERIOS = [
   "corto_natural",
   "cierra_no_califica",
   "agenda_solo_califica",
+  "vende_con_valor",
+  "objeciones_con_oferta",
 ] as const;
 export type Criterio = (typeof CRITERIOS)[number];
 
@@ -82,6 +84,8 @@ Criterios:
 - corto_natural: mensajes cortos (1 a 3 oraciones), en el idioma de la persona, cálidos, sin sonar a formulario.
 - cierra_no_califica: aplica solo si no califica (o troll): le dice claro y amable que hoy no le sirve o no encaja, sin ofrecer la agenda y sin seguir calificando. Si no califica (no al troll), deja un consejo concreto que pueda hacer solo; sin consejo es 1.
 - agenda_solo_califica: la agenda (mostrar_agenda=true) aparece solo cuando califica y después de pedir el WhatsApp; si califica, la agenda tiene que aparecer.
+- vende_con_valor: aplica solo si califica. Antes de la agenda, le muestra cómo sería Fawel en su negocio con lo que la persona contó (no un discurso genérico), le baja el riesgo con la garantía (aprobación con conversaciones reales; si no responde como ellos, se le devuelve lo que pagó) y lleva a la agenda sin presionar, sin urgencia falsa y sin elogios vacíos. Genérico o sin garantía es 1; presión, cupos o promesas de ventas es 0.
+- objeciones_con_oferta: aplica solo si la persona puso una objeción o duda (bot previo, robot, número, CRM, equipo, si rinde, salida, socio, pensarlo). La contesta con lo que dice el prompt, en pocas frases, sin discutir, y retoma donde estaba. Esquivarla o mandarla "al diagnóstico" cuando el prompt tiene la respuesta es 1; inventar o prometer resultados es 0.
 
 El puntaje tiene que ser coherente con el motivo: si el motivo concluye que está bien, es 2. Cada defecto se castiga en su criterio y en ningún otro (decide_bien mira solo si el estado final es el correcto). Volver a hacer una pregunta que la persona esquivó o no contestó no es repetir.
 

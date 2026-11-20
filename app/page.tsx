@@ -59,10 +59,10 @@ const steps = [
   ["6 meses de acompañamiento", "Cualquier cambio en el sistema para usarlo mejor, se hace. Cada mes te llega un informe de cómo atendió. Después sigue el mantenimiento, con el primer mes gratis."],
 ];
 
-// La garantía y la salida: aprobación previa y sin permanencia.
+// La garantía y la salida: devolución si no se aprueba (§139) y sin permanencia.
 const guarantee = {
-  title: "Hasta que no responda como ustedes, no pagás.",
-  text: "Antes de salir en vivo, Fawel se prueba con conversaciones reales de tu negocio y vos lo aprobás. Hasta que no responda como ustedes, no pagás el segundo pago ni el mantenimiento.",
+  title: "Si no responde como ustedes, te devuelvo lo que pagaste.",
+  text: "Antes de salir en vivo, Fawel se prueba con conversaciones reales de tu negocio y vos lo aprobás. Tenés hasta tres rondas para marcarme lo que no te guste. Si después de la tercera no responde como ustedes, te devuelvo todo lo que pagaste y no seguimos.",
   exit: "Y sin permanencia: tu número, tus conversaciones y tus datos son tuyos. Si te querés ir, avisás con 30 días y te vas con todo.",
 };
 
@@ -81,7 +81,7 @@ const fitNo = [
 
 // Objeciones frecuentes, en el orden en que pesan para este servicio.
 const faqs = [
-  ["Ya probé un bot y contestaba cualquier cosa.", "Fawel no inventa datos de tu negocio: si no sabe si una propiedad sigue disponible, se lo pasa a una persona. Y no sale en vivo hasta que lo apruebes con conversaciones reales tuyas. Hasta que no responda como ustedes, no pagás el segundo pago ni el mantenimiento."],
+  ["Ya probé un bot y contestaba cualquier cosa.", "Fawel no inventa datos de tu negocio: si no sabe si una propiedad sigue disponible, se lo pasa a una persona. Y no sale en vivo hasta que lo apruebes con conversaciones reales tuyas. Si no responde como ustedes, te devuelvo lo que pagaste."],
   ["Se va a notar que es un robot.", "Aprende cómo hablan ustedes y lo probás antes de que hable con nadie: si no suena a tu negocio, no sale. Y si alguien prefiere hablar con una persona, le avisa a tu equipo al momento, con el resumen de lo que ya se habló."],
   ["¿Voy a perder mi número de WhatsApp?", "No. El número es tuyo, y las conversaciones y los datos también. Nada se cambia sin que lo apruebes."],
   ["Ya tengo un CRM.", "Mejor. Fawel se conecta al que ya usás, así las consultas quedan donde tu equipo ya trabaja, sin migrar nada. En el diagnóstico vemos cómo se conecta el tuyo."],
