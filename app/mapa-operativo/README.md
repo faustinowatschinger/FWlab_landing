@@ -320,7 +320,7 @@ Los otros dos caminos:
 
 ## Rate limit
 
-Solo en producción (`NODE_ENV === "production"`). Dos límites porque protegen
+Solo en producción (`NODE_ENV === "production"`). Tres límites porque protegen
 cosas distintas:
 
 - **Por IP** (`MAPA_MAX_POR_IP`, default **20**): evita que una persona repita el
@@ -329,14 +329,20 @@ cosas distintas:
   querés rechazar.
 - **Global** (`MAPA_MAX_GLOBAL`, default **60/hora**): es lo único que le pone
   techo al gasto si el tráfico viene distribuido. Cuando se toca, loguea fuerte.
+- **Por día** (`MAPA_MAX_DIA`, default **200**, desde el 21-11): 100 sesiones
+  completas. Sin él, 60 por hora sostenido eran 1.440 llamadas por día, y el
+  informe usa el modelo caro. Avisa por mail a la mitad y al llegar.
 
 ⚠️ **Una sesión completa consume DOS cupos** (preguntas + informe). Por eso el de
 IP subió de 10 a 20 — son las mismas 10 sesiones de antes. El global se mantuvo
 en 60 (= 30 sesiones/hora) a propósito: ese techo existe para acotar el gasto, y
 el gasto por llamada no cambió.
 
-En memoria, se reinicia con cada deploy y no se comparte entre instancias.
-Alcanza para un F5 insistente, no para un ataque distribuido.
+Desde el 21-11 los contadores viven en Redis, compartidos entre las instancias
+de Vercel y con `/api/chat` (`app/lib/limites.ts`; el detalle está en el
+[README del chat](../chat/README.md#límites-de-uso-21-11)). Sin
+`UPSTASH_REDIS_REST_URL` y `UPSTASH_REDIS_REST_TOKEN` cuentan en memoria, por
+instancia: eso alcanza para un F5 insistente, no para un script.
 
 ## Variables de entorno
 
@@ -347,7 +353,8 @@ Alcanza para un F5 insistente, no para un ataque distribuido.
 | `OPENAI_MODEL_PREGUNTAS` | — | Ronda 2. Default `gpt-5.6-luna`. |
 | `FW_CENTRAL_API_TOKEN` | — | El **mismo** del `.env` de fw-central. No generar otro. Sin él el lead no entra al CRM. |
 | `FW_CENTRAL_URL` | — | Default `https://panel.fwlabsllc.com`. ⚠️ En el `.env` local está en `localhost:3200` para dev: **eso no puede viajar al servidor.** |
-| `MAPA_MAX_POR_IP`, `MAPA_MAX_GLOBAL` | — | Ver arriba. |
+| `MAPA_MAX_POR_IP`, `MAPA_MAX_GLOBAL`, `MAPA_MAX_DIA` | — | Ver arriba. |
+| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | — | Redis de los contadores (o los `KV_REST_API_*` de la integración de Vercel). Sin ellas, memoria. |
 | `MAPA_MAX_ALTAS_POR_IP` | — | Default 20/hora. Contador aparte para el alta en el CRM: no gasta modelo, así que no compite por el cupo de OpenAI, pero es escritura pública y necesita techo. |
 | `SMTP_*`, `CONTACT_*` | — | Ya existían. Hoy con credenciales inválidas. |
 

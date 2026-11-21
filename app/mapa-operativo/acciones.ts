@@ -4,6 +4,8 @@ import { headers } from "next/headers";
 import OpenAI from "openai";
 import nodemailer from "nodemailer";
 
+import { avisarSiCruza } from "../lib/aviso-limite";
+import { consumir, DIA_S, HORA_S, huellaIp, ipDe } from "../lib/limites";
 import {
   CIERRE,
   MAX_GENERADAS,
@@ -86,14 +88,15 @@ function contextoCompleto(
  * Rate limit
  * ══════════════════════════════════════════════════════════════════════════
  *
- * Best-effort, en memoria. Se reinicia con cada deploy y no se comparte entre
- * instancias: alcanza para frenar un F5 insistente, no un ataque distribuido.
- * Si el volumen crece, mover a Redis o al middleware del hosting.
+ * Los contadores viven en Redis (../lib/limites.ts), compartidos entre las
+ * instancias de Vercel. Sin Redis configurado cuentan en memoria, por
+ * instancia: alcanza para frenar un F5 insistente, no un script.
  *
- * Dos límites, porque protegen cosas distintas:
+ * Tres límites, porque protegen cosas distintas:
  *  - por IP: evita que una persona repita el formulario en loop.
- *  - global: es lo ÚNICO que protege la cuenta de OpenAI si el tráfico viene de
- *    muchas IPs. Sin esto el gasto no tiene techo.
+ *  - global por hora y por día: son lo ÚNICO que protege la cuenta de OpenAI si
+ *    el tráfico viene de muchas IPs. Sin esto el gasto no tiene techo. Avisan
+ *    por mail a la mitad del día y al llegar.
  *
  * ⚠️ Desde la entrevista de dos rondas, UNA sesión completa consume DOS cupos
  * (generar las preguntas + generar el informe). Los números se releyeron con eso
@@ -101,55 +104,42 @@ function contextoCompleto(
  *  - global 60 = 30 sesiones completas por hora. Se mantuvo el 60 y no se duplicó
  *    a propósito: el techo existe para acotar el GASTO, y el gasto por llamada no
  *    cambió. 30 leads inbound en una hora sigue siendo un pico enorme.
+ *  - por día 200 = 100 sesiones completas. Sin él, 60 por hora sostenido eran
+ *    1.440 llamadas por día, y el informe usa el modelo caro.
  *  - por IP 20 = 10 sesiones, que era el número anterior. Arrancó en 3 y era
  *    demasiado bajo: una oficina entera sale por una sola IP, así que dos
  *    personas de la misma empresa se bloqueaban entre ellas — y quien contesta
  *    esta entrevista es exactamente el lead que no querés rechazar.
  *
- * En desarrollo no aplica ninguno de los dos.
+ * En desarrollo no aplica ninguno.
  */
-const VENTANA_MS = 60 * 60 * 1000;
 const MAX_POR_IP = Number(process.env.MAPA_MAX_POR_IP ?? 20);
 const MAX_GLOBAL = Number(process.env.MAPA_MAX_GLOBAL ?? 60);
+const MAX_DIA = Number(process.env.MAPA_MAX_DIA ?? 200);
 const EN_DESARROLLO = process.env.NODE_ENV !== "production";
-
-const visitas = new Map<string, number[]>();
-let globales: number[] = [];
 
 type Corte = "ip" | "global" | null;
 
-function pasaRateLimit(ip: string): Corte {
+async function pasaRateLimit(ip: string): Promise<Corte> {
   if (EN_DESARROLLO) return null;
-  const ahora = Date.now();
-
-  globales = globales.filter((t) => ahora - t < VENTANA_MS);
-  if (globales.length >= MAX_GLOBAL) {
+  const consumo = await consumir([
+    { nombre: "ip", clave: `mapa:ip:${huellaIp(ip)}`, max: MAX_POR_IP, ventanaS: HORA_S },
+    { nombre: "global", clave: "mapa:global", max: MAX_GLOBAL, ventanaS: HORA_S },
+    { nombre: "dia", clave: "mapa:dia", max: MAX_DIA, ventanaS: DIA_S },
+  ]);
+  if (!consumo.ok) {
+    if (consumo.corte === "ip") return "ip";
     console.error(
-      `[mapa-operativo] TECHO GLOBAL alcanzado (${MAX_GLOBAL}/h). Puede ser tracción o abuso: revisar antes de subirlo.`,
+      `[mapa-operativo] TECHO ${consumo.corte === "dia" ? `DIARIO (${MAX_DIA}/día)` : `GLOBAL (${MAX_GLOBAL}/h)`} alcanzado. Puede ser tracción o abuso: revisar antes de subirlo.`,
     );
     return "global";
   }
-
-  const previas = (visitas.get(ip) ?? []).filter((t) => ahora - t < VENTANA_MS);
-  if (previas.length >= MAX_POR_IP) {
-    visitas.set(ip, previas);
-    return "ip";
-  }
-
-  previas.push(ahora);
-  visitas.set(ip, previas);
-  globales.push(ahora);
-  if (visitas.size > 5000) visitas.clear();
+  avisarSiCruza("Mapa operativo", consumo, MAX_GLOBAL, MAX_DIA);
   return null;
 }
 
 async function ipDelVisitante(): Promise<string> {
-  const cabeceras = await headers();
-  return (
-    cabeceras.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    cabeceras.get("x-real-ip") ||
-    "desconocida"
-  );
+  return ipDe(await headers());
 }
 
 const ERROR_POR_IP =
@@ -160,20 +150,13 @@ const ERROR_GLOBAL = "Estamos con mucha demanda en este momento. Probá en un ra
 // modelo, así que no compite por el cupo de OpenAI — pero es un endpoint público
 // que escribe en el CRM y sin techo alguien podría llenarlo de basura.
 const MAX_ALTAS_POR_IP = Number(process.env.MAPA_MAX_ALTAS_POR_IP ?? 20);
-const altas = new Map<string, number[]>();
 
-function pasaLimiteAltas(ip: string): boolean {
+async function pasaLimiteAltas(ip: string): Promise<boolean> {
   if (EN_DESARROLLO) return true;
-  const ahora = Date.now();
-  const previas = (altas.get(ip) ?? []).filter((t) => ahora - t < VENTANA_MS);
-  if (previas.length >= MAX_ALTAS_POR_IP) {
-    altas.set(ip, previas);
-    return false;
-  }
-  previas.push(ahora);
-  altas.set(ip, previas);
-  if (altas.size > 5000) altas.clear();
-  return true;
+  const consumo = await consumir([
+    { nombre: "altas-ip", clave: `mapa:altas-ip:${huellaIp(ip)}`, max: MAX_ALTAS_POR_IP, ventanaS: HORA_S },
+  ]);
+  return consumo.ok;
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -295,7 +278,7 @@ export async function generarRonda2(ronda1: Respuestas): Promise<ResultadoRonda2
   const invalido = validarFijas(RONDA_1, ronda1);
   if (invalido) return { ok: false, error: invalido };
 
-  const corte = pasaRateLimit(await ipDelVisitante());
+  const corte = await pasaRateLimit(await ipDelVisitante());
   if (corte === "ip") return { ok: false, error: ERROR_POR_IP };
   if (corte === "global") return { ok: false, error: ERROR_GLOBAL };
 
@@ -689,7 +672,7 @@ export async function registrarContacto(
 
   // Límite propio: esto escribe en el CRM sin gastar modelo, así que no tiene
   // que competir por el cupo de OpenAI, pero tampoco puede quedar abierto.
-  if (!pasaLimiteAltas(await ipDelVisitante())) {
+  if (!(await pasaLimiteAltas(await ipDelVisitante()))) {
     console.error("[mapa-operativo] techo de altas por IP alcanzado");
     return;
   }
@@ -734,7 +717,7 @@ export async function generarMapa(envio: EnvioMapa): Promise<ResultadoAccion> {
   const generadas = validarGeneradas(envio.generadas, ronda2);
   if (!generadas.ok) return { ok: false, error: generadas.error };
 
-  const corte = pasaRateLimit(await ipDelVisitante());
+  const corte = await pasaRateLimit(await ipDelVisitante());
   if (corte === "ip") return { ok: false, error: ERROR_POR_IP };
   if (corte === "global") return { ok: false, error: ERROR_GLOBAL };
 

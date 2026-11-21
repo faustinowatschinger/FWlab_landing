@@ -28,6 +28,8 @@ app/api/chat/reglas.ts   lo que el código no le deja decidir al modelo.
 app/api/chat/sesion.ts   sesión firmada con HMAC (viaja en el navegador).
 app/api/chat/crm.ts      alta en FW Central (apagada por defecto).
 app/api/chat/_pruebas/   simulador de leads y prueba de las guardas.
+app/lib/limites.ts       contadores compartidos (Redis, con respaldo en memoria).
+app/lib/aviso-limite.ts  mail cuando el uso llega a la mitad o al techo.
 ```
 
 - **El modelo devuelve JSON** (`mensaje`, `estado`, `mostrar_agenda` y lo que dijo la
@@ -62,12 +64,37 @@ app/api/chat/_pruebas/   simulador de leads y prueba de las guardas.
 | `CHAT_MAX_LARGO` | 600 | Caracteres por mensaje |
 | `CHAT_MAX_POR_IP` | 60 | Mensajes por IP por hora |
 | `CHAT_MAX_SESIONES_POR_IP` | 8 | Conversaciones nuevas por IP por hora |
-| `CHAT_MAX_GLOBAL` | 1200 | Mensajes por hora en total: es el techo del gasto |
+| `CHAT_MAX_GLOBAL` | 300 | Mensajes por hora en total (hasta el 21-11 eran 1.200 y era el único techo) |
+| `CHAT_MAX_DIA` | 1000 | Mensajes por día en total: es el techo del gasto. Unas 125 conversaciones de 8 mensajes |
+| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | — | Redis donde viven los contadores. También valen los `KV_REST_API_URL` / `KV_REST_API_TOKEN` que inyecta la integración de Vercel. **Sin ellas los límites cuentan en memoria y no son un techo real** |
 
 Las `NEXT_PUBLIC_*` se leen **al hacer el build** (la página es estática): si cambian,
 hay que volver a construir.
 
-Los contadores por IP y global viven en memoria: alcanzan con una sola instancia.
+## Límites de uso (21-11)
+
+La landing corre en Vercel: hay varias instancias de la función y se reciclan, así que un
+contador en memoria vale solo para la instancia que lo lleva. Por eso los contadores viven
+en Redis (`app/lib/limites.ts`, API REST de Upstash, sin dependencia nueva) y los comparte
+`/mapa-operativo`.
+
+| Regla | Qué frena |
+|---|---|
+| `sesiones-ip` | Conversaciones nuevas por IP por hora |
+| `sesion` | Llamadas al modelo por id de sesión: `CHAT_MAX_MENSAJES` + 4 de margen. Cierra el reenvío del mismo token firmado, que antes llegaba al modelo sin límite propio |
+| `ip` | Mensajes por IP por hora |
+| `global` y `dia` | Total por hora y por día |
+
+- Las reglas de un pedido se revisan y se cuentan juntas, en un solo script: si una corta,
+  no se cuenta ninguna. Una IP ya frenada no le gasta el cupo global a los demás.
+- La IP se guarda como huella (sha256 con `CHAT_SESSION_SECRET`), no en claro.
+- **Aviso por mail** (`app/lib/aviso-limite.ts`, mismo SMTP que `/api/contact`) a la mitad
+  del techo del día, al llegar, y al llegar al de la hora.
+- Si Redis no está configurado o no contesta en 1,5 s, cuenta en memoria y el chat sigue.
+  Es a propósito: un Redis caído no puede tirar el chat. Lo que queda debajo es el tope de
+  gasto de la cuenta de OpenAI, que se configura en su panel y no en este repo.
+- La ventana es fija (cambia en la hora y a las 00:00 UTC): en el borde puede pasar hasta
+  el doble.
 
 ## Píxel de Meta
 
@@ -108,6 +135,8 @@ se suma, porque el `PATCH` de notas busca por email y el chat no lo pide.
 
 ```bash
 npx tsx app/api/chat/_pruebas/reglas.test.ts     # las guardas, sin red
+npx tsx app/api/chat/_pruebas/limites-ruta.test.ts   # los límites contra la ruta, con el modelo interceptado: no gasta API
+npx tsx app/lib/_pruebas/limites.test.ts         # el contador: memoria y un redis-server local de descarte
 OPENAI_API_KEY=... CHAT_PROMPT_PRECIO="..." \
   npx tsx app/api/chat/_pruebas/simular.ts [id ...] --salida=/tmp/sim   # 44 leads simulados (escenarios.ts); --repeticiones=3 --paralelo=4 --sin-juez; cuesta centavos
 ```

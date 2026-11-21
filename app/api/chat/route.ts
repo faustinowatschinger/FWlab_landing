@@ -11,16 +11,21 @@
  * - Origen: solo se acepta desde el mismo host (como /api/contact).
  * - Largo: cada mensaje hasta CHAT_MAX_LARGO caracteres.
  * - Por sesión: hasta CHAT_MAX_MENSAJES mensajes del usuario. La sesión va
- *   firmada (sesion.ts), así que el contador no se puede resetear desde el
- *   navegador salvo abriendo otra, que cuenta contra el límite por IP.
+ *   firmada (sesion.ts), así que el historial no se puede inventar. Pero un
+ *   token firmado se puede mandar muchas veces: por eso además se cuentan las
+ *   llamadas por id de sesión del lado del server (regla "sesion").
  * - Por IP: CHAT_MAX_POR_IP mensajes y CHAT_MAX_SESIONES_POR_IP sesiones nuevas por hora.
- * - Global: CHAT_MAX_GLOBAL mensajes por hora. Es el techo del gasto.
- * Los contadores por IP y global viven en memoria: con una sola instancia
- * alcanzan; con varias, cada una lleva el suyo.
+ * - Global: CHAT_MAX_GLOBAL mensajes por hora y CHAT_MAX_DIA por día. Son el
+ *   techo del gasto, y avisan por mail a la mitad y al llegar.
+ * Los contadores viven en Redis (../../lib/limites.ts), compartidos entre las
+ * instancias de Vercel. Sin Redis configurado cuentan en memoria, por
+ * instancia, y eso NO es un techo real.
  */
 import { after, NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 
+import { avisarSiCruza } from "../../lib/aviso-limite";
+import { consumir, DIA_S, HORA_S, huellaIp, ipDe, type Regla } from "../../lib/limites";
 import { cargarLead } from "./crm";
 import { avisarFaustino } from "./aviso";
 import { refrescarCotizacion } from "./cotizacion";
@@ -36,40 +41,13 @@ const MAX_LARGO = num(process.env.CHAT_MAX_LARGO, 600);
 const MAX_MENSAJES = num(process.env.CHAT_MAX_MENSAJES, 16);
 const MAX_POR_IP = num(process.env.CHAT_MAX_POR_IP, 60);
 const MAX_SESIONES_POR_IP = num(process.env.CHAT_MAX_SESIONES_POR_IP, 8);
-const MAX_GLOBAL = num(process.env.CHAT_MAX_GLOBAL, 1200);
-const HORA = 60 * 60 * 1000;
-
-const porIp = new Map<string, number[]>();
-const sesionesPorIp = new Map<string, number[]>();
-let globales: number[] = [];
-
-function contar(mapa: Map<string, number[]>, ip: string, max: number): boolean {
-  const ahora = Date.now();
-  const previas = (mapa.get(ip) ?? []).filter((t) => ahora - t < HORA);
-  if (previas.length >= max) {
-    mapa.set(ip, previas);
-    return false;
-  }
-  previas.push(ahora);
-  mapa.set(ip, previas);
-  if (mapa.size > 5000) mapa.clear();
-  return true;
-}
-
-function pasaGlobal(): boolean {
-  const ahora = Date.now();
-  globales = globales.filter((t) => ahora - t < HORA);
-  if (globales.length >= MAX_GLOBAL) {
-    console.error(`[chat] TECHO GLOBAL alcanzado (${MAX_GLOBAL}/h). Puede ser tracción o abuso: revisar antes de subirlo.`);
-    return false;
-  }
-  globales.push(ahora);
-  return true;
-}
-
-function ipDe(req: NextRequest) {
-  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "desconocida";
-}
+// 300 por hora y 1.000 por día son unas 125 conversaciones de 8 mensajes por día:
+// varias veces lo que trae la campaña. Antes el único techo era 1.200 por hora.
+const MAX_GLOBAL = num(process.env.CHAT_MAX_GLOBAL, 300);
+const MAX_DIA = num(process.env.CHAT_MAX_DIA, 1000);
+// Llamadas por id de sesión. El margen cubre los turnos que fallaron (502) y no
+// quedaron en el token: sin él, dos errores le acortarían la charla a un lead real.
+const MARGEN_SESION = 4;
 
 function json(body: Record<string, unknown>, status = 200) {
   return NextResponse.json(body, { status, headers: { "Cache-Control": "no-store" } });
@@ -117,23 +95,42 @@ export async function POST(req: NextRequest) {
   if (!mensaje) return json({ error: "Escribí un mensaje." }, 400);
   if (mensaje.length > MAX_LARGO) return json({ error: `Probá con un mensaje más corto (hasta ${MAX_LARGO} caracteres).` }, 400);
 
-  const ip = ipDe(req);
+  const ip = huellaIp(ipDe(req.headers));
   let sesion = typeof cuerpo.sesion === "string" && cuerpo.sesion ? leer(cuerpo.sesion) : null;
   if (cuerpo.sesion && !sesion) return json({ error: "La conversación venció. Recargá la página para empezar de nuevo.", vencida: true }, 400);
 
-  if (!sesion) {
-    if (!contar(sesionesPorIp, ip, MAX_SESIONES_POR_IP)) {
-      return json({ error: "Ya se abrieron varias conversaciones desde tu conexión. Probá de nuevo más tarde." }, 429);
-    }
-    sesion = nueva(limpiarOrigen(cuerpo.origen));
-  }
+  const esNueva = !sesion;
+  if (!sesion) sesion = nueva(limpiarOrigen(cuerpo.origen));
 
   const delUsuario = sesion.turnos.filter((t) => t.rol === "usuario").length;
   if (delUsuario >= MAX_MENSAJES) {
     return json({ error: "Llegamos al límite de mensajes de esta conversación.", limite: true }, 429);
   }
-  if (!contar(porIp, ip, MAX_POR_IP)) return json({ error: "Muchos mensajes desde tu conexión. Probá en un rato." }, 429);
-  if (!pasaGlobal()) return json({ error: "Estamos con mucha demanda. Probá en un rato." }, 429);
+
+  // Todas juntas: si una corta, no se cuenta ninguna (ver ../../lib/limites.ts).
+  const reglas: Regla[] = [
+    ...(esNueva ? [{ nombre: "sesiones-ip", clave: `chat:ses-ip:${ip}`, max: MAX_SESIONES_POR_IP, ventanaS: HORA_S }] : []),
+    { nombre: "sesion", clave: `chat:ses:${sesion.id}`, max: MAX_MENSAJES + MARGEN_SESION, ventanaS: DIA_S + HORA_S, desdePrimerUso: true },
+    { nombre: "ip", clave: `chat:ip:${ip}`, max: MAX_POR_IP, ventanaS: HORA_S },
+    { nombre: "global", clave: "chat:global", max: MAX_GLOBAL, ventanaS: HORA_S },
+    { nombre: "dia", clave: "chat:dia", max: MAX_DIA, ventanaS: DIA_S },
+  ];
+  const consumo = await consumir(reglas);
+  if (!consumo.ok) {
+    if (consumo.corte === "sesiones-ip") {
+      return json({ error: "Ya se abrieron varias conversaciones desde tu conexión. Probá de nuevo más tarde." }, 429);
+    }
+    if (consumo.corte === "sesion") {
+      return json({ error: "Llegamos al límite de mensajes de esta conversación.", limite: true }, 429);
+    }
+    if (consumo.corte === "ip") return json({ error: "Muchos mensajes desde tu conexión. Probá en un rato." }, 429);
+    console.error(
+      `[chat] TECHO ${consumo.corte === "dia" ? `DIARIO (${MAX_DIA}/día)` : `GLOBAL (${MAX_GLOBAL}/h)`} alcanzado. Puede ser tracción o abuso: revisar antes de subirlo.`,
+    );
+    return json({ error: "Estamos con mucha demanda. Probá en un rato." }, 429);
+  }
+  // Aviso por mail a la mitad y al llegar al techo del día, y al llegar al de la hora.
+  avisarSiCruza("Chat de la landing", consumo, MAX_GLOBAL, MAX_DIA);
 
   const historial = [...sesion.turnos, { rol: "usuario" as const, texto: mensaje }];
 
